@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: pysem
+Version: 0.1.0
+Summary: Tools for SEM3D snapshot parsing and mesh conversion
+Author-email: Filippo Gatti <filippo.gatti@centralesupelec.fr>
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: debugpy==1.8.20
+Requires-Dist: h5py==3.15.1
+Requires-Dist: matplotlib==3.10.8
+Requires-Dist: numpy==2.2.6
+Requires-Dist: pyvista==0.47.0
+Requires-Dist: scipy==1.15.3
+Requires-Dist: tqdm==4.67.3
+Provides-Extra: plotting
+Requires-Dist: pyvista; extra == "plotting"
+Requires-Dist: matplotlib; extra == "plotting"
+Requires-Dist: ipywidgets; extra == "plotting"

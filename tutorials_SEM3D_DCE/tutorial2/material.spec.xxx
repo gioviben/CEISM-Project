@@ -1,0 +1,26 @@
+material 0 {
+    domain    =         solid;
+    deftype   =     Lambda_Mu;
+    spacedef  =          file;
+    filename0 = "smooth_heterogeneous_la.h5"; 
+    filename1 = "smooth_heterogeneous_mu.h5";
+    filename2 = "smooth_heterogeneous_ds.h5";
+};
+# copy pml materials
+material 1  {domain=solidpml; copy=0;};
+material 2  {domain=solidpml; copy=0;};
+material 3  {domain=solidpml; copy=0;};
+material 4  {domain=solidpml; copy=0;};
+material 5  {domain=solidpml; copy=0;};
+material 6  {domain=solidpml; copy=0;};
+material 7  {domain=solidpml; copy=0;};
+material 8  {domain=solidpml; copy=0;};
+material 9  {domain=solidpml; copy=0;};
+material 10 {domain=solidpml; copy=0;};
+material 11 {domain=solidpml; copy=0;};
+material 12 {domain=solidpml; copy=0;};
+material 13 {domain=solidpml; copy=0;};
+material 14 {domain=solidpml; copy=0;};
+material 15 {domain=solidpml; copy=0;};
+material 16 {domain=solidpml; copy=0;};
+material 17 {domain=solidpml; copy=0;};

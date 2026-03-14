@@ -1,0 +1,12 @@
+-1000	 # xmin
+1000	 # xmax
+100	 # xstep
+-1000	 # ymin
+1000	 # ymax
+100	 # ystep
+1000	 # zmax
+1	 # nb. of layers
+2000 20	 # upper layer: thickness and nb of steps
+2           # nb of PMLs (0 = no PML)
+1 1         # PMLs on top? at the bottom? (0: no, 1: yes)
+1           # 8 or 27 control points for elements (1 or 2)

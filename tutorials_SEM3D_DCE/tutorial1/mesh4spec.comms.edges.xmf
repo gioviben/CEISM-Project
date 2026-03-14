@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd">
+<Xdmf Version="2.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <Domain>
+    <Grid name="mesh" CollectionType="Spatial" GridType="Collection">
+      <xi:include href="mesh4spec.0000.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0001.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0002.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0003.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0004.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0005.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0006.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0007.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0008.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0009.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0010.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0011.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0012.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0013.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0014.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+      <xi:include href="mesh4spec.0015.comms.edges.xmf" xpointer="xpointer(//Xdmf/Domain/Grid)" />
+    </Grid>
+  </Domain>
+</Xdmf>

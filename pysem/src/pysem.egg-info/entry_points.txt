@@ -1,0 +1,7 @@
+[console_scripts]
+create-source = pysem.sem_stf:main
+create-stations = pysem.create_stations:main
+create-xmf = pysem.create_xmf_from_mesh:main
+generate-material = pysem.generate_h5_materials:main
+parse-snapshots = pysem.parse_sem3d_snapshots:main
+parse-traces = pysem.parse_sem3d_traces:main

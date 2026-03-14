@@ -1,0 +1,46 @@
+MPI startup(): PMI server not found. Please set I_MPI_PMI_LIBRARY variable if it is not a singleton case.
+ 
+ ****************************************************************************
+ ****************************************************************************
+ ****************************************************************************
+ **************************                          ************************
+ **************************     SEM - 3D VERSION     ************************
+ **************************                          ************************
+ ****************************************************************************
+ ****************************************************************************
+ ****************************************************************************
+ 
+ 
+ 
+ ****************************************************************************
+ ********************                                     *******************
+ ********************      RUN PREPARATION : INPUT DATA,  *******************
+ ********************     ELEMENTAL AND GLOBAL MACHINERY  *******************
+ ********************                                     *******************
+ ****************************************************************************
+ 
+ --> CREATING OUTPUT DIRECTORIES
+ --> READING INPUT PARAMETERS AND DATA
+Configuration SEM
+Schema en acceleration: 0
+Schema en vitesse: 1
+Duree simulation: 6.000000
+Newmark: alpha=0.500000 beta=-0.500000 gamma=1.000000
+Fichier maillage: 'mesh4spec'
+Modele : 0
+Anisotropy : 0
+Fichier materiau: 'material.input'
+Sauv. Traces : 1
+Sauv. Snap   : 1
+Fichier stations: '(null)'
+Snap interval : 0.100000
+Snap selection : 0x2ad0ba0
+out variables : (0,0,0,1,1,1,1,0,0,0,0,0,0,0)
+Nonlinear analysis : 0
+Mirror : use 0
+ ***WARNING*** : Les parametres alpha,beta,gamma sont ignores dans cette version
+ ***WARNING*** : on prend: alpha=0.5, beta=0.5, gamma=1
+ Attenuation SLS =           0
+          period =  0.200000000000000     
+            band =   10.0000000000000       5.000000000000000E-002
+ Process            0  can't open his mesh_file ./sem/mesh4spec.0000.h5
