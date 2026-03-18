@@ -365,6 +365,41 @@ class SEM3DMonitor(object):
                             return plt.gcf()
                         
                         # raise ValueError('Variable '+v+' not parsed!')
+    def Print_into_File(self,wkdir,variables,components,monitors,**kwargs):
+        """
+        Print the time-histories for a given set of capteurs, variables and components into text files.
+
+        Parameters
+        ----------
+        wkdir : str
+            Working directory where the text files are saved.
+        variables : list of str
+            List of variables to print.
+        components : list of str
+            List of components to print for each variable.
+        monitors : list of int
+            List of capteurs to print.
+        **kwargs : dict
+            Additional arguments to be passed to the np.savetxt method.
+        Returns
+        -------
+        None
+        """
+        if -1 in monitors:
+            monitors = range(self.nc)
+        print(f'Printing {self.name} into text files...')
+        for m in tqdm(monitors):
+            for v in variables:
+                if v in self.variables.keys():
+                    if any(self.components[v]):
+                        for c in self.CheckComponents(v,components):
+                            np.savetxt(osj(wkdir,self.name+'_'+str(m)+'_'+str(v)+'_'+str(c)+'.txt'),\
+                                       np.hstack((self.Time,self.data[v][:,self.Component2Index(v,c),m])))
+                    else:
+                        np.savetxt(osj(wkdir,self.name+'_'+str(m)+'_'+str(v)+'.txt'),\
+                                   np.hstack((self.Time,self.data[v][:,0,m])))
+                else:
+                    raise ValueError('Variable '+v+' not parsed!')
 
 def ParseSEM3DH5Traces(wkdir='./',
                        format='h5',
@@ -555,6 +590,14 @@ def main():
             for n in options['names']:
                 stream[n].Plot(**options,svf='plot.png')
 
+    # Print traces into text files
+    if not options['plot']:  
+        if 'all' in options['names']:
+            for n,st in stream.items():
+                st.Print_into_File(**options)
+        else:
+            for n in options['names']:
+                stream[n].Print_into_File(**options)
 
 if __name__=='__main__':
     main()    
