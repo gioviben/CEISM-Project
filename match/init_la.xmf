@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd">
+<Xdmf Version="2.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+<Domain>
+   <DataItem Name="la" Format="HDF" DataType="Float" Precision="8" Dimensions="31 31 31">
