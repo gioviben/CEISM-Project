@@ -45,7 +45,7 @@ def linear_gradient(d,grd,nu=0.3):
 # func = {'linear_gradient':linear_gradient}
 
 
-def initialize_lambda_mu_homogeneous(d,grd):
+def initialize_lambda_mu_homogeneous(d,grd,nu=0.3):
     la = np.full_like(grd[d],4745078653)
     mu = np.full_like(grd[d],3163316739)
     ds = np.full_like(grd[d],2000.).transpose(*trnsp)
@@ -91,7 +91,7 @@ def write_xdmf(pfx,prop,mat,lims):
     xMinGlob = np.array([lims['xmin'],lims['ymin'],lims['zmin']])
     xMaxGlob = np.array([lims['xmax'],lims['ymax'],lims['zmax']])
     dxV = (xMaxGlob-xMinGlob)/np.array([lims['nx']-1,lims['ny']-1,lims['nz']-1])
-                               
+
     for v in prop:
         szs = mat[v].shape
         with open("{}_{}.xmf".format(pfx,v),"w") as fid:
