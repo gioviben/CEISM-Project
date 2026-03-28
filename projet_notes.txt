@@ -1,0 +1,17 @@
+- Start with an homogeneous material, with just 1 layer (µ_0 = [µ0, µ0, …, µ0]).
+
+- Be careful, the material mask must cover the mesh. Do not use the same refinement as the mesh that we use to compute the propagation of the wave. Take a coarser one (less information needed)
+- stations.txt : prepared by Filippo
+- Save snaps in the regions of interest (where the stations are) to be able to compute the misfit. To do that, use "select box" and type the coordinates of the extreme points of the region.
+- We need the gradient of lambda and mu. To get them, put "=1" in the outputs we want (but in which sem3d file ??)
+- In the "input.spec" file : for the forward problem, the source is already specified (gaussian_stf), but for the adjoint problem, we need to specify the "misfit" source which is going to propagate via Reverse Time Migration. The time has to go backwards. 1 file per direction (x,y,z), Type=impulse.
+parse_sem3d_snapshots.py : get the mass matrix, which is diagonal in sem3d
+We can download the mass for each node, but without the GLL points (approximation, but can be tested en première approche)
+material_mask
+Mass directly read from sem3d. Don't forget to divide by rho (constant density, but Lamé parameters µ and Lambda varying).
+To compute the gradient of the misfit : Time integration : trapezoidal rule. Space integration : 
+We have the epsilon_vol (volumetric stress field) in the outputs. See in input.spec : evol=1.
+At each iteration, copy input_forward.spec into input.spec
+The gradient descent may be greedy. To avoid that, see Fathi et al (2015)
+
+Gradients : we need to assembly correctly the vectors.
