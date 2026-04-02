@@ -3,10 +3,21 @@
 """
 gradient_compute.py — RTM gradient via cross-correlation of forward and adjoint strain snapshots.
 
-Computes the sensitivity kernels:
+Computes the sensitivity kernels (misfit gradient, eq. 17-18 delle slide RTM):
 
-    g_λ(x) = ∫₀ᵀ  tr(ε[u(x,t)])  ·  tr(ε[Λ(x,t)])  dt
-    g_μ(x) = ∫₀ᵀ  dev(ε[u(x,t)]) : dev(ε[Λ(x,t)])  dt
+    g_λ(x) = − ∫₀ᵀ  tr(ε[u(x,t)]) · tr(ε[Λ(x,t)])  dt
+
+    g_μ(x) = − ∫₀ᵀ  ( 2·tr(ε[u])·tr(ε[Λ])  +  dev(ε[u]) : dev(ε[Λ]) )  dt
+
+Nota sui segni: il segno − viene dalla derivazione del Lagrangiano (il termine di accoppiamento
+tra campo forward u e campo aggiunto Λ è proporzionale a −∂K/∂m).
+
+Nota su N(x) e matrice di massa: la formula delle slide include anche N(x) (funzioni di forma GLL)
+e l'integrale di volume. Grazie alla proprietà δ_ij dei polinomi di Lagrange ai nodi GLL, il
+contributo N_i(x)·dΩ produce esattamente il fattore w_i·J_i che si trova anche nella diagonale
+della matrice di massa M_ii = ρ_i·w_i·J_i. Risolvendo il "problema di controllo" (slide 14)
+(1/ρ)M g_λ = g_mis^λ, questi fattori si cancellano → la formula finale è la pura
+cross-correlazione puntuale senza pesi espliciti.
 
 where u is the forward wavefield (forward solve) and Λ is the adjoint wavefield
 (adjoint solve with time-reversed residuals as sources at receivers).
@@ -197,12 +208,12 @@ def compute_gradient(comm, size, rank, wkd, res_fwd, res_adj, n_snap, dt_snap, o
         g_lambda_local = 0
         g_mu_local     = 0
         for k = 1..n_snap:
-            evol_fwd = tr(ε[u])  at snapshot k         (from res_fwd/Rsem{k})
+            evol_fwd = tr(ε[u])  at snapshot k          (from res_fwd/Rsem{k})
             evol_adj = tr(ε[Λ])  at snapshot n_snap+1-k (from res_adj/Rsem{n_snap+1-k})
-            edev_fwd = dev(ε[u])                        shape (N_gll_local, 6)
-            edev_adj = dev(ε[Λ])                        shape (N_gll_local, 6)
-            g_lambda_local += evol_fwd * evol_adj * dt_snap
-            g_mu_local     += (WEIGHTS * edev_fwd * edev_adj).sum(axis=1) * dt_snap
+            edev_fwd = dev(ε[u])                         shape (N_gll_local, 6)
+            edev_adj = dev(ε[Λ])                         shape (N_gll_local, 6)
+            g_lambda_local -= evol_fwd * evol_adj * dt_snap
+            g_mu_local     -= (2*evol_fwd*evol_adj + (WEIGHTS*edev_fwd*edev_adj).sum(axis=1)) * dt_snap
 
     The adjoint snapshots are indexed in reverse because SEM3D saves them in the
     order they are computed (from T→0), so Rsem1 of the adjoint corresponds to
@@ -257,16 +268,19 @@ def compute_gradient(comm, size, rank, wkd, res_fwd, res_adj, n_snap, dt_snap, o
         # evol_fwd/adj : shape (n_gll_local,)
         # edev_fwd/adj : shape (n_gll_local, 6)
 
-        # g_λ contribution at this timestep — pointwise scalar product of evol
-        g_lambda_local += evol_fwd * evol_adj * dt_snap
-        # result shape: (n_gll_local,)
+        # g_λ: cross-correlazione volumetrica (eq. 17) — il segno MENO è dalla derivazione
+        g_lambda_local -= evol_fwd * evol_adj * dt_snap
+        # shape: (n_gll_local,)
 
-        # g_μ contribution — weighted double-dot product of deviatoric tensors
-        # edev[u] : edev[Λ] = Σ_ij w_ij * edev_ij[u] * edev_ij[Λ]
-        # EDEV_WEIGHTS = [1,1,1,2,2,2] accounts for off-diagonal symmetry
+        # g_μ: formula eq. 18 — due termini:
+        #   1) 2·ε_vol·ε^Λ_vol  (termine volumetrico, coefficiente 2)
+        #   2) ε_dev:ε^Λ_dev    (doppio prodotto deviatorico)
+        #      = Σ_{i,j} e_ij·e^Λ_ij = xx+yy+zz + 2*(xy+xz+yz)
+        #      EDEV_WEIGHTS = [1,1,1,2,2,2] dà il fattore 2 agli off-diagonal (simmetria)
+        # Segno MENO come per g_λ
         dd = np.sum(EDEV_WEIGHTS * edev_fwd * edev_adj, axis=1)
         # dd shape: (n_gll_local,)
-        g_mu_local += dd * dt_snap
+        g_mu_local -= (2.0 * evol_fwd * evol_adj + dd) * dt_snap
 
         if rank == 0 and k % 10 == 0:
             print(f"  Rank 0: processed snapshot {k}/{n_snap}")
