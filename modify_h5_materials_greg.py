@@ -1,22 +1,16 @@
 # -*- coding: utf-8 -*-
 import h5py
 import numpy as np
-# Steps :
-# We have to overwrite each time we do an iteration of the Backtracking Line Search.
-# [Pre] 1. Get the gradients by time and space integration
-# [Pre] 2. Solve with the approximated Hessian the search directions
-# Then, we enter the BLS :
-# 1. Replace Lambda by Lambda + alpha*dir (same for Mu).
-# alpha = 0.5^k at the k-th iteration of the BLS ; dir = remains the same during a BLS loop.
-# Challenge : dir is a BIG vector (# elems = # elems of the mesh). We would actually like it to be a grid.
-# --> Define a bijective mapping : grid (3D) --> vector (1D) to compute the gradients and then the directions (with L-BFGS)
-# --> Apply the inverse to then overwrite the files :
+from sbatch_and_wait import sbatch_and_wait
+from compute_misfit import compute_misfit
 
-initial_names = {'Mu':'/workdir/match/mu.h5',
-    'La':'workdir/match/la.h5'}
+### TO BE MODIFIED, in order to correspond to the directory where lambda and mu are stored.
+file_paths = {'Mu':'/workdir/match/mu.h5','La':'workdir/match/la.h5'}
+###________________________________________________________________________________________
+
 
 # Define fmesh at initialization :
-initial_name  = initial_names['Mu'] # For example (just for the initialization. We could have taken La as well.)
+initial_name  = file_paths['Mu'] # For example (just for the initialization. We could have taken La as well.)
 initial_fmesh = h5py.File(initial_name,"r+") ####
 
 # Global variables :
@@ -73,11 +67,11 @@ def modify_h5(h5_path,vec_to_add):
 def backtracking_line_search(s_la_k,s_mu_k,g_la_k,g_mu_k,J_k,line_search_params={"alpha_la":1, "alpha_mu":1 , "c1":1e-4 , "xi":0.5}):
     """Updates the h5 files (la.h5 and mu.h5) through the backtracking line search.
     Args:
-        s_la_k (1D np.array): recovered from 
+        s_la_k (1D np.array): retrieved from step 9
         s_mu_k (1D np.array): _description_
-        g_la_k (1D np.array): _description_
+        g_la_k (1D np.array): retrieved from step 8
         g_mu_k (1D np.array): _description_
-        J_k (float): _description_
+        J_k (float): value of the misfit obtained at step k
     """
     ## Initialization ##
     alpha_la, alpha_mu , c1, xi = line_search_params["alpha_la"] , line_search_params["alpha_mu"], line_search_params["c1"], line_search_params["xi"]
@@ -96,9 +90,12 @@ def backtracking_line_search(s_la_k,s_mu_k,g_la_k,g_mu_k,J_k,line_search_params=
         print("la.h5 modified",flush=True)
         modify_h5('/workdir/match/mu.h5',vec_to_add_mu)
         print("mu.h5 modified",flush=True)
-        ###Lauch SEM3D ('/workdir/match/la.h5','/workdir/match/mu.h5' have just been updated ###
-        ### Call sbatch SOLVER and go get the traces and Uobs ###
-        J_learn = compute_misfit(traces_path,Uobs) # to be modified
+        # Launch SEM3D ('/workdir/match/la.h5','/workdir/match/mu.h5' have just been updated
+        # Call sbatch SOLVER, and then get the traces and Uobs
+        sbatch_and_wait("SOLVER.sbatch")
+        TRACES_SIMULATED_FOLDER_PATH = ... ### TO BE MODIFIED
+        obs_u = ... ### TO BE MODIFIED
+        J_learn = compute_misfit(TRACES_SIMULATED_FOLDER_PATH,obs_u)
         alpha_la *= xi
         alpha_mu *= xi
     # At the end of the loop, la.h5 and mu.h5 are updated,
