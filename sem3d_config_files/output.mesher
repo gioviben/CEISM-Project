@@ -1,0 +1,649 @@
+-------------------------------------------------
+-------------------------------------------------
+-----                                       -----
+----- Construction of input files for SEM3D -----
+-----                                       -----
+-------------------------------------------------
+-------------------------------------------------
+
+    DEBUG MODE    
+
+
+   --> How many procs for the run ?
+             32 processor(s)
+ 
+
+  --> Which Initial Mesh?
+      1- On the fly
+      2- Abaqus from Cubit
+      3- Ideas (.unv) files
+      4- HDF5 Hex8 files
+      5- Earth Chunk
+      6- Full earth
+            Your choice is 1 
+ 
+
+Configuration SEM
+Schema en acceleration: 0
+Schema en vitesse: 1
+Duree simulation: 2.000000
+Newmark: alpha=0.500000 beta=0.500000 gamma=1.000000
+Fichier maillage: 'mesh4spec'
+Modele : 0
+Anisotropy : 0
+Fichier materiau: 'material.input'
+Sauv. Traces : 0
+Sauv. Snap   : 1
+Fichier stations: '(null)'
+Snap interval : 0.020000
+Snap selection : 0x290c2e0
+out variables : (0,0,1,1,1,1,0,1,0,0,0,0,0,0)
+Nonlinear analysis : 0
+Mirror : use 0
+Reading Materials
+mat= 0 : t=S vp=800.000000 vs=400.000000 rho=2000.000000 Qp=1000.000000 Qmu=1000.000000
+mat= 1 : t=S vp=1500.000000 vs=730.000000 rho=2100.000000 Qp=1000.000000 Qmu=1000.000000
+mat= 2 : t=S vp=1700.000000 vs=850.000000 rho=2400.000000 Qp=1000.000000 Qmu=1000.000000
+mat= 3 : t=S vp=3000.000000 vs=1500.000000 rho=2800.000000 Qp=1000.000000 Qmu=1000.000000
+
+Reading PML descriptions:
+Using 5 layers of PML
+Warning no shell flag
+Warning no mirror flag
+Creating grid mesh 30 x 30 x 28 with linear elements
+mat=4 layer = 0, idx=36 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=0.000000 zw=0.000000
+mat=5 layer = 0, idx=4 pmlnum=-1
+xp=0.000000 xw=0.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=0.000000 zw=0.000000
+mat=6 layer = 0, idx=20 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=0.000000 zw=0.000000
+mat=7 layer = 0, idx=32 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=0.000000 yw=0.000000 ; zp=0.000000 zw=0.000000
+mat=8 layer = 0, idx=16 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=0.000000 yw=0.000000 ; zp=0.000000 zw=0.000000
+mat=9 layer = 0, idx=40 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=10000.000000 yw=5000.000000 ; zp=0.000000 zw=0.000000
+mat=10 layer = 0, idx=8 pmlnum=-1
+xp=0.000000 xw=0.000000 ; yp=10000.000000 yw=5000.000000 ; zp=0.000000 zw=0.000000
+mat=11 layer = 0, idx=24 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=10000.000000 yw=5000.000000 ; zp=0.000000 zw=0.000000
+mat=12 layer = 1, idx=36 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=0.000000 zw=0.000000
+mat=13 layer = 1, idx=4 pmlnum=-1
+xp=0.000000 xw=0.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=0.000000 zw=0.000000
+mat=14 layer = 1, idx=20 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=0.000000 zw=0.000000
+mat=15 layer = 1, idx=32 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=0.000000 yw=0.000000 ; zp=0.000000 zw=0.000000
+mat=16 layer = 1, idx=16 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=0.000000 yw=0.000000 ; zp=0.000000 zw=0.000000
+mat=17 layer = 1, idx=40 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=10000.000000 yw=5000.000000 ; zp=0.000000 zw=0.000000
+mat=18 layer = 1, idx=8 pmlnum=-1
+xp=0.000000 xw=0.000000 ; yp=10000.000000 yw=5000.000000 ; zp=0.000000 zw=0.000000
+mat=19 layer = 1, idx=24 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=10000.000000 yw=5000.000000 ; zp=0.000000 zw=0.000000
+mat=20 layer = 2, idx=36 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=0.000000 zw=0.000000
+mat=21 layer = 2, idx=4 pmlnum=-1
+xp=0.000000 xw=0.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=0.000000 zw=0.000000
+mat=22 layer = 2, idx=20 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=0.000000 zw=0.000000
+mat=23 layer = 2, idx=32 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=0.000000 yw=0.000000 ; zp=0.000000 zw=0.000000
+mat=24 layer = 2, idx=16 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=0.000000 yw=0.000000 ; zp=0.000000 zw=0.000000
+mat=25 layer = 2, idx=40 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=10000.000000 yw=5000.000000 ; zp=0.000000 zw=0.000000
+mat=26 layer = 2, idx=8 pmlnum=-1
+xp=0.000000 xw=0.000000 ; yp=10000.000000 yw=5000.000000 ; zp=0.000000 zw=0.000000
+mat=27 layer = 2, idx=24 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=10000.000000 yw=5000.000000 ; zp=0.000000 zw=0.000000
+mat=28 layer = 3, idx=36 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=0.000000 zw=0.000000
+mat=29 layer = 3, idx=4 pmlnum=-1
+xp=0.000000 xw=0.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=0.000000 zw=0.000000
+mat=30 layer = 3, idx=20 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=0.000000 zw=0.000000
+mat=31 layer = 3, idx=32 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=0.000000 yw=0.000000 ; zp=0.000000 zw=0.000000
+mat=32 layer = 3, idx=16 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=0.000000 yw=0.000000 ; zp=0.000000 zw=0.000000
+mat=33 layer = 3, idx=40 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=10000.000000 yw=5000.000000 ; zp=0.000000 zw=0.000000
+mat=34 layer = 3, idx=8 pmlnum=-1
+xp=0.000000 xw=0.000000 ; yp=10000.000000 yw=5000.000000 ; zp=0.000000 zw=0.000000
+mat=35 layer = 3, idx=24 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=10000.000000 yw=5000.000000 ; zp=0.000000 zw=0.000000
+mat=36 layer = 3, idx=37 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=-17000.000000 zw=-5000.000000
+mat=37 layer = 3, idx=5 pmlnum=-1
+xp=0.000000 xw=0.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=-17000.000000 zw=-5000.000000
+mat=38 layer = 3, idx=21 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=-10000.000000 yw=-5000.000000 ; zp=-17000.000000 zw=-5000.000000
+mat=39 layer = 3, idx=33 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=0.000000 yw=0.000000 ; zp=-17000.000000 zw=-5000.000000
+mat=40 layer = 3, idx=1 pmlnum=-1
+xp=0.000000 xw=0.000000 ; yp=0.000000 yw=0.000000 ; zp=-17000.000000 zw=-5000.000000
+mat=41 layer = 3, idx=17 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=0.000000 yw=0.000000 ; zp=-17000.000000 zw=-5000.000000
+mat=42 layer = 3, idx=41 pmlnum=-1
+xp=-10000.000000 xw=-5000.000000 ; yp=10000.000000 yw=5000.000000 ; zp=-17000.000000 zw=-5000.000000
+mat=43 layer = 3, idx=9 pmlnum=-1
+xp=0.000000 xw=0.000000 ; yp=10000.000000 yw=5000.000000 ; zp=-17000.000000 zw=-5000.000000
+mat=44 layer = 3, idx=25 pmlnum=-1
+xp=10000.000000 xw=5000.000000 ; yp=10000.000000 yw=5000.000000 ; zp=-17000.000000 zw=-5000.000000
+Writing MaterialsFound 4260 free faces
+
+Created 3542 facets
+0000 : number of elements = 1019
+0000 : number of elements = (tot=1019/fpml=0/spml=411/fl=0/sol=608/sdg=0/fdg=0)
+0000 : number of faces    = (tot=3542/fpml=0/spml=1431/fl=0/sol=2111/sdg=0/fdg=0)
+0000 : number of edges    = (tot=4088/fpml=0/spml=1656/fl=0/sol=2432/sdg=0/fdg=0)
+0000 : number of vertices = (tot=1567/fpml=0/spml=637/fl=0/sol=930/sdg=0/fdg=0)
+Comm:0->1 : F/E/V : (83,197,116)
+Comm:0->2 : F/E/V : (68,164,98)
+Comm:0->3 : F/E/V : (21,54,35)
+Comm:0->6 : F/E/V : (72,164,93)
+Comm:0->9 : F/E/V : (49,114,66)
+Comm:0->12 : F/E/V : (4,13,10)
+Comm:0->15 : F/E/V : (90,212,124)
+Comm:0->16 : F/E/V : (6,18,13)
+Comm:0->17 : F/E/V : (86,203,119)
+Comm:0->18 : F/E/V : (34,83,50)
+Comm:0->20 : F/E/V : (72,173,103)
+Comm:0->23 : F/E/V : (53,131,80)
+Comm:0->27 : F/E/V : (24,63,40)
+Comm:0->30 : F/E/V : (47,111,65)
+0000 : number of mirror points = 0
+processor with empty mirror: 0
+Created 2425 facets
+0001 : number of elements = 691
+0001 : number of elements = (tot=691/fpml=0/spml=574/fl=0/sol=117/sdg=0/fdg=0)
+0001 : number of faces    = (tot=2425/fpml=0/spml=1971/fl=0/sol=454/sdg=0/fdg=0)
+0001 : number of edges    = (tot=2830/fpml=0/spml=2251/fl=0/sol=579/sdg=0/fdg=0)
+0001 : number of vertices = (tot=1098/fpml=0/spml=855/fl=0/sol=243/sdg=0/fdg=0)
+Comm:1->0 : F/E/V : (83,197,116)
+Comm:1->2 : F/E/V : (16,42,28)
+Comm:1->3 : F/E/V : (72,171,101)
+Comm:1->6 : F/E/V : (82,195,115)
+Comm:1->9 : F/E/V : (40,102,64)
+Comm:1->12 : F/E/V : (55,128,75)
+Comm:1->13 : F/E/V : (29,74,47)
+Comm:1->15 : F/E/V : (20,56,38)
+0001 : number of mirror points = 0
+processor with empty mirror: 1
+Created 2681 facets
+0002 : number of elements = 759
+0002 : number of elements = (tot=759/fpml=0/spml=541/fl=0/sol=218/sdg=0/fdg=0)
+0002 : number of faces    = (tot=2681/fpml=0/spml=1883/fl=0/sol=798/sdg=0/fdg=0)
+0002 : number of edges    = (tot=3142/fpml=0/spml=2176/fl=0/sol=966/sdg=0/fdg=0)
+0002 : number of vertices = (tot=1222/fpml=0/spml=835/fl=0/sol=387/sdg=0/fdg=0)
+Comm:2->0 : F/E/V : (68,164,98)
+Comm:2->1 : F/E/V : (16,42,28)
+Comm:2->3 : F/E/V : (123,282,161)
+Comm:2->6 : F/E/V : (43,102,60)
+Comm:2->7 : F/E/V : (51,127,78)
+Comm:2->20 : F/E/V : (59,148,91)
+Comm:2->23 : F/E/V : (74,172,100)
+Comm:2->26 : F/E/V : (27,65,39)
+Comm:2->27 : F/E/V : (43,108,67)
+0002 : number of mirror points = 0
+processor with empty mirror: 2
+Created 2100 facets
+0003 : number of elements = 606
+0003 : number of elements = (tot=606/fpml=0/spml=584/fl=0/sol=22/sdg=0/fdg=0)
+0003 : number of faces    = (tot=2100/fpml=0/spml=1998/fl=0/sol=102/sdg=0/fdg=0)
+0003 : number of edges    = (tot=2426/fpml=0/spml=2275/fl=0/sol=151/sdg=0/fdg=0)
+0003 : number of vertices = (tot=934/fpml=0/spml=862/fl=0/sol=72/sdg=0/fdg=0)
+Comm:3->0 : F/E/V : (21,54,35)
+Comm:3->1 : F/E/V : (72,171,101)
+Comm:3->2 : F/E/V : (123,282,161)
+Comm:3->6 : F/E/V : (20,52,34)
+Comm:3->7 : F/E/V : (42,100,60)
+0003 : number of mirror points = 0
+processor with empty mirror: 3
+Created 2487 facets
+0004 : number of elements = 701
+0004 : number of elements = (tot=701/fpml=0/spml=565/fl=0/sol=136/sdg=0/fdg=0)
+0004 : number of faces    = (tot=2487/fpml=0/spml=1952/fl=0/sol=535/sdg=0/fdg=0)
+0004 : number of edges    = (tot=2928/fpml=0/spml=2242/fl=0/sol=686/sdg=0/fdg=0)
+0004 : number of vertices = (tot=1144/fpml=0/spml=856/fl=0/sol=288/sdg=0/fdg=0)
+Comm:4->5 : F/E/V : (101,233,134)
+Comm:4->6 : F/E/V : (11,31,21)
+Comm:4->7 : F/E/V : (100,238,140)
+Comm:4->26 : F/E/V : (75,172,98)
+Comm:4->27 : F/E/V : (93,223,132)
+0004 : number of mirror points = 0
+processor with empty mirror: 4
+Created 3305 facets
+0005 : number of elements = 959
+0005 : number of elements = (tot=959/fpml=0/spml=389/fl=0/sol=570/sdg=0/fdg=0)
+0005 : number of faces    = (tot=3305/fpml=0/spml=1341/fl=0/sol=1964/sdg=0/fdg=0)
+0005 : number of edges    = (tot=3790/fpml=0/spml=1539/fl=0/sol=2251/sdg=0/fdg=0)
+0005 : number of vertices = (tot=1446/fpml=0/spml=588/fl=0/sol=858/sdg=0/fdg=0)
+Comm:5->4 : F/E/V : (101,233,134)
+Comm:5->6 : F/E/V : (85,198,115)
+Comm:5->7 : F/E/V : (26,68,44)
+Comm:5->9 : F/E/V : (28,72,46)
+Comm:5->11 : F/E/V : (131,297,168)
+Comm:5->27 : F/E/V : (123,271,149)
+Comm:5->29 : F/E/V : (2,8,7)
+Comm:5->30 : F/E/V : (2,7,8)
+0005 : number of mirror points = 0
+processor with empty mirror: 5
+Created 3565 facets
+0006 : number of elements = 1038
+0006 : number of elements = (tot=1038/fpml=0/spml=401/fl=0/sol=637/sdg=0/fdg=0)
+0006 : number of faces    = (tot=3565/fpml=0/spml=1383/fl=0/sol=2182/sdg=0/fdg=0)
+0006 : number of edges    = (tot=4073/fpml=0/spml=1588/fl=0/sol=2485/sdg=0/fdg=0)
+0006 : number of vertices = (tot=1548/fpml=0/spml=607/fl=0/sol=941/sdg=0/fdg=0)
+Comm:6->0 : F/E/V : (72,164,93)
+Comm:6->1 : F/E/V : (82,195,115)
+Comm:6->2 : F/E/V : (43,102,60)
+Comm:6->3 : F/E/V : (20,52,34)
+Comm:6->4 : F/E/V : (11,31,21)
+Comm:6->5 : F/E/V : (85,198,115)
+Comm:6->7 : F/E/V : (83,195,114)
+Comm:6->9 : F/E/V : (116,269,155)
+Comm:6->11 : F/E/V : (22,56,35)
+Comm:6->27 : F/E/V : (95,212,118)
+Comm:6->30 : F/E/V : (27,69,43)
+0006 : number of mirror points = 0
+processor with empty mirror: 6
+Created 2197 facets
+0007 : number of elements = 632
+0007 : number of elements = (tot=632/fpml=0/spml=572/fl=0/sol=60/sdg=0/fdg=0)
+0007 : number of faces    = (tot=2197/fpml=0/spml=1953/fl=0/sol=244/sdg=0/fdg=0)
+0007 : number of edges    = (tot=2547/fpml=0/spml=2220/fl=0/sol=327/sdg=0/fdg=0)
+0007 : number of vertices = (tot=984/fpml=0/spml=840/fl=0/sol=144/sdg=0/fdg=0)
+Comm:7->2 : F/E/V : (51,127,78)
+Comm:7->3 : F/E/V : (42,100,60)
+Comm:7->4 : F/E/V : (100,238,140)
+Comm:7->5 : F/E/V : (26,68,44)
+Comm:7->6 : F/E/V : (83,195,114)
+Comm:7->26 : F/E/V : (11,30,20)
+Comm:7->27 : F/E/V : (5,19,16)
+0007 : number of mirror points = 0
+processor with empty mirror: 7
+Created 2161 facets
+0008 : number of elements = 612
+0008 : number of elements = (tot=612/fpml=0/spml=562/fl=0/sol=50/sdg=0/fdg=0)
+0008 : number of faces    = (tot=2161/fpml=0/spml=1934/fl=0/sol=227/sdg=0/fdg=0)
+0008 : number of edges    = (tot=2536/fpml=0/spml=2213/fl=0/sol=323/sdg=0/fdg=0)
+0008 : number of vertices = (tot=989/fpml=0/spml=842/fl=0/sol=147/sdg=0/fdg=0)
+Comm:8->9 : F/E/V : (72,174,105)
+Comm:8->10 : F/E/V : (83,194,113)
+Comm:8->11 : F/E/V : (72,174,104)
+Comm:8->13 : F/E/V : (67,156,91)
+Comm:8->14 : F/E/V : (69,165,98)
+Comm:8->29 : F/E/V : (23,59,38)
+0008 : number of mirror points = 0
+processor with empty mirror: 8
+Created 3400 facets
+0009 : number of elements = 972
+0009 : number of elements = (tot=972/fpml=0/spml=427/fl=0/sol=545/sdg=0/fdg=0)
+0009 : number of faces    = (tot=3400/fpml=0/spml=1492/fl=0/sol=1908/sdg=0/fdg=0)
+0009 : number of edges    = (tot=3951/fpml=0/spml=1736/fl=0/sol=2215/sdg=0/fdg=0)
+0009 : number of vertices = (tot=1526/fpml=0/spml=673/fl=0/sol=853/sdg=0/fdg=0)
+Comm:9->0 : F/E/V : (49,114,66)
+Comm:9->1 : F/E/V : (40,102,64)
+Comm:9->5 : F/E/V : (28,72,46)
+Comm:9->6 : F/E/V : (116,269,155)
+Comm:9->8 : F/E/V : (72,174,105)
+Comm:9->10 : F/E/V : (46,115,71)
+Comm:9->11 : F/E/V : (123,284,163)
+Comm:9->13 : F/E/V : (105,246,144)
+Comm:9->14 : F/E/V : (62,146,86)
+Comm:9->15 : F/E/V : (24,61,38)
+Comm:9->18 : F/E/V : (13,36,24)
+Comm:9->30 : F/E/V : (32,77,46)
+0009 : number of mirror points = 0
+processor with empty mirror: 9
+Created 2195 facets
+0010 : number of elements = 626
+0010 : number of elements = (tot=626/fpml=0/spml=559/fl=0/sol=67/sdg=0/fdg=0)
+0010 : number of faces    = (tot=2195/fpml=0/spml=1915/fl=0/sol=280/sdg=0/fdg=0)
+0010 : number of edges    = (tot=2560/fpml=0/spml=2183/fl=0/sol=377/sdg=0/fdg=0)
+0010 : number of vertices = (tot=993/fpml=0/spml=828/fl=0/sol=165/sdg=0/fdg=0)
+Comm:10->8 : F/E/V : (83,194,113)
+Comm:10->9 : F/E/V : (46,115,71)
+Comm:10->11 : F/E/V : (148,341,196)
+0010 : number of mirror points = 0
+processor with empty mirror: 10
+Created 4380 facets
+0011 : number of elements = 1269
+0011 : number of elements = (tot=1269/fpml=0/spml=286/fl=0/sol=983/sdg=0/fdg=0)
+0011 : number of faces    = (tot=4380/fpml=0/spml=1085/fl=0/sol=3295/sdg=0/fdg=0)
+0011 : number of edges    = (tot=5030/fpml=0/spml=1354/fl=0/sol=3676/sdg=0/fdg=0)
+0011 : number of vertices = (tot=1922/fpml=0/spml=557/fl=0/sol=1365/sdg=0/fdg=0)
+Comm:11->5 : F/E/V : (131,297,168)
+Comm:11->6 : F/E/V : (22,56,35)
+Comm:11->8 : F/E/V : (72,174,104)
+Comm:11->9 : F/E/V : (123,284,163)
+Comm:11->10 : F/E/V : (148,341,196)
+Comm:11->14 : F/E/V : (16,43,29)
+Comm:11->27 : F/E/V : (6,22,17)
+Comm:11->29 : F/E/V : (156,354,200)
+Comm:11->30 : F/E/V : (83,188,106)
+0011 : number of mirror points = 0
+processor with empty mirror: 11
+Created 2004 facets
+0012 : number of elements = 582
+0012 : number of elements = (tot=582/fpml=0/spml=578/fl=0/sol=4/sdg=0/fdg=0)
+0012 : number of faces    = (tot=2004/fpml=0/spml=1974/fl=0/sol=30/sdg=0/fdg=0)
+0012 : number of edges    = (tot=2302/fpml=0/spml=2243/fl=0/sol=59/sdg=0/fdg=0)
+0012 : number of vertices = (tot=882/fpml=0/spml=848/fl=0/sol=34/sdg=0/fdg=0)
+Comm:12->0 : F/E/V : (4,13,10)
+Comm:12->1 : F/E/V : (55,128,75)
+Comm:12->13 : F/E/V : (88,207,121)
+Comm:12->14 : F/E/V : (2,8,7)
+Comm:12->15 : F/E/V : (110,256,148)
+0012 : number of mirror points = 0
+processor with empty mirror: 12
+Created 2244 facets
+0013 : number of elements = 636
+0013 : number of elements = (tot=636/fpml=0/spml=550/fl=0/sol=86/sdg=0/fdg=0)
+0013 : number of faces    = (tot=2244/fpml=0/spml=1898/fl=0/sol=346/sdg=0/fdg=0)
+0013 : number of edges    = (tot=2630/fpml=0/spml=2177/fl=0/sol=453/sdg=0/fdg=0)
+0013 : number of vertices = (tot=1024/fpml=0/spml=830/fl=0/sol=194/sdg=0/fdg=0)
+Comm:13->1 : F/E/V : (29,74,47)
+Comm:13->8 : F/E/V : (67,156,91)
+Comm:13->9 : F/E/V : (105,246,144)
+Comm:13->12 : F/E/V : (88,207,121)
+Comm:13->14 : F/E/V : (47,116,71)
+Comm:13->15 : F/E/V : (53,132,82)
+0013 : number of mirror points = 0
+processor with empty mirror: 13
+Created 2511 facets
+0014 : number of elements = 700
+0014 : number of elements = (tot=700/fpml=0/spml=518/fl=0/sol=182/sdg=0/fdg=0)
+0014 : number of faces    = (tot=2511/fpml=0/spml=1806/fl=0/sol=705/sdg=0/fdg=0)
+0014 : number of edges    = (tot=2982/fpml=0/spml=2091/fl=0/sol=891/sdg=0/fdg=0)
+0014 : number of vertices = (tot=1173/fpml=0/spml=804/fl=0/sol=369/sdg=0/fdg=0)
+Comm:14->8 : F/E/V : (69,165,98)
+Comm:14->9 : F/E/V : (62,146,86)
+Comm:14->11 : F/E/V : (16,43,29)
+Comm:14->12 : F/E/V : (2,8,7)
+Comm:14->13 : F/E/V : (47,116,71)
+Comm:14->15 : F/E/V : (130,299,171)
+Comm:14->18 : F/E/V : (140,322,184)
+Comm:14->19 : F/E/V : (32,77,47)
+Comm:14->29 : F/E/V : (43,107,66)
+Comm:14->30 : F/E/V : (6,19,14)
+0014 : number of mirror points = 0
+processor with empty mirror: 14
+Created 2693 facets
+0015 : number of elements = 754
+0015 : number of elements = (tot=754/fpml=0/spml=537/fl=0/sol=217/sdg=0/fdg=0)
+0015 : number of faces    = (tot=2693/fpml=0/spml=1886/fl=0/sol=807/sdg=0/fdg=0)
+0015 : number of edges    = (tot=3187/fpml=0/spml=2198/fl=0/sol=989/sdg=0/fdg=0)
+0015 : number of vertices = (tot=1250/fpml=0/spml=850/fl=0/sol=400/sdg=0/fdg=0)
+Comm:15->0 : F/E/V : (90,212,124)
+Comm:15->1 : F/E/V : (20,56,38)
+Comm:15->9 : F/E/V : (24,61,38)
+Comm:15->12 : F/E/V : (110,256,148)
+Comm:15->13 : F/E/V : (53,132,82)
+Comm:15->14 : F/E/V : (130,299,171)
+Comm:15->17 : F/E/V : (43,107,66)
+Comm:15->18 : F/E/V : (36,94,60)
+Comm:15->19 : F/E/V : (32,78,47)
+0015 : number of mirror points = 0
+processor with empty mirror: 15
+Created 2539 facets
+0016 : number of elements = 711
+0016 : number of elements = (tot=711/fpml=0/spml=514/fl=0/sol=197/sdg=0/fdg=0)
+0016 : number of faces    = (tot=2539/fpml=0/spml=1796/fl=0/sol=743/sdg=0/fdg=0)
+0016 : number of edges    = (tot=3006/fpml=0/spml=2084/fl=0/sol=922/sdg=0/fdg=0)
+0016 : number of vertices = (tot=1180/fpml=0/spml=803/fl=0/sol=377/sdg=0/fdg=0)
+Comm:16->0 : F/E/V : (6,18,13)
+Comm:16->17 : F/E/V : (129,298,171)
+Comm:16->18 : F/E/V : (103,241,141)
+Comm:16->19 : F/E/V : (61,147,88)
+Comm:16->20 : F/E/V : (44,111,69)
+Comm:16->21 : F/E/V : (22,54,33)
+Comm:16->22 : F/E/V : (19,48,31)
+Comm:16->30 : F/E/V : (107,249,144)
+Comm:16->31 : F/E/V : (42,105,65)
+0016 : number of mirror points = 0
+processor with empty mirror: 16
+Created 2294 facets
+0017 : number of elements = 640
+0017 : number of elements = (tot=640/fpml=0/spml=564/fl=0/sol=76/sdg=0/fdg=0)
+0017 : number of faces    = (tot=2294/fpml=0/spml=1955/fl=0/sol=339/sdg=0/fdg=0)
+0017 : number of edges    = (tot=2724/fpml=0/spml=2251/fl=0/sol=473/sdg=0/fdg=0)
+0017 : number of vertices = (tot=1072/fpml=0/spml=861/fl=0/sol=211/sdg=0/fdg=0)
+Comm:17->0 : F/E/V : (86,203,119)
+Comm:17->15 : F/E/V : (43,107,66)
+Comm:17->16 : F/E/V : (129,298,171)
+Comm:17->18 : F/E/V : (43,110,69)
+Comm:17->19 : F/E/V : (37,92,57)
+Comm:17->20 : F/E/V : (44,114,72)
+Comm:17->22 : F/E/V : (50,119,71)
+Comm:17->23 : F/E/V : (40,95,57)
+0017 : number of mirror points = 0
+processor with empty mirror: 17
+Created 3277 facets
+0018 : number of elements = 925
+0018 : number of elements = (tot=925/fpml=0/spml=458/fl=0/sol=467/sdg=0/fdg=0)
+0018 : number of faces    = (tot=3277/fpml=0/spml=1643/fl=0/sol=1634/sdg=0/fdg=0)
+0018 : number of edges    = (tot=3852/fpml=0/spml=1953/fl=0/sol=1899/sdg=0/fdg=0)
+0018 : number of vertices = (tot=1502/fpml=0/spml=769/fl=0/sol=733/sdg=0/fdg=0)
+Comm:18->0 : F/E/V : (34,83,50)
+Comm:18->9 : F/E/V : (13,36,24)
+Comm:18->14 : F/E/V : (140,322,184)
+Comm:18->15 : F/E/V : (36,94,60)
+Comm:18->16 : F/E/V : (103,241,141)
+Comm:18->17 : F/E/V : (43,110,69)
+Comm:18->19 : F/E/V : (104,249,147)
+Comm:18->29 : F/E/V : (40,99,61)
+Comm:18->30 : F/E/V : (68,157,90)
+Comm:18->31 : F/E/V : (117,272,157)
+0018 : number of mirror points = 0
+processor with empty mirror: 18
+Created 2123 facets
+0019 : number of elements = 616
+0019 : number of elements = (tot=616/fpml=0/spml=605/fl=0/sol=11/sdg=0/fdg=0)
+0019 : number of faces    = (tot=2123/fpml=0/spml=2062/fl=0/sol=61/sdg=0/fdg=0)
+0019 : number of edges    = (tot=2440/fpml=0/spml=2339/fl=0/sol=101/sdg=0/fdg=0)
+0019 : number of vertices = (tot=935/fpml=0/spml=883/fl=0/sol=52/sdg=0/fdg=0)
+Comm:19->14 : F/E/V : (32,77,47)
+Comm:19->15 : F/E/V : (32,78,47)
+Comm:19->16 : F/E/V : (61,147,88)
+Comm:19->17 : F/E/V : (37,92,57)
+Comm:19->18 : F/E/V : (104,249,147)
+0019 : number of mirror points = 0
+processor with empty mirror: 19
+Created 3595 facets
+0020 : number of elements = 1004
+0020 : number of elements = (tot=1004/fpml=0/spml=394/fl=0/sol=610/sdg=0/fdg=0)
+0020 : number of faces    = (tot=3595/fpml=0/spml=1502/fl=0/sol=2093/sdg=0/fdg=0)
+0020 : number of edges    = (tot=4261/fpml=0/spml=1873/fl=0/sol=2388/sdg=0/fdg=0)
+0020 : number of vertices = (tot=1671/fpml=0/spml=765/fl=0/sol=906/sdg=0/fdg=0)
+Comm:20->0 : F/E/V : (72,173,103)
+Comm:20->2 : F/E/V : (59,148,91)
+Comm:20->16 : F/E/V : (44,111,69)
+Comm:20->17 : F/E/V : (44,114,72)
+Comm:20->21 : F/E/V : (153,358,207)
+Comm:20->22 : F/E/V : (83,208,126)
+Comm:20->23 : F/E/V : (152,345,195)
+Comm:20->25 : F/E/V : (0,2,4)
+Comm:20->26 : F/E/V : (43,103,62)
+Comm:20->27 : F/E/V : (91,215,126)
+Comm:20->30 : F/E/V : (45,113,70)
+0020 : number of mirror points = 0
+processor with empty mirror: 20
+Created 2180 facets
+0021 : number of elements = 620
+0021 : number of elements = (tot=620/fpml=0/spml=558/fl=0/sol=62/sdg=0/fdg=0)
+0021 : number of faces    = (tot=2180/fpml=0/spml=1915/fl=0/sol=265/sdg=0/fdg=0)
+0021 : number of edges    = (tot=2549/fpml=0/spml=2186/fl=0/sol=363/sdg=0/fdg=0)
+0021 : number of vertices = (tot=991/fpml=0/spml=830/fl=0/sol=161/sdg=0/fdg=0)
+Comm:21->16 : F/E/V : (22,54,33)
+Comm:21->20 : F/E/V : (153,358,207)
+Comm:21->22 : F/E/V : (61,144,85)
+Comm:21->25 : F/E/V : (91,214,125)
+Comm:21->26 : F/E/V : (11,30,21)
+Comm:21->27 : F/E/V : (14,38,26)
+Comm:21->30 : F/E/V : (24,66,44)
+0021 : number of mirror points = 0
+processor with empty mirror: 21
+Created 2084 facets
+0022 : number of elements = 605
+0022 : number of elements = (tot=605/fpml=0/spml=600/fl=0/sol=5/sdg=0/fdg=0)
+0022 : number of faces    = (tot=2084/fpml=0/spml=2045/fl=0/sol=39/sdg=0/fdg=0)
+0022 : number of edges    = (tot=2396/fpml=0/spml=2320/fl=0/sol=76/sdg=0/fdg=0)
+0022 : number of vertices = (tot=919/fpml=0/spml=876/fl=0/sol=43/sdg=0/fdg=0)
+Comm:22->16 : F/E/V : (19,48,31)
+Comm:22->17 : F/E/V : (50,119,71)
+Comm:22->20 : F/E/V : (83,208,126)
+Comm:22->21 : F/E/V : (61,144,85)
+Comm:22->23 : F/E/V : (57,134,79)
+0022 : number of mirror points = 0
+processor with empty mirror: 22
+Created 2039 facets
+0023 : number of elements = 579
+0023 : number of elements = (tot=579/fpml=0/spml=579/fl=0/sol=0/sdg=0/fdg=0)
+0023 : number of faces    = (tot=2039/fpml=0/spml=1991/fl=0/sol=48/sdg=0/fdg=0)
+0023 : number of edges    = (tot=2390/fpml=0/spml=2276/fl=0/sol=114/sdg=0/fdg=0)
+0023 : number of vertices = (tot=932/fpml=0/spml=865/fl=0/sol=67/sdg=0/fdg=0)
+Comm:23->0 : F/E/V : (53,131,80)
+Comm:23->2 : F/E/V : (74,172,100)
+Comm:23->17 : F/E/V : (40,95,57)
+Comm:23->20 : F/E/V : (152,345,195)
+Comm:23->22 : F/E/V : (57,134,79)
+0023 : number of mirror points = 0
+processor with empty mirror: 23
+Created 2148 facets
+0024 : number of elements = 603
+0024 : number of elements = (tot=603/fpml=0/spml=570/fl=0/sol=33/sdg=0/fdg=0)
+0024 : number of faces    = (tot=2148/fpml=0/spml=1967/fl=0/sol=181/sdg=0/fdg=0)
+0024 : number of edges    = (tot=2540/fpml=0/spml=2257/fl=0/sol=283/sdg=0/fdg=0)
+0024 : number of vertices = (tot=997/fpml=0/spml=861/fl=0/sol=136/sdg=0/fdg=0)
+Comm:24->25 : F/E/V : (86,201,117)
+Comm:24->26 : F/E/V : (33,85,54)
+Comm:24->27 : F/E/V : (130,304,177)
+Comm:24->28 : F/E/V : (40,99,61)
+Comm:24->30 : F/E/V : (33,83,52)
+0024 : number of mirror points = 0
+processor with empty mirror: 24
+Created 2188 facets
+0025 : number of elements = 621
+0025 : number of elements = (tot=621/fpml=0/spml=558/fl=0/sol=63/sdg=0/fdg=0)
+0025 : number of faces    = (tot=2188/fpml=0/spml=1917/fl=0/sol=271/sdg=0/fdg=0)
+0025 : number of edges    = (tot=2564/fpml=0/spml=2192/fl=0/sol=372/sdg=0/fdg=0)
+0025 : number of vertices = (tot=999/fpml=0/spml=834/fl=0/sol=165/sdg=0/fdg=0)
+Comm:25->20 : F/E/V : (0,2,4)
+Comm:25->21 : F/E/V : (91,214,125)
+Comm:25->24 : F/E/V : (86,201,117)
+Comm:25->26 : F/E/V : (50,124,77)
+Comm:25->27 : F/E/V : (96,232,139)
+Comm:25->30 : F/E/V : (52,126,76)
+0025 : number of mirror points = 0
+processor with empty mirror: 25
+Created 2058 facets
+0026 : number of elements = 580
+0026 : number of elements = (tot=580/fpml=0/spml=580/fl=0/sol=0/sdg=0/fdg=0)
+0026 : number of faces    = (tot=2058/fpml=0/spml=2017/fl=0/sol=41/sdg=0/fdg=0)
+0026 : number of edges    = (tot=2430/fpml=0/spml=2331/fl=0/sol=99/sdg=0/fdg=0)
+0026 : number of vertices = (tot=955/fpml=0/spml=895/fl=0/sol=60/sdg=0/fdg=0)
+Comm:26->2 : F/E/V : (27,65,39)
+Comm:26->4 : F/E/V : (75,172,98)
+Comm:26->7 : F/E/V : (11,30,20)
+Comm:26->20 : F/E/V : (43,103,62)
+Comm:26->21 : F/E/V : (11,30,21)
+Comm:26->24 : F/E/V : (33,85,54)
+Comm:26->25 : F/E/V : (50,124,77)
+Comm:26->27 : F/E/V : (165,377,215)
+0026 : number of mirror points = 0
+processor with empty mirror: 26
+Created 5789 facets
+0027 : number of elements = 1677
+0027 : number of elements = (tot=1677/fpml=0/spml=82/fl=0/sol=1595/sdg=0/fdg=0)
+0027 : number of faces    = (tot=5789/fpml=0/spml=473/fl=0/sol=5316/sdg=0/fdg=0)
+0027 : number of edges    = (tot=6641/fpml=0/spml=748/fl=0/sol=5893/sdg=0/fdg=0)
+0027 : number of vertices = (tot=2532/fpml=0/spml=359/fl=0/sol=2173/sdg=0/fdg=0)
+Comm:27->0 : F/E/V : (24,63,40)
+Comm:27->2 : F/E/V : (43,108,67)
+Comm:27->4 : F/E/V : (93,223,132)
+Comm:27->5 : F/E/V : (123,271,149)
+Comm:27->6 : F/E/V : (95,212,118)
+Comm:27->7 : F/E/V : (5,19,16)
+Comm:27->11 : F/E/V : (6,22,17)
+Comm:27->20 : F/E/V : (91,215,126)
+Comm:27->21 : F/E/V : (14,38,26)
+Comm:27->24 : F/E/V : (130,304,177)
+Comm:27->25 : F/E/V : (96,232,139)
+Comm:27->26 : F/E/V : (165,377,215)
+Comm:27->28 : F/E/V : (45,110,67)
+Comm:27->29 : F/E/V : (17,43,27)
+Comm:27->30 : F/E/V : (173,387,216)
+0027 : number of mirror points = 0
+processor with empty mirror: 27
+Created 2617 facets
+0028 : number of elements = 750
+0028 : number of elements = (tot=750/fpml=0/spml=532/fl=0/sol=218/sdg=0/fdg=0)
+0028 : number of faces    = (tot=2617/fpml=0/spml=1826/fl=0/sol=791/sdg=0/fdg=0)
+0028 : number of edges    = (tot=3037/fpml=0/spml=2086/fl=0/sol=951/sdg=0/fdg=0)
+0028 : number of vertices = (tot=1172/fpml=0/spml=793/fl=0/sol=379/sdg=0/fdg=0)
+Comm:28->24 : F/E/V : (40,99,61)
+Comm:28->27 : F/E/V : (45,110,67)
+Comm:28->29 : F/E/V : (101,232,133)
+Comm:28->30 : F/E/V : (60,146,88)
+Comm:28->31 : F/E/V : (75,178,105)
+0028 : number of mirror points = 0
+processor with empty mirror: 28
+Created 2903 facets
+0029 : number of elements = 825
+0029 : number of elements = (tot=825/fpml=0/spml=507/fl=0/sol=318/sdg=0/fdg=0)
+0029 : number of faces    = (tot=2903/fpml=0/spml=1750/fl=0/sol=1153/sdg=0/fdg=0)
+0029 : number of edges    = (tot=3392/fpml=0/spml=2009/fl=0/sol=1383/sdg=0/fdg=0)
+0029 : number of vertices = (tot=1316/fpml=0/spml=767/fl=0/sol=549/sdg=0/fdg=0)
+Comm:29->5 : F/E/V : (2,8,7)
+Comm:29->8 : F/E/V : (23,59,38)
+Comm:29->11 : F/E/V : (156,354,200)
+Comm:29->14 : F/E/V : (43,107,66)
+Comm:29->18 : F/E/V : (40,99,61)
+Comm:29->27 : F/E/V : (17,43,27)
+Comm:29->28 : F/E/V : (101,232,133)
+Comm:29->30 : F/E/V : (41,103,63)
+Comm:29->31 : F/E/V : (82,192,112)
+0029 : number of mirror points = 0
+processor with empty mirror: 29
+Created 4173 facets
+0030 : number of elements = 1209
+0030 : number of elements = (tot=1209/fpml=0/spml=316/fl=0/sol=893/sdg=0/fdg=0)
+0030 : number of faces    = (tot=4173/fpml=0/spml=1124/fl=0/sol=3049/sdg=0/fdg=0)
+0030 : number of edges    = (tot=4786/fpml=0/spml=1327/fl=0/sol=3459/sdg=0/fdg=0)
+0030 : number of vertices = (tot=1824/fpml=0/spml=520/fl=0/sol=1304/sdg=0/fdg=0)
+Comm:30->0 : F/E/V : (47,111,65)
+Comm:30->5 : F/E/V : (2,7,8)
+Comm:30->6 : F/E/V : (27,69,43)
+Comm:30->9 : F/E/V : (32,77,46)
+Comm:30->11 : F/E/V : (83,188,106)
+Comm:30->14 : F/E/V : (6,19,14)
+Comm:30->16 : F/E/V : (107,249,144)
+Comm:30->18 : F/E/V : (68,157,90)
+Comm:30->20 : F/E/V : (45,113,70)
+Comm:30->21 : F/E/V : (24,66,44)
+Comm:30->24 : F/E/V : (33,83,52)
+Comm:30->25 : F/E/V : (52,126,76)
+Comm:30->27 : F/E/V : (173,387,216)
+Comm:30->28 : F/E/V : (60,146,88)
+Comm:30->29 : F/E/V : (41,103,63)
+Comm:30->31 : F/E/V : (78,183,107)
+0030 : number of mirror points = 0
+processor with empty mirror: 30
+Created 2378 facets
+0031 : number of elements = 679
+0031 : number of elements = (tot=679/fpml=0/spml=529/fl=0/sol=150/sdg=0/fdg=0)
+0031 : number of faces    = (tot=2378/fpml=0/spml=1825/fl=0/sol=553/sdg=0/fdg=0)
+0031 : number of edges    = (tot=2770/fpml=0/spml=2094/fl=0/sol=676/sdg=0/fdg=0)
+0031 : number of vertices = (tot=1073/fpml=0/spml=799/fl=0/sol=274/sdg=0/fdg=0)
+Comm:31->16 : F/E/V : (42,105,65)
+Comm:31->18 : F/E/V : (117,272,157)
+Comm:31->28 : F/E/V : (75,178,105)
+Comm:31->29 : F/E/V : (82,192,112)
+Comm:31->30 : F/E/V : (78,183,107)
+0031 : number of mirror points = 0
+processor with empty mirror: 31

@@ -1,0 +1,101 @@
+ 
+ ****************************************************************************
+ ****************************************************************************
+ ****************************************************************************
+ **************************                          ************************
+ **************************     SEM - 3D VERSION     ************************
+ **************************                          ************************
+ ****************************************************************************
+ ****************************************************************************
+ ****************************************************************************
+ 
+ 
+ 
+ ****************************************************************************
+ ********************                                     *******************
+ ********************      RUN PREPARATION : INPUT DATA,  *******************
+ ********************     ELEMENTAL AND GLOBAL MACHINERY  *******************
+ ********************                                     *******************
+ ****************************************************************************
+ 
+ --> CREATING OUTPUT DIRECTORIES
+ --> READING INPUT PARAMETERS AND DATA
+Configuration SEM
+Schema en acceleration: 0
+Schema en vitesse: 1
+Duree simulation: 2.000000
+Newmark: alpha=0.500000 beta=0.500000 gamma=1.000000
+Fichier maillage: 'mesh4spec'
+Modele : 0
+Anisotropy : 0
+Fichier materiau: 'material.input'
+Sauv. Traces : 0
+Sauv. Snap   : 1
+Fichier stations: '(null)'
+Snap interval : 0.020000
+Snap selection : 0x1cfcd90
+out variables : (0,0,1,1,1,1,0,1,0,0,0,0,0,0)
+Nonlinear analysis : 0
+Mirror : use 0
+ Attenuation SLS =           0
+          period =  0.000000000000000E+000
+            band =  0.000000000000000E+000  0.000000000000000E+000
+ Mesh read correctly, elements per proc:
+00000:  1019   691   759   606   701   959  1038   632
+00008:   612   972   626  1269   582   636   700   754
+00016:   711   640   925   616  1004   620   605   579
+00024:   603   621   580  1677   750   825  1209   679
+ read material file : ./material.input
+ --> DEFINING A GLOBAL NUMBERING FOR COLLOCATION POINTS
+ --> ALLOCATING FIELDS
+ INFO - solid domain :          608  elements and        43641  ngll pts
+ INFO - solid pml domain :          411  elements and        29581  ngll pts
+ --> COMPUTING SHAPE FUNCTIONS AND THEIR DERIVATIVES
+ --> COMPUTING MASS MATRIX AND INTERNAL FORCES COEFFICIENTS 
+ dt_min  5.755772154866887E-002
+ For Courant =  0.200000000000000       the time step is now 
+  5.755772154866887E-002  1.151154430973378E-002
+ --> COMPUTING SOURCE PARAMETERS 
+ 
+ 
+ ****************************************************************************
+ *****************                                          *****************
+ *****************  INITIALIZATION OF IN/OUT INTERACTIONS:  *****************
+ *****************     RESTART, SNAPSHOTS, RECEIVERS        *****************
+ *****************                                          *****************
+ ****************************************************************************
+ 
+ --> SNAPSHOTS RECORDED EVERY            1  iterations
+ 
+ 
+ ****************************************************************************
+ ************************                                 *******************
+ ************************        TIME STEPPING            *******************
+ ************************                                 *******************
+ ****************************************************************************
+ 
+ --> Duration of the run:    2.00000000000000     
+ --> Time step size:   1.151154430973378E-002
+ --> Number of time steps:          173
+ 
+  Iteration  =             0     temps  =   0.000000000000000E+000
+--> SEM : snapshot at iteration : 000000 ,time:     0.00000
+--> SEM : snapshot at iteration : 000001 ,time:     0.01151
+--> SEM : snapshot at iteration : 000002 ,time:     0.02302
+--> SEM : snapshot at iteration : 000003 ,time:     0.03453
+--> SEM : snapshot at iteration : 000004 ,time:     0.04605
+--> SEM : snapshot at iteration : 000005 ,time:     0.05756
+--> SEM : snapshot at iteration : 000006 ,time:     0.06907
+--> SEM : snapshot at iteration : 000007 ,time:     0.08058
+--> SEM : snapshot at iteration : 000008 ,time:     0.09209
+--> SEM : snapshot at iteration : 000009 ,time:     0.10360
+--> SEM : snapshot at iteration : 000010 ,time:     0.11512
+--> SEM : snapshot at iteration : 000011 ,time:     0.12663
+--> SEM : snapshot at iteration : 000012 ,time:     0.13814
+--> SEM : snapshot at iteration : 000013 ,time:     0.14965
+--> SEM : snapshot at iteration : 000014 ,time:     0.16116
+--> SEM : snapshot at iteration : 000015 ,time:     0.17267
+--> SEM : snapshot at iteration : 000016 ,time:     0.18418
+--> SEM : snapshot at iteration : 000017 ,time:     0.19570
+--> SEM : snapshot at iteration : 000018 ,time:     0.20721
+--> SEM : snapshot at iteration : 000019 ,time:     0.21872

@@ -1,2 +1,5 @@
 /.venv/
 /SEM3D_ST7_project2026_todo/util_func/__pycache__/
+**/traces/
+**/res/
+**/sem/

@@ -1,0 +1,29 @@
+        Warning: path './traces' already exists
+        Warning: path './res' already exists
+        Warning: path './prot' already exists
+        Warning: path '.' already exists
+        Warning: path './mat' already exists
+        Warning: path './mirror' already exists
+        Warning: path './res' already exists
+        Warning: path './res/Rsem0001' already exists
+        Warning: path './res/Rsem0002' already exists
+        Warning: path './res/Rsem0003' already exists
+        Warning: path './res/Rsem0004' already exists
+        Warning: path './res/Rsem0005' already exists
+        Warning: path './res/Rsem0006' already exists
+        Warning: path './res/Rsem0007' already exists
+        Warning: path './res/Rsem0008' already exists
+        Warning: path './res/Rsem0009' already exists
+        Warning: path './res/Rsem0010' already exists
+        Warning: path './res/Rsem0011' already exists
+        Warning: path './res/Rsem0012' already exists
+        Warning: path './res/Rsem0013' already exists
+        Warning: path './res/Rsem0014' already exists
+        Warning: path './res/Rsem0015' already exists
+        Warning: path './res/Rsem0016' already exists
+        Warning: path './res/Rsem0017' already exists
+        Warning: path './res/Rsem0018' already exists
+        Warning: path './res/Rsem0019' already exists
+        Warning: path './res/Rsem0020' already exists
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 173551 ON kyle63 CANCELLED AT 2026-04-05T18:26:41 ***

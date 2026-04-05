@@ -1,7 +1,0 @@
-        Warning: path './traces' already exists
-        Warning: path './res' already exists
-        Warning: path './prot' already exists
-        Warning: path '.' already exists
-        Warning: path './mat' already exists
-        Warning: path './mirror' already exists
-cp: cannot stat './res/temps_sem.dat': No such file or directory
