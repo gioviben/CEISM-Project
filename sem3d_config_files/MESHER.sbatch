@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=MESHER
 #SBATCH --nodes=1
-#SBATCH --ntasks=1
+#SBATCH --ntasks=32
 #SBATCH --cpus-per-task=1
 #SBATCH --time=00:30:00
 #SBATCH --output=mo.txt 

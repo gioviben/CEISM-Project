@@ -528,7 +528,7 @@ def ParseSEM3DH5Traces(wkdir='./',
                     if 'Variables' not in H5Dataset[0] and "_pos" not in H5Dataset[0]:
                         if any(set(H5Dataset[0].split('_')[:-1]) & set(names_ok)):
                             if len(H5Dataset[0].split('_'))>1:
-                                print(f"Processing dataset: {H5Dataset[0]}")
+                                # print(f"Processing dataset: {H5Dataset[0]}")
                                 monitor.ParseData(H5Dataset[1],int(H5Dataset[0].split('_')[-1]))
                             else:
                                 monitor.ParseData(H5Dataset[1],0)

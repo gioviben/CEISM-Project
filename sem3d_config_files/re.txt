@@ -1,56 +1,28 @@
+        Warning: path './prot' already exists
         Warning: path '.' already exists
-forrtl: No such file or directory
-forrtl: No such file or directory
-forrtl: No such file or directory
-forrtl: No such file or directory
-forrtl: No such file or directory
-forrtl: severe (29): file not found, unit 10, file /usr/users/cea_seism/benede_gio/CEISM-Project/sem3d_config_files/ad_s/misfit_14_z.txt
+        Warning: path './mat' already exists
+        Warning: path './mirror' already exists
+        Warning: path './res' already exists
+[kyle12:3304624:0:3304624] Caught signal 11 (Segmentation fault: address not mapped to object at address (nil))
+==== backtrace (tid:3304624) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2e4) [0x7fa3fb143fc4]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(+0x24fec) [0x7fa3fb147fec]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(+0x251aa) [0x7fa3fb1481aa]
+ 3  sem3d.exe() [0x433334]
+ 4  sem3d.exe() [0x67c26b]
+ 5  sem3d.exe() [0x67ef32]
+ 6  sem3d.exe() [0x40a9fd]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x7fa3fa600d90]
+ 8  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x7fa3fa600e40]
+ 9  sem3d.exe() [0x40a915]
+=================================
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
 Image              PC                Routine            Line        Source             
-sem3d.exe          0000000000A8EEB5  Unknown               Unknown  Unknown
-sem3d.exe          0000000000411497  Unknown               Unknown  Unknown
-sem3d.exe          000000000067D15A  Unknown               Unknown  Unknown
+libc.so.6          00007FA3FA619520  Unknown               Unknown  Unknown
+sem3d.exe          0000000000433334  Unknown               Unknown  Unknown
+sem3d.exe          000000000067C26B  Unknown               Unknown  Unknown
 sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
 sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
-libc.so.6          00007FF318A00D90  Unknown               Unknown  Unknown
-libc.so.6          00007FF318A00E40  __libc_start_main     Unknown  Unknown
-sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
-forrtl: severe (29): file not found, unit 10, file /usr/users/cea_seism/benede_gio/CEISM-Project/sem3d_config_files/ad_s/misfit_47_z.txt
-Image              PC                Routine            Line        Source             
-sem3d.exe          0000000000A8EEB5  Unknown               Unknown  Unknown
-sem3d.exe          0000000000411497  Unknown               Unknown  Unknown
-sem3d.exe          000000000067D15A  Unknown               Unknown  Unknown
-sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
-sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
-libc.so.6          00007FA8FA800D90  Unknown               Unknown  Unknown
-libc.so.6          00007FA8FA800E40  __libc_start_main     Unknown  Unknown
-sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
-forrtl: severe (29): file not found, unit 10, file /usr/users/cea_seism/benede_gio/CEISM-Project/sem3d_config_files/ad_s/misfit_115_z.txt
-Image              PC                Routine            Line        Source             
-sem3d.exe          0000000000A8EEB5  Unknown               Unknown  Unknown
-sem3d.exe          0000000000411497  Unknown               Unknown  Unknown
-sem3d.exe          000000000067D15A  Unknown               Unknown  Unknown
-sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
-sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
-libc.so.6          00007F7807000D90  Unknown               Unknown  Unknown
-libc.so.6          00007F7807000E40  __libc_start_main     Unknown  Unknown
-sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
-forrtl: severe (29): file not found, unit 10, file /usr/users/cea_seism/benede_gio/CEISM-Project/sem3d_config_files/ad_s/misfit_120_z.txt
-Image              PC                Routine            Line        Source             
-sem3d.exe          0000000000A8EEB5  Unknown               Unknown  Unknown
-sem3d.exe          0000000000411497  Unknown               Unknown  Unknown
-sem3d.exe          000000000067D15A  Unknown               Unknown  Unknown
-sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
-sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
-libc.so.6          00007F7D7DA00D90  Unknown               Unknown  Unknown
-libc.so.6          00007F7D7DA00E40  __libc_start_main     Unknown  Unknown
-sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
-forrtl: severe (29): file not found, unit 10, file /usr/users/cea_seism/benede_gio/CEISM-Project/sem3d_config_files/ad_s/misfit_87_z.txt
-Image              PC                Routine            Line        Source             
-sem3d.exe          0000000000A8EEB5  Unknown               Unknown  Unknown
-sem3d.exe          0000000000411497  Unknown               Unknown  Unknown
-sem3d.exe          000000000067D15A  Unknown               Unknown  Unknown
-sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
-sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
-libc.so.6          00007F9FA0200D90  Unknown               Unknown  Unknown
-libc.so.6          00007F9FA0200E40  __libc_start_main     Unknown  Unknown
+libc.so.6          00007FA3FA600D90  Unknown               Unknown  Unknown
+libc.so.6          00007FA3FA600E40  __libc_start_main     Unknown  Unknown
 sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
