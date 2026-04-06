@@ -11,7 +11,7 @@ ngll=5;
 
 snapshots {
     save_snap = true;
-    snap_interval = 0.5; # in seconds
+    snap_interval = 1; # in seconds
     select box = -1200.0 -1200.0 -10.0 1200.0 1200.0 1.0;  
 };
 
