@@ -506,19 +506,8 @@ class SnapshotsSEM3D(object):
         g_mu_chunk[mask]  = (rho_chunk[mask] * chunk_rhs_mu[mask]) / chunk_M[mask]
 
         print(f"Rank {self.rank} - local gradients computed. Gathering results...")
-        # STEP 4: GATHER RESULTS (Optional - for saving/output)
-        # If you need the full domain on Rank 0 for VTK saving:
-        if self.rank == 0:
-            g_lam_final = np.zeros(num_nodes)
-            g_mu_final = np.zeros(num_nodes)
-        else:
-            g_lam_final = None
-            g_mu_final = None
-
-        self.comm.Gatherv(g_lam_chunk, [g_lam_final, counts, sum(counts[:self.rank]), MPI.DOUBLE], root=0)
-        self.comm.Gatherv(g_mu_chunk, [g_mu_final, counts, sum(counts[:self.rank]), MPI.DOUBLE], root=0)
-
-        return g_lam_final, g_mu_final
+        
+        return g_lam_chunk, g_mu_chunk, mask
     
 def ParseCL():
     """
