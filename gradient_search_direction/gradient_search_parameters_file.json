@@ -1,0 +1,9 @@
+{
+  "iteration": 2,
+  "dt_sim": 2,
+  "lbfgs_mem": 5,
+  "state_dir": "state",
+  "output_dir": "outputs",
+  "mpi_ranks": 32,
+  "python_script": "compute_gradient_search_direction.py"
+}
