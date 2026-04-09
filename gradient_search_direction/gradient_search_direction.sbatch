@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=gradient_search_direction 
-#SBATCH --nodes=1              # On descend à 2 nœuds pour respecter votre quota (QOS)
-#SBATCH --ntasks=32            # OBLIGATOIRE : doit correspondre au Mesher (32)
-#SBATCH --cpus-per-task=1      # On reste simple pour éviter de bloquer des ressources
+#SBATCH --nodes=8             
+#SBATCH --ntasks=64            
+#SBATCH --cpus-per-task=4      
 #SBATCH --time=12:00:00
 #SBATCH --output=output.%j
 #SBATCH --error=error.%j

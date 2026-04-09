@@ -8,7 +8,7 @@ def update_parameters_file(parameters_file_path, n_iter, LBFGS_MEM, LBFGS_STATE_
         "lbfgs_mem": LBFGS_MEM,
         "state_dir": str(LBFGS_STATE_FOLDER_PATH),
         "output_dir": str(LBFGS_OUTPUT_FOLDER_PATH),
-        "mpi_ranks": 32,
+        "mpi_ranks": 64,
         "python_script": "compute_gradient_search_direction.py",
     }
 

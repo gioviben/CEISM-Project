@@ -1,0 +1,30 @@
+        Warning: path './traces' already exists
+        Warning: path './res' already exists
+        Warning: path './prot' already exists
+        Warning: path '.' already exists
+        Warning: path './mat' already exists
+        Warning: path './mirror' already exists
+        Warning: path './res' already exists
+[kyle14:420260:0:420260] Caught signal 11 (Segmentation fault: address not mapped to object at address (nil))
+==== backtrace (tid: 420260) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2e4) [0x14ded3ad2fc4]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(+0x24fec) [0x14ded3ad6fec]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(+0x251aa) [0x14ded3ad71aa]
+ 3  sem3d.exe() [0x433334]
+ 4  sem3d.exe() [0x67c26b]
+ 5  sem3d.exe() [0x67ef32]
+ 6  sem3d.exe() [0x40a9fd]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(+0x29d90) [0x14ded5600d90]
+ 8  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x80) [0x14ded5600e40]
+ 9  sem3d.exe() [0x40a915]
+=================================
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
+Image              PC                Routine            Line        Source             
+libc.so.6          000014DED5619520  Unknown               Unknown  Unknown
+sem3d.exe          0000000000433334  Unknown               Unknown  Unknown
+sem3d.exe          000000000067C26B  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          000014DED5600D90  Unknown               Unknown  Unknown
+libc.so.6          000014DED5600E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown

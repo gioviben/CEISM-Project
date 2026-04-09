@@ -1,0 +1,65 @@
+ 
+ ****************************************************************************
+ ****************************************************************************
+ ****************************************************************************
+ **************************                          ************************
+ **************************     SEM - 3D VERSION     ************************
+ **************************                          ************************
+ ****************************************************************************
+ ****************************************************************************
+ ****************************************************************************
+ 
+ 
+ 
+ ****************************************************************************
+ ********************                                     *******************
+ ********************      RUN PREPARATION : INPUT DATA,  *******************
+ ********************     ELEMENTAL AND GLOBAL MACHINERY  *******************
+ ********************                                     *******************
+ ****************************************************************************
+ 
+ --> CREATING OUTPUT DIRECTORIES
+ --> READING INPUT PARAMETERS AND DATA
+Configuration SEM
+Schema en acceleration: 0
+Schema en vitesse: 1
+Duree simulation: 10.000000
+Newmark: alpha=0.500000 beta=0.500000 gamma=1.000000
+Fichier maillage: 'mesh4spec'
+Modele : 0
+Anisotropy : 0
+Fichier materiau: 'material.input'
+Sauv. Traces : 1
+Sauv. Snap   : 1
+Fichier stations: '(null)'
+Snap interval : 0.500000
+Snap selection : 0x124f690
+out variables : (0,0,1,1,1,1,0,1,0,0,0,0,1,1)
+Nonlinear analysis : 0
+Mirror : use 0
+ Attenuation SLS =           0
+          period =  0.000000000000000E+000
+            band =  0.000000000000000E+000  0.000000000000000E+000
+ Mesh read correctly, elements per proc:
+00000:  1089  1047  1184  1102  1129  1150  1195  1120
+ read material file : ./material.input
+ --> DEFINING A GLOBAL NUMBERING FOR COLLOCATION POINTS
+ --> ALLOCATING FIELDS
+ INFO - solid domain :          727  elements and        51001  ngll pts
+ INFO - solid pml domain :          362  elements and        29673  ngll pts
+ --> COMPUTING SHAPE FUNCTIONS AND THEIR DERIVATIVES
+ --> COMPUTING MASS MATRIX AND INTERNAL FORCES COEFFICIENTS 
+ dt_min  1.467785014246694E-003
+ For Courant =  0.200000000000000       the time step is now 
+  1.467785014246694E-003  2.935570028493387E-004
+ --> COMPUTING SOURCE PARAMETERS 
+ 
+ 
+ ****************************************************************************
+ *****************                                          *****************
+ *****************  INITIALIZATION OF IN/OUT INTERACTIONS:  *****************
+ *****************     RESTART, SNAPSHOTS, RECEIVERS        *****************
+ *****************                                          *****************
+ ****************************************************************************
+ 
+ --> SNAPSHOTS RECORDED EVERY         1703  iterations

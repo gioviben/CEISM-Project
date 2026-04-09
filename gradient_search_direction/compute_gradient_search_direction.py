@@ -172,7 +172,10 @@ def run_parallel_direction_step(
         # 1. Compute local gradients & Current local model chunk
         # -------------------------------------------------------------
         
-        g_lam_chunk, g_mu_chunk, m_lam_chunk, m_mu_chunk, x_gl, y_gl, z_gl = compute_gradients_main(compute_xyz)
+        g_lam_chunk, g_mu_chunk, m_lam_chunk, m_mu_chunk, x_gl, y_gl, z_gl = compute_gradients_main(comm=comm,
+                                                                                                    size=size,
+                                                                                                    rank=rank,
+                                                                                                    wrt=compute_xyz)
 
         # -------------------------------------------------------------
         # 2. Reload previous rank-local L-BFGS state
