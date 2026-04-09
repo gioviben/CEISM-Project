@@ -38,7 +38,7 @@ def write_backward_spec_from_template(template_backward_spec_path, output_backwa
             # path for the .spec
             rel_file_path = os.path.join(adjoint_sources_folder_path, fname)
             
-            file_path_for_adjoint_prob = os.path.join(Path(adjoint_sources_folder_path).name, fname)
+            file_path_for_adjoint_prob = fname
 
             if not os.path.isfile(rel_file_path):
                 raise FileNotFoundError(

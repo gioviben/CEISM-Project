@@ -1,2 +1,0 @@
-Job starting on node kyle13
-Found executable at: 

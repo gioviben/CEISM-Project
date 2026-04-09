@@ -1,1 +1,14 @@
-srun: fatal: No command given to execute.
+        Warning: path './traces' already exists
+        Warning: path './res' already exists
+        Warning: path './prot' already exists
+        Warning: path '.' already exists
+        Warning: path './mat' already exists
+        Warning: path './mirror' already exists
+        Warning: path './res' already exists
+        Warning: path './res/Rsem0001' already exists
+        Warning: path './res/Rsem0002' already exists
+        Warning: path './res/Rsem0003' already exists
+        Warning: path './res/Rsem0004' already exists
+        Warning: path './res/Rsem0005' already exists
+        Warning: path './res/Rsem0006' already exists
+cp: cannot stat './res/temps_sem.dat': No such file or directory

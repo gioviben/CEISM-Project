@@ -1,0 +1,1076 @@
+ 
+ ****************************************************************************
+ ****************************************************************************
+ ****************************************************************************
+ **************************                          ************************
+ **************************     SEM - 3D VERSION     ************************
+ **************************                          ************************
+ ****************************************************************************
+ ****************************************************************************
+ ****************************************************************************
+ 
+ 
+ 
+ ****************************************************************************
+ ********************                                     *******************
+ ********************      RUN PREPARATION : INPUT DATA,  *******************
+ ********************     ELEMENTAL AND GLOBAL MACHINERY  *******************
+ ********************                                     *******************
+ ****************************************************************************
+ 
+ --> CREATING OUTPUT DIRECTORIES
+ --> READING INPUT PARAMETERS AND DATA
+Configuration SEM
+Schema en acceleration: 0
+Schema en vitesse: 1
+Duree simulation: 5.000000
+Newmark: alpha=0.500000 beta=0.500000 gamma=1.000000
+Fichier maillage: 'mesh4spec'
+Modele : 0
+Anisotropy : 0
+Fichier materiau: 'material.input'
+Sauv. Traces : 1
+Sauv. Snap   : 1
+Fichier stations: '(null)'
+Snap interval : 1.000000
+Snap selection : 0x10dec20
+out variables : (0,0,1,1,1,1,0,1,0,0,0,0,1,1)
+Nonlinear analysis : 0
+Mirror : use 0
+ Attenuation SLS =           0
+          period =  0.000000000000000E+000
+            band =  0.000000000000000E+000  0.000000000000000E+000
+ Mesh read correctly, elements per proc:
+00000:    67    91    55    85    62    77    49    75
+00008:    65   113    59    78    67   101    69    59
+00016:   113    62    51    69    83    59    59    91
+00024:    76    52    55    89    61    50    63   113
+00032:    91    81    71    51    51    76    97    63
+00040:    63    59    56   101    59   113    53    66
+00048:    75    65    68    53    68    68    75    48
+00056:    67    62    79   113    60    59   111    67
+00064:    56    50    59   110    54    99    88    57
+00072:    81    67    53    70    59    55   113    72
+00080:   113    77    63    53    85    67    53    93
+00088:    49    71    59    78    53    62   103    89
+00096:    65    45    92    67    53    47    77    53
+00104:    53    79   113    63    60    93    46    53
+00112:   105    51    51    57    54    47    81    48
+00120:   113    68    82    49    57    53    70    53
+ read material file : ./material.input
+ --> DEFINING A GLOBAL NUMBERING FOR COLLOCATION POINTS
+ --> ALLOCATING FIELDS
+ INFO - solid domain :           46  elements and         3805  ngll pts
+ INFO - solid pml domain :           21  elements and         1885  ngll pts
+ --> COMPUTING SHAPE FUNCTIONS AND THEIR DERIVATIVES
+ --> COMPUTING MASS MATRIX AND INTERNAL FORCES COEFFICIENTS 
+ dt_min  1.467785014246694E-003
+ For Courant =  0.200000000000000       the time step is now 
+  1.467785014246694E-003  2.935570028493387E-004
+ --> COMPUTING SOURCE PARAMETERS 
+ 
+ 
+ ****************************************************************************
+ *****************                                          *****************
+ *****************  INITIALIZATION OF IN/OUT INTERACTIONS:  *****************
+ *****************     RESTART, SNAPSHOTS, RECEIVERS        *****************
+ *****************                                          *****************
+ ****************************************************************************
+ 
+ --> SNAPSHOTS RECORDED EVERY         3406  iterations
+Capteur:Uobs_0120 on proc    13 in elem      4 at  -0.8250, -0.8250,  1.0000 in domain 4
+Capteur:Uobs_0115 on proc    23 in elem     29 at  -0.8250,  1.0000,  1.0000 in domain 4
+Capteur:Uobs_0119 on proc    13 in elem      4 at  -0.8250, -0.8600,  1.0000 in domain 4
+Capteur:Uobs_0114 on proc    23 in elem     29 at  -0.8250,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0118 on proc    13 in elem      4 at  -0.8250, -0.8950,  1.0000 in domain 4
+Capteur:Uobs_0113 on proc    23 in elem     29 at  -0.8250,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0117 on proc    13 in elem      4 at  -0.8250, -0.9300,  1.0000 in domain 4
+Capteur:Uobs_0112 on proc    23 in elem     29 at  -0.8250,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0116 on proc    13 in elem      4 at  -0.8250, -0.9650,  1.0000 in domain 4
+Capteur:Uobs_0111 on proc    23 in elem     29 at  -0.8250,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0109 on proc    13 in elem      4 at  -0.8600, -0.8250,  1.0000 in domain 4
+Capteur:Uobs_0110 on proc    23 in elem     29 at  -0.8250,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0108 on proc    13 in elem      4 at  -0.8600, -0.8600,  1.0000 in domain 4
+Capteur:Uobs_0104 on proc    23 in elem     29 at  -0.8600,  1.0000,  1.0000 in domain 4
+Capteur:Uobs_0107 on proc    13 in elem      4 at  -0.8600, -0.8950,  1.0000 in domain 4
+Capteur:Uobs_0103 on proc    23 in elem     29 at  -0.8600,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0106 on proc    13 in elem      4 at  -0.8600, -0.9300,  1.0000 in domain 4
+Capteur:Uobs_0102 on proc    23 in elem     29 at  -0.8600,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0105 on proc    13 in elem      4 at  -0.8600, -0.9650,  1.0000 in domain 4
+Capteur:Uobs_0101 on proc    23 in elem     29 at  -0.8600,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0098 on proc    13 in elem      4 at  -0.8950, -0.8250,  1.0000 in domain 4
+Capteur:Uobs_0100 on proc    23 in elem     29 at  -0.8600,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0097 on proc    13 in elem      4 at  -0.8950, -0.8600,  1.0000 in domain 4
+Capteur:Uobs_0099 on proc    23 in elem     29 at  -0.8600,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0096 on proc    13 in elem      4 at  -0.8950, -0.8950,  1.0000 in domain 4
+Capteur:Uobs_0093 on proc    23 in elem     29 at  -0.8950,  1.0000,  1.0000 in domain 4
+Capteur:Uobs_0095 on proc    13 in elem      4 at  -0.8950, -0.9300,  1.0000 in domain 4
+Capteur:Uobs_0092 on proc    23 in elem     29 at  -0.8950,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0094 on proc    13 in elem      4 at  -0.8950, -0.9650,  1.0000 in domain 4
+Capteur:Uobs_0091 on proc    23 in elem     29 at  -0.8950,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0087 on proc    13 in elem      4 at  -0.9300, -0.8250,  1.0000 in domain 4
+Capteur:Uobs_0090 on proc    23 in elem     29 at  -0.8950,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0086 on proc    13 in elem      4 at  -0.9300, -0.8600,  1.0000 in domain 4
+Capteur:Uobs_0089 on proc    23 in elem     29 at  -0.8950,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0085 on proc    13 in elem      4 at  -0.9300, -0.8950,  1.0000 in domain 4
+Capteur:Uobs_0088 on proc    23 in elem     29 at  -0.8950,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0084 on proc    13 in elem      4 at  -0.9300, -0.9300,  1.0000 in domain 4
+Capteur:Uobs_0082 on proc    23 in elem     29 at  -0.9300,  1.0000,  1.0000 in domain 4
+Capteur:Uobs_0083 on proc    13 in elem      4 at  -0.9300, -0.9650,  1.0000 in domain 4
+Capteur:Uobs_0081 on proc    23 in elem     29 at  -0.9300,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0076 on proc    13 in elem      4 at  -0.9650, -0.8250,  1.0000 in domain 4
+Capteur:Uobs_0080 on proc    23 in elem     29 at  -0.9300,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0075 on proc    13 in elem      4 at  -0.9650, -0.8600,  1.0000 in domain 4
+Capteur:Uobs_0079 on proc    23 in elem     29 at  -0.9300,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0074 on proc    13 in elem      4 at  -0.9650, -0.8950,  1.0000 in domain 4
+Capteur:Uobs_0078 on proc    23 in elem     29 at  -0.9300,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0073 on proc    13 in elem      4 at  -0.9650, -0.9300,  1.0000 in domain 4
+Capteur:Uobs_0077 on proc    23 in elem     29 at  -0.9300,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0072 on proc    13 in elem      4 at  -0.9650, -0.9650,  1.0000 in domain 4
+Capteur:Uobs_0071 on proc    23 in elem     29 at  -0.9650,  1.0000,  1.0000 in domain 4
+ 
+Capteur:Uobs_0070 on proc    23 in elem     29 at  -0.9650,  0.9650,  1.0000 in domain 4
+ 
+Capteur:Uobs_0069 on proc    23 in elem     29 at  -0.9650,  0.9300,  1.0000 in domain 4
+ ****************************************************************************
+Capteur:Uobs_0068 on proc    23 in elem     29 at  -0.9650,  0.8950,  1.0000 in domain 4
+ ************************                                 *******************
+Capteur:Uobs_0067 on proc    23 in elem     29 at  -0.9650,  0.8600,  1.0000 in domain 4
+ ************************        TIME STEPPING            *******************
+Capteur:Uobs_0066 on proc    23 in elem     29 at  -0.9650,  0.8250,  1.0000 in domain 4
+ ************************                                 *******************
+Capteur:Uobs_0065 on proc    23 in elem     31 at   1.0000, -0.8250,  1.0000 in domain 4
+ ****************************************************************************
+Capteur:Uobs_0064 on proc    23 in elem     31 at   1.0000, -0.8600,  1.0000 in domain 4
+ 
+Capteur:Uobs_0063 on proc    23 in elem     31 at   1.0000, -0.8950,  1.0000 in domain 4
+ --> Duration of the run:    5.00000000000000     
+Capteur:Uobs_0062 on proc    23 in elem     31 at   1.0000, -0.9300,  1.0000 in domain 4
+ --> Time step size:   2.935570028493387E-004
+Capteur:Uobs_0061 on proc    23 in elem     31 at   1.0000, -0.9650,  1.0000 in domain 4
+ --> Number of time steps:        17032
+Capteur:Uobs_0060 on proc    23 in elem     28 at   1.0000, -1.0000,  1.0000 in domain 4
+ 
+Capteur:Uobs_0059 on proc    23 in elem     28 at  -1.0000,  0.9650,  1.0000 in domain 4
+  Iteration  =             0     temps  =   0.000000000000000E+000
+Capteur:Uobs_0058 on proc    23 in elem     28 at  -1.0000,  0.9300,  1.0000 in domain 4
+--> SEM : snapshot at iteration : 000000 ,time:     0.00000
+Capteur:Uobs_0057 on proc    23 in elem     28 at  -1.0000,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0056 on proc    23 in elem     28 at  -1.0000,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0055 on proc    23 in elem     28 at  -1.0000,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0054 on proc    23 in elem     31 at   0.9650, -0.8250,  1.0000 in domain 4
+Capteur:Uobs_0053 on proc    23 in elem     31 at   0.9650, -0.8600,  1.0000 in domain 4
+Capteur:Uobs_0052 on proc    23 in elem     31 at   0.9650, -0.8950,  1.0000 in domain 4
+Capteur:Uobs_0051 on proc    23 in elem     31 at   0.9650, -0.9300,  1.0000 in domain 4
+Capteur:Uobs_0050 on proc    23 in elem     31 at   0.9650, -0.9650,  1.0000 in domain 4
+Capteur:Uobs_0049 on proc    23 in elem     28 at   0.9650, -1.0000,  1.0000 in domain 4
+Capteur:Uobs_0048 on proc    23 in elem     28 at   0.9650,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0047 on proc    23 in elem     28 at   0.9650,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0046 on proc    23 in elem     28 at   0.9650,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0045 on proc    23 in elem     28 at   0.9650,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0044 on proc    23 in elem     28 at   0.9650,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0043 on proc    23 in elem     31 at   0.9300, -0.8250,  1.0000 in domain 4
+Capteur:Uobs_0042 on proc    23 in elem     31 at   0.9300, -0.8600,  1.0000 in domain 4
+Capteur:Uobs_0041 on proc    23 in elem     31 at   0.9300, -0.8950,  1.0000 in domain 4
+Capteur:Uobs_0040 on proc    23 in elem     31 at   0.9300, -0.9300,  1.0000 in domain 4
+Capteur:Uobs_0039 on proc    23 in elem     31 at   0.9300, -0.9650,  1.0000 in domain 4
+Capteur:Uobs_0038 on proc    23 in elem     28 at   0.9300, -1.0000,  1.0000 in domain 4
+Capteur:Uobs_0037 on proc    23 in elem     28 at   0.9300,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0036 on proc    23 in elem     28 at   0.9300,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0035 on proc    23 in elem     28 at   0.9300,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0034 on proc    23 in elem     28 at   0.9300,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0033 on proc    23 in elem     28 at   0.9300,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0032 on proc    23 in elem     31 at   0.8950, -0.8250,  1.0000 in domain 4
+Capteur:Uobs_0031 on proc    23 in elem     31 at   0.8950, -0.8600,  1.0000 in domain 4
+Capteur:Uobs_0030 on proc    23 in elem     31 at   0.8950, -0.8950,  1.0000 in domain 4
+Capteur:Uobs_0029 on proc    23 in elem     31 at   0.8950, -0.9300,  1.0000 in domain 4
+Capteur:Uobs_0028 on proc    23 in elem     31 at   0.8950, -0.9650,  1.0000 in domain 4
+Capteur:Uobs_0027 on proc    23 in elem     28 at   0.8950, -1.0000,  1.0000 in domain 4
+Capteur:Uobs_0026 on proc    23 in elem     28 at   0.8950,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0025 on proc    23 in elem     28 at   0.8950,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0024 on proc    23 in elem     28 at   0.8950,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0023 on proc    23 in elem     28 at   0.8950,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0022 on proc    23 in elem     28 at   0.8950,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0021 on proc    23 in elem     31 at   0.8600, -0.8250,  1.0000 in domain 4
+Capteur:Uobs_0020 on proc    23 in elem     31 at   0.8600, -0.8600,  1.0000 in domain 4
+Capteur:Uobs_0019 on proc    23 in elem     31 at   0.8600, -0.8950,  1.0000 in domain 4
+Capteur:Uobs_0018 on proc    23 in elem     31 at   0.8600, -0.9300,  1.0000 in domain 4
+Capteur:Uobs_0017 on proc    23 in elem     31 at   0.8600, -0.9650,  1.0000 in domain 4
+Capteur:Uobs_0016 on proc    23 in elem     28 at   0.8600, -1.0000,  1.0000 in domain 4
+Capteur:Uobs_0015 on proc    23 in elem     28 at   0.8600,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0014 on proc    23 in elem     28 at   0.8600,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0013 on proc    23 in elem     28 at   0.8600,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0012 on proc    23 in elem     28 at   0.8600,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0011 on proc    23 in elem     28 at   0.8600,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0010 on proc    23 in elem     31 at   0.8250, -0.8250,  1.0000 in domain 4
+Capteur:Uobs_0009 on proc    23 in elem     31 at   0.8250, -0.8600,  1.0000 in domain 4
+Capteur:Uobs_0008 on proc    23 in elem     31 at   0.8250, -0.8950,  1.0000 in domain 4
+Capteur:Uobs_0007 on proc    23 in elem     31 at   0.8250, -0.9300,  1.0000 in domain 4
+Capteur:Uobs_0006 on proc    23 in elem     31 at   0.8250, -0.9650,  1.0000 in domain 4
+Capteur:Uobs_0005 on proc    23 in elem     28 at   0.8250, -1.0000,  1.0000 in domain 4
+Capteur:Uobs_0004 on proc    23 in elem     28 at   0.8250,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0003 on proc    23 in elem     28 at   0.8250,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0002 on proc    23 in elem     28 at   0.8250,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0001 on proc    23 in elem     28 at   0.8250,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0000 on proc    23 in elem     28 at   0.8250,  0.8250,  1.0000 in domain 4
+  Iteration  =            20     temps  =   5.871140056986774E-003
+  Iteration  =            40     temps  =   1.174228011397355E-002
+  Iteration  =            60     temps  =   1.761342017096032E-002
+  Iteration  =            80     temps  =   2.348456022794710E-002
+  Iteration  =           100     temps  =   2.935570028493387E-002
+  Iteration  =           120     temps  =   3.522684034192065E-002
+  Iteration  =           140     temps  =   4.109798039890742E-002
+  Iteration  =           160     temps  =   4.696912045589419E-002
+  Iteration  =           180     temps  =   5.284026051288097E-002
+  Iteration  =           200     temps  =   5.871140056986774E-002
+  Iteration  =           220     temps  =   6.458254062685456E-002
+  Iteration  =           240     temps  =   7.045368068384147E-002
+  Iteration  =           260     temps  =   7.632482074082839E-002
+  Iteration  =           280     temps  =   8.219596079781530E-002
+  Iteration  =           300     temps  =   8.806710085480221E-002
+  Iteration  =           320     temps  =   9.393824091178912E-002
+  Iteration  =           340     temps  =   9.980938096877603E-002
+  Iteration  =           360     temps  =   0.105680521025763     
+  Iteration  =           380     temps  =   0.111551661082750     
+  Iteration  =           400     temps  =   0.117422801139737     
+  Iteration  =           420     temps  =   0.123293941196724     
+  Iteration  =           440     temps  =   0.129165081253710     
+  Iteration  =           460     temps  =   0.135036221310697     
+  Iteration  =           480     temps  =   0.140907361367684     
+  Iteration  =           500     temps  =   0.146778501424670     
+  Iteration  =           520     temps  =   0.152649641481657     
+  Iteration  =           540     temps  =   0.158520781538644     
+  Iteration  =           560     temps  =   0.164391921595630     
+  Iteration  =           580     temps  =   0.170263061652617     
+  Iteration  =           600     temps  =   0.176134201709603     
+  Iteration  =           620     temps  =   0.182005341766590     
+  Iteration  =           640     temps  =   0.187876481823577     
+  Iteration  =           660     temps  =   0.193747621880563     
+  Iteration  =           680     temps  =   0.199618761937550     
+  Iteration  =           700     temps  =   0.205489901994537     
+  Iteration  =           720     temps  =   0.211361042051523     
+  Iteration  =           740     temps  =   0.217232182108510     
+  Iteration  =           760     temps  =   0.223103322165497     
+  Iteration  =           780     temps  =   0.228974462222483     
+  Iteration  =           800     temps  =   0.234845602279470     
+  Iteration  =           820     temps  =   0.240716742336456     
+  Iteration  =           840     temps  =   0.246587882393443     
+  Iteration  =           860     temps  =   0.252459022450430     
+  Iteration  =           880     temps  =   0.258330162507416     
+  Iteration  =           900     temps  =   0.264201302564403     
+  Iteration  =           920     temps  =   0.270072442621390     
+  Iteration  =           940     temps  =   0.275943582678376     
+  Iteration  =           960     temps  =   0.281814722735363     
+  Iteration  =           980     temps  =   0.287685862792350     
+  Iteration  =          1000     temps  =   0.293557002849336     
+  Iteration  =          1020     temps  =   0.299428142906323     
+  Iteration  =          1040     temps  =   0.305299282963309     
+  Iteration  =          1060     temps  =   0.311170423020296     
+  Iteration  =          1080     temps  =   0.317041563077283     
+  Iteration  =          1100     temps  =   0.322912703134269     
+  Iteration  =          1120     temps  =   0.328783843191256     
+  Iteration  =          1140     temps  =   0.334654983248243     
+  Iteration  =          1160     temps  =   0.340526123305229     
+  Iteration  =          1180     temps  =   0.346397263362216     
+  Iteration  =          1200     temps  =   0.352268403419203     
+  Iteration  =          1220     temps  =   0.358139543476189     
+  Iteration  =          1240     temps  =   0.364010683533176     
+  Iteration  =          1260     temps  =   0.369881823590162     
+  Iteration  =          1280     temps  =   0.375752963647149     
+  Iteration  =          1300     temps  =   0.381624103704136     
+  Iteration  =          1320     temps  =   0.387495243761122     
+  Iteration  =          1340     temps  =   0.393366383818109     
+  Iteration  =          1360     temps  =   0.399237523875096     
+  Iteration  =          1380     temps  =   0.405108663932082     
+  Iteration  =          1400     temps  =   0.410979803989069     
+  Iteration  =          1420     temps  =   0.416850944046055     
+  Iteration  =          1440     temps  =   0.422722084103042     
+  Iteration  =          1460     temps  =   0.428593224160029     
+  Iteration  =          1480     temps  =   0.434464364217015     
+  Iteration  =          1500     temps  =   0.440335504274002     
+  Iteration  =          1520     temps  =   0.446206644330989     
+  Iteration  =          1540     temps  =   0.452077784387975     
+  Iteration  =          1560     temps  =   0.457948924444962     
+  Iteration  =          1580     temps  =   0.463820064501949     
+  Iteration  =          1600     temps  =   0.469691204558935     
+  Iteration  =          1620     temps  =   0.475562344615922     
+  Iteration  =          1640     temps  =   0.481433484672908     
+  Iteration  =          1660     temps  =   0.487304624729895     
+  Iteration  =          1680     temps  =   0.493175764786882     
+  Iteration  =          1700     temps  =   0.499046904843868     
+  Iteration  =          1720     temps  =   0.504918044900856     
+  Iteration  =          1740     temps  =   0.510789184957844     
+  Iteration  =          1760     temps  =   0.516660325014831     
+  Iteration  =          1780     temps  =   0.522531465071819     
+  Iteration  =          1800     temps  =   0.528402605128807     
+  Iteration  =          1820     temps  =   0.534273745185795     
+  Iteration  =          1840     temps  =   0.540144885242782     
+  Iteration  =          1860     temps  =   0.546016025299770     
+  Iteration  =          1880     temps  =   0.551887165356758     
+  Iteration  =          1900     temps  =   0.557758305413746     
+  Iteration  =          1920     temps  =   0.563629445470733     
+  Iteration  =          1940     temps  =   0.569500585527721     
+  Iteration  =          1960     temps  =   0.575371725584709     
+  Iteration  =          1980     temps  =   0.581242865641697     
+  Iteration  =          2000     temps  =   0.587114005698684     
+  Iteration  =          2020     temps  =   0.592985145755672     
+  Iteration  =          2040     temps  =   0.598856285812660     
+  Iteration  =          2060     temps  =   0.604727425869648     
+  Iteration  =          2080     temps  =   0.610598565926635     
+  Iteration  =          2100     temps  =   0.616469705983623     
+  Iteration  =          2120     temps  =   0.622340846040611     
+  Iteration  =          2140     temps  =   0.628211986097599     
+  Iteration  =          2160     temps  =   0.634083126154586     
+  Iteration  =          2180     temps  =   0.639954266211574     
+  Iteration  =          2200     temps  =   0.645825406268562     
+  Iteration  =          2220     temps  =   0.651696546325550     
+  Iteration  =          2240     temps  =   0.657567686382537     
+  Iteration  =          2260     temps  =   0.663438826439525     
+  Iteration  =          2280     temps  =   0.669309966496513     
+  Iteration  =          2300     temps  =   0.675181106553500     
+  Iteration  =          2320     temps  =   0.681052246610488     
+  Iteration  =          2340     temps  =   0.686923386667476     
+  Iteration  =          2360     temps  =   0.692794526724464     
+  Iteration  =          2380     temps  =   0.698665666781451     
+  Iteration  =          2400     temps  =   0.704536806838439     
+  Iteration  =          2420     temps  =   0.710407946895427     
+  Iteration  =          2440     temps  =   0.716279086952415     
+  Iteration  =          2460     temps  =   0.722150227009402     
+  Iteration  =          2480     temps  =   0.728021367066390     
+  Iteration  =          2500     temps  =   0.733892507123378     
+  Iteration  =          2520     temps  =   0.739763647180366     
+  Iteration  =          2540     temps  =   0.745634787237353     
+  Iteration  =          2560     temps  =   0.751505927294341     
+  Iteration  =          2580     temps  =   0.757377067351329     
+  Iteration  =          2600     temps  =   0.763248207408317     
+  Iteration  =          2620     temps  =   0.769119347465304     
+  Iteration  =          2640     temps  =   0.774990487522292     
+  Iteration  =          2660     temps  =   0.780861627579280     
+  Iteration  =          2680     temps  =   0.786732767636268     
+  Iteration  =          2700     temps  =   0.792603907693255     
+  Iteration  =          2720     temps  =   0.798475047750243     
+  Iteration  =          2740     temps  =   0.804346187807231     
+  Iteration  =          2760     temps  =   0.810217327864219     
+  Iteration  =          2780     temps  =   0.816088467921206     
+  Iteration  =          2800     temps  =   0.821959607978194     
+  Iteration  =          2820     temps  =   0.827830748035182     
+  Iteration  =          2840     temps  =   0.833701888092170     
+  Iteration  =          2860     temps  =   0.839573028149157     
+  Iteration  =          2880     temps  =   0.845444168206145     
+  Iteration  =          2900     temps  =   0.851315308263133     
+  Iteration  =          2920     temps  =   0.857186448320121     
+  Iteration  =          2940     temps  =   0.863057588377108     
+  Iteration  =          2960     temps  =   0.868928728434096     
+  Iteration  =          2980     temps  =   0.874799868491084     
+  Iteration  =          3000     temps  =   0.880671008548072     
+  Iteration  =          3020     temps  =   0.886542148605059     
+  Iteration  =          3040     temps  =   0.892413288662047     
+  Iteration  =          3060     temps  =   0.898284428719035     
+  Iteration  =          3080     temps  =   0.904155568776023     
+  Iteration  =          3100     temps  =   0.910026708833010     
+  Iteration  =          3120     temps  =   0.915897848889998     
+  Iteration  =          3140     temps  =   0.921768988946986     
+  Iteration  =          3160     temps  =   0.927640129003974     
+  Iteration  =          3180     temps  =   0.933511269060961     
+  Iteration  =          3200     temps  =   0.939382409117949     
+  Iteration  =          3220     temps  =   0.945253549174937     
+  Iteration  =          3240     temps  =   0.951124689231925     
+  Iteration  =          3260     temps  =   0.956995829288912     
+  Iteration  =          3280     temps  =   0.962866969345900     
+  Iteration  =          3300     temps  =   0.968738109402888     
+  Iteration  =          3320     temps  =   0.974609249459875     
+  Iteration  =          3340     temps  =   0.980480389516863     
+  Iteration  =          3360     temps  =   0.986351529573851     
+  Iteration  =          3380     temps  =   0.992222669630839     
+  Iteration  =          3400     temps  =   0.998093809687826     
+--> SEM : snapshot at iteration : 003406 ,time:     0.99986
+  Iteration  =          3420     temps  =    1.00396494974481     
+  Iteration  =          3440     temps  =    1.00983608980180     
+  Iteration  =          3460     temps  =    1.01570722985878     
+  Iteration  =          3480     temps  =    1.02157836991577     
+  Iteration  =          3500     temps  =    1.02744950997275     
+  Iteration  =          3520     temps  =    1.03332065002974     
+  Iteration  =          3540     temps  =    1.03919179008673     
+  Iteration  =          3560     temps  =    1.04506293014371     
+  Iteration  =          3580     temps  =    1.05093407020070     
+  Iteration  =          3600     temps  =    1.05680521025768     
+  Iteration  =          3620     temps  =    1.06267635031467     
+  Iteration  =          3640     temps  =    1.06854749037165     
+  Iteration  =          3660     temps  =    1.07441863042864     
+  Iteration  =          3680     temps  =    1.08028977048562     
+  Iteration  =          3700     temps  =    1.08616091054261     
+  Iteration  =          3720     temps  =    1.09203205059960     
+  Iteration  =          3740     temps  =    1.09790319065658     
+  Iteration  =          3760     temps  =    1.10377433071357     
+  Iteration  =          3780     temps  =    1.10964547077055     
+  Iteration  =          3800     temps  =    1.11551661082754     
+  Iteration  =          3820     temps  =    1.12138775088452     
+  Iteration  =          3840     temps  =    1.12725889094151     
+  Iteration  =          3860     temps  =    1.13313003099849     
+  Iteration  =          3880     temps  =    1.13900117105548     
+  Iteration  =          3900     temps  =    1.14487231111247     
+  Iteration  =          3920     temps  =    1.15074345116945     
+  Iteration  =          3940     temps  =    1.15661459122644     
+  Iteration  =          3960     temps  =    1.16248573128342     
+  Iteration  =          3980     temps  =    1.16835687134041     
+  Iteration  =          4000     temps  =    1.17422801139739     
+  Iteration  =          4020     temps  =    1.18009915145438     
+  Iteration  =          4040     temps  =    1.18597029151136     
+  Iteration  =          4060     temps  =    1.19184143156835     
+  Iteration  =          4080     temps  =    1.19771257162533     
+  Iteration  =          4100     temps  =    1.20358371168232     
+  Iteration  =          4120     temps  =    1.20945485173931     
+  Iteration  =          4140     temps  =    1.21532599179629     
+  Iteration  =          4160     temps  =    1.22119713185328     
+  Iteration  =          4180     temps  =    1.22706827191026     
+  Iteration  =          4200     temps  =    1.23293941196725     
+  Iteration  =          4220     temps  =    1.23881055202423     
+  Iteration  =          4240     temps  =    1.24468169208122     
+  Iteration  =          4260     temps  =    1.25055283213820     
+  Iteration  =          4280     temps  =    1.25642397219519     
+  Iteration  =          4300     temps  =    1.26229511225218     
+  Iteration  =          4320     temps  =    1.26816625230916     
+  Iteration  =          4340     temps  =    1.27403739236615     
+  Iteration  =          4360     temps  =    1.27990853242313     
+  Iteration  =          4380     temps  =    1.28577967248012     
+  Iteration  =          4400     temps  =    1.29165081253710     
+  Iteration  =          4420     temps  =    1.29752195259409     
+  Iteration  =          4440     temps  =    1.30339309265107     
+  Iteration  =          4460     temps  =    1.30926423270806     
+  Iteration  =          4480     temps  =    1.31513537276505     
+  Iteration  =          4500     temps  =    1.32100651282203     
+  Iteration  =          4520     temps  =    1.32687765287902     
+  Iteration  =          4540     temps  =    1.33274879293600     
+  Iteration  =          4560     temps  =    1.33861993299299     
+  Iteration  =          4580     temps  =    1.34449107304997     
+  Iteration  =          4600     temps  =    1.35036221310696     
+  Iteration  =          4620     temps  =    1.35623335316394     
+  Iteration  =          4640     temps  =    1.36210449322093     
+  Iteration  =          4660     temps  =    1.36797563327792     
+  Iteration  =          4680     temps  =    1.37384677333490     
+  Iteration  =          4700     temps  =    1.37971791339189     
+  Iteration  =          4720     temps  =    1.38558905344887     
+  Iteration  =          4740     temps  =    1.39146019350586     
+  Iteration  =          4760     temps  =    1.39733133356284     
+  Iteration  =          4780     temps  =    1.40320247361983     
+  Iteration  =          4800     temps  =    1.40907361367681     
+  Iteration  =          4820     temps  =    1.41494475373380     
+  Iteration  =          4840     temps  =    1.42081589379078     
+  Iteration  =          4860     temps  =    1.42668703384777     
+  Iteration  =          4880     temps  =    1.43255817390476     
+  Iteration  =          4900     temps  =    1.43842931396174     
+  Iteration  =          4920     temps  =    1.44430045401873     
+  Iteration  =          4940     temps  =    1.45017159407571     
+  Iteration  =          4960     temps  =    1.45604273413270     
+  Iteration  =          4980     temps  =    1.46191387418968     
+  Iteration  =          5000     temps  =    1.46778501424667     
+  Iteration  =          5020     temps  =    1.47365615430365     
+  Iteration  =          5040     temps  =    1.47952729436064     
+  Iteration  =          5060     temps  =    1.48539843441763     
+  Iteration  =          5080     temps  =    1.49126957447461     
+  Iteration  =          5100     temps  =    1.49714071453160     
+  Iteration  =          5120     temps  =    1.50301185458858     
+  Iteration  =          5140     temps  =    1.50888299464557     
+  Iteration  =          5160     temps  =    1.51475413470255     
+  Iteration  =          5180     temps  =    1.52062527475954     
+  Iteration  =          5200     temps  =    1.52649641481652     
+  Iteration  =          5220     temps  =    1.53236755487351     
+  Iteration  =          5240     temps  =    1.53823869493050     
+  Iteration  =          5260     temps  =    1.54410983498748     
+  Iteration  =          5280     temps  =    1.54998097504447     
+  Iteration  =          5300     temps  =    1.55585211510145     
+  Iteration  =          5320     temps  =    1.56172325515844     
+  Iteration  =          5340     temps  =    1.56759439521542     
+  Iteration  =          5360     temps  =    1.57346553527241     
+  Iteration  =          5380     temps  =    1.57933667532939     
+  Iteration  =          5400     temps  =    1.58520781538638     
+  Iteration  =          5420     temps  =    1.59107895544337     
+  Iteration  =          5440     temps  =    1.59695009550035     
+  Iteration  =          5460     temps  =    1.60282123555734     
+  Iteration  =          5480     temps  =    1.60869237561432     
+  Iteration  =          5500     temps  =    1.61456351567131     
+  Iteration  =          5520     temps  =    1.62043465572829     
+  Iteration  =          5540     temps  =    1.62630579578528     
+  Iteration  =          5560     temps  =    1.63217693584226     
+  Iteration  =          5580     temps  =    1.63804807589925     
+  Iteration  =          5600     temps  =    1.64391921595623     
+  Iteration  =          5620     temps  =    1.64979035601322     
+  Iteration  =          5640     temps  =    1.65566149607021     
+  Iteration  =          5660     temps  =    1.66153263612719     
+  Iteration  =          5680     temps  =    1.66740377618418     
+  Iteration  =          5700     temps  =    1.67327491624116     
+  Iteration  =          5720     temps  =    1.67914605629815     
+  Iteration  =          5740     temps  =    1.68501719635513     
+  Iteration  =          5760     temps  =    1.69088833641212     
+  Iteration  =          5780     temps  =    1.69675947646910     
+  Iteration  =          5800     temps  =    1.70263061652609     
+  Iteration  =          5820     temps  =    1.70850175658308     
+  Iteration  =          5840     temps  =    1.71437289664006     
+  Iteration  =          5860     temps  =    1.72024403669705     
+  Iteration  =          5880     temps  =    1.72611517675403     
+  Iteration  =          5900     temps  =    1.73198631681102     
+  Iteration  =          5920     temps  =    1.73785745686800     
+  Iteration  =          5940     temps  =    1.74372859692499     
+  Iteration  =          5960     temps  =    1.74959973698197     
+  Iteration  =          5980     temps  =    1.75547087703896     
+  Iteration  =          6000     temps  =    1.76134201709595     
+  Iteration  =          6020     temps  =    1.76721315715293     
+  Iteration  =          6040     temps  =    1.77308429720992     
+  Iteration  =          6060     temps  =    1.77895543726690     
+  Iteration  =          6080     temps  =    1.78482657732389     
+  Iteration  =          6100     temps  =    1.79069771738087     
+  Iteration  =          6120     temps  =    1.79656885743786     
+  Iteration  =          6140     temps  =    1.80243999749484     
+  Iteration  =          6160     temps  =    1.80831113755183     
+  Iteration  =          6180     temps  =    1.81418227760882     
+  Iteration  =          6200     temps  =    1.82005341766580     
+  Iteration  =          6220     temps  =    1.82592455772279     
+  Iteration  =          6240     temps  =    1.83179569777977     
+  Iteration  =          6260     temps  =    1.83766683783676     
+  Iteration  =          6280     temps  =    1.84353797789374     
+  Iteration  =          6300     temps  =    1.84940911795073     
+  Iteration  =          6320     temps  =    1.85528025800771     
+  Iteration  =          6340     temps  =    1.86115139806470     
+  Iteration  =          6360     temps  =    1.86702253812168     
+  Iteration  =          6380     temps  =    1.87289367817867     
+  Iteration  =          6400     temps  =    1.87876481823566     
+  Iteration  =          6420     temps  =    1.88463595829264     
+  Iteration  =          6440     temps  =    1.89050709834963     
+  Iteration  =          6460     temps  =    1.89637823840661     
+  Iteration  =          6480     temps  =    1.90224937846360     
+  Iteration  =          6500     temps  =    1.90812051852058     
+  Iteration  =          6520     temps  =    1.91399165857757     
+  Iteration  =          6540     temps  =    1.91986279863455     
+  Iteration  =          6560     temps  =    1.92573393869154     
+  Iteration  =          6580     temps  =    1.93160507874853     
+  Iteration  =          6600     temps  =    1.93747621880551     
+  Iteration  =          6620     temps  =    1.94334735886250     
+  Iteration  =          6640     temps  =    1.94921849891948     
+  Iteration  =          6660     temps  =    1.95508963897647     
+  Iteration  =          6680     temps  =    1.96096077903345     
+  Iteration  =          6700     temps  =    1.96683191909044     
+  Iteration  =          6720     temps  =    1.97270305914742     
+  Iteration  =          6740     temps  =    1.97857419920441     
+  Iteration  =          6760     temps  =    1.98444533926140     
+  Iteration  =          6780     temps  =    1.99031647931838     
+  Iteration  =          6800     temps  =    1.99618761937537     
+--> SEM : snapshot at iteration : 006812 ,time:     1.99971
+  Iteration  =          6820     temps  =    2.00205875943235     
+  Iteration  =          6840     temps  =    2.00792989948934     
+  Iteration  =          6860     temps  =    2.01380103954632     
+  Iteration  =          6880     temps  =    2.01967217960331     
+  Iteration  =          6900     temps  =    2.02554331966029     
+  Iteration  =          6920     temps  =    2.03141445971728     
+  Iteration  =          6940     temps  =    2.03728559977427     
+  Iteration  =          6960     temps  =    2.04315673983125     
+  Iteration  =          6980     temps  =    2.04902787988824     
+  Iteration  =          7000     temps  =    2.05489901994522     
+  Iteration  =          7020     temps  =    2.06077016000221     
+  Iteration  =          7040     temps  =    2.06664130005919     
+  Iteration  =          7060     temps  =    2.07251244011618     
+  Iteration  =          7080     temps  =    2.07838358017316     
+  Iteration  =          7100     temps  =    2.08425472023015     
+  Iteration  =          7120     temps  =    2.09012586028713     
+  Iteration  =          7140     temps  =    2.09599700034412     
+  Iteration  =          7160     temps  =    2.10186814040111     
+  Iteration  =          7180     temps  =    2.10773928045809     
+  Iteration  =          7200     temps  =    2.11361042051508     
+  Iteration  =          7220     temps  =    2.11948156057206     
+  Iteration  =          7240     temps  =    2.12535270062905     
+  Iteration  =          7260     temps  =    2.13122384068603     
+  Iteration  =          7280     temps  =    2.13709498074302     
+  Iteration  =          7300     temps  =    2.14296612080000     
+  Iteration  =          7320     temps  =    2.14883726085699     
+  Iteration  =          7340     temps  =    2.15470840091398     
+  Iteration  =          7360     temps  =    2.16057954097096     
+  Iteration  =          7380     temps  =    2.16645068102795     
+  Iteration  =          7400     temps  =    2.17232182108493     
+  Iteration  =          7420     temps  =    2.17819296114192     
+  Iteration  =          7440     temps  =    2.18406410119890     
+  Iteration  =          7460     temps  =    2.18993524125589     
+  Iteration  =          7480     temps  =    2.19580638131287     
+  Iteration  =          7500     temps  =    2.20167752136986     
+  Iteration  =          7520     temps  =    2.20754866142685     
+  Iteration  =          7540     temps  =    2.21341980148383     
+  Iteration  =          7560     temps  =    2.21929094154082     
+  Iteration  =          7580     temps  =    2.22516208159780     
+  Iteration  =          7600     temps  =    2.23103322165479     
+  Iteration  =          7620     temps  =    2.23690436171177     
+  Iteration  =          7640     temps  =    2.24277550176876     
+  Iteration  =          7660     temps  =    2.24864664182574     
+  Iteration  =          7680     temps  =    2.25451778188273     
+  Iteration  =          7700     temps  =    2.26038892193972     
+  Iteration  =          7720     temps  =    2.26626006199670     
+  Iteration  =          7740     temps  =    2.27213120205369     
+  Iteration  =          7760     temps  =    2.27800234211067     
+  Iteration  =          7780     temps  =    2.28387348216766     
+  Iteration  =          7800     temps  =    2.28974462222464     
+  Iteration  =          7820     temps  =    2.29561576228163     
+  Iteration  =          7840     temps  =    2.30148690233861     
+  Iteration  =          7860     temps  =    2.30735804239560     
+  Iteration  =          7880     temps  =    2.31322918245258     
+  Iteration  =          7900     temps  =    2.31910032250957     
+  Iteration  =          7920     temps  =    2.32497146256656     
+  Iteration  =          7940     temps  =    2.33084260262354     
+  Iteration  =          7960     temps  =    2.33671374268053     
+  Iteration  =          7980     temps  =    2.34258488273751     
+  Iteration  =          8000     temps  =    2.34845602279450     
+  Iteration  =          8020     temps  =    2.35432716285148     
+  Iteration  =          8040     temps  =    2.36019830290847     
+  Iteration  =          8060     temps  =    2.36606944296545     
+  Iteration  =          8080     temps  =    2.37194058302244     
+  Iteration  =          8100     temps  =    2.37781172307943     
+  Iteration  =          8120     temps  =    2.38368286313641     
+  Iteration  =          8140     temps  =    2.38955400319340     
+  Iteration  =          8160     temps  =    2.39542514325038     
+  Iteration  =          8180     temps  =    2.40129628330737     
+  Iteration  =          8200     temps  =    2.40716742336435     
+  Iteration  =          8220     temps  =    2.41303856342134     
+  Iteration  =          8240     temps  =    2.41890970347832     
+  Iteration  =          8260     temps  =    2.42478084353531     
+  Iteration  =          8280     temps  =    2.43065198359230     
+  Iteration  =          8300     temps  =    2.43652312364928     
+  Iteration  =          8320     temps  =    2.44239426370627     
+  Iteration  =          8340     temps  =    2.44826540376325     
+  Iteration  =          8360     temps  =    2.45413654382024     
+  Iteration  =          8380     temps  =    2.46000768387722     
+  Iteration  =          8400     temps  =    2.46587882393421     
+  Iteration  =          8420     temps  =    2.47174996399119     
+  Iteration  =          8440     temps  =    2.47762110404818     
+  Iteration  =          8460     temps  =    2.48349224410517     
+  Iteration  =          8480     temps  =    2.48936338416215     
+  Iteration  =          8500     temps  =    2.49523452421914     
+  Iteration  =          8520     temps  =    2.50110566427612     
+  Iteration  =          8540     temps  =    2.50697680433311     
+  Iteration  =          8560     temps  =    2.51284794439009     
+  Iteration  =          8580     temps  =    2.51871908444708     
+  Iteration  =          8600     temps  =    2.52459022450406     
+  Iteration  =          8620     temps  =    2.53046136456105     
+  Iteration  =          8640     temps  =    2.53633250461803     
+  Iteration  =          8660     temps  =    2.54220364467502     
+  Iteration  =          8680     temps  =    2.54807478473201     
+  Iteration  =          8700     temps  =    2.55394592478899     
+  Iteration  =          8720     temps  =    2.55981706484598     
+  Iteration  =          8740     temps  =    2.56568820490296     
+  Iteration  =          8760     temps  =    2.57155934495995     
+  Iteration  =          8780     temps  =    2.57743048501693     
+  Iteration  =          8800     temps  =    2.58330162507392     
+  Iteration  =          8820     temps  =    2.58917276513090     
+  Iteration  =          8840     temps  =    2.59504390518789     
+  Iteration  =          8860     temps  =    2.60091504524488     
+  Iteration  =          8880     temps  =    2.60678618530186     
+  Iteration  =          8900     temps  =    2.61265732535885     
+  Iteration  =          8920     temps  =    2.61852846541583     
+  Iteration  =          8940     temps  =    2.62439960547282     
+  Iteration  =          8960     temps  =    2.63027074552980     
+  Iteration  =          8980     temps  =    2.63614188558679     
+  Iteration  =          9000     temps  =    2.64201302564377     
+  Iteration  =          9020     temps  =    2.64788416570076     
+  Iteration  =          9040     temps  =    2.65375530575775     
+  Iteration  =          9060     temps  =    2.65962644581473     
+  Iteration  =          9080     temps  =    2.66549758587172     
+  Iteration  =          9100     temps  =    2.67136872592870     
+  Iteration  =          9120     temps  =    2.67723986598569     
+  Iteration  =          9140     temps  =    2.68311100604267     
+  Iteration  =          9160     temps  =    2.68898214609966     
+  Iteration  =          9180     temps  =    2.69485328615664     
+  Iteration  =          9200     temps  =    2.70072442621363     
+  Iteration  =          9220     temps  =    2.70659556627061     
+  Iteration  =          9240     temps  =    2.71246670632760     
+  Iteration  =          9260     temps  =    2.71833784638459     
+  Iteration  =          9280     temps  =    2.72420898644157     
+  Iteration  =          9300     temps  =    2.73008012649856     
+  Iteration  =          9320     temps  =    2.73595126655554     
+  Iteration  =          9340     temps  =    2.74182240661253     
+  Iteration  =          9360     temps  =    2.74769354666951     
+  Iteration  =          9380     temps  =    2.75356468672650     
+  Iteration  =          9400     temps  =    2.75943582678348     
+  Iteration  =          9420     temps  =    2.76530696684047     
+  Iteration  =          9440     temps  =    2.77117810689746     
+  Iteration  =          9460     temps  =    2.77704924695444     
+  Iteration  =          9480     temps  =    2.78292038701143     
+  Iteration  =          9500     temps  =    2.78879152706841     
+  Iteration  =          9520     temps  =    2.79466266712540     
+  Iteration  =          9540     temps  =    2.80053380718238     
+  Iteration  =          9560     temps  =    2.80640494723937     
+  Iteration  =          9580     temps  =    2.81227608729635     
+  Iteration  =          9600     temps  =    2.81814722735334     
+  Iteration  =          9620     temps  =    2.82401836741033     
+  Iteration  =          9640     temps  =    2.82988950746731     
+  Iteration  =          9660     temps  =    2.83576064752430     
+  Iteration  =          9680     temps  =    2.84163178758128     
+  Iteration  =          9700     temps  =    2.84750292763827     
+  Iteration  =          9720     temps  =    2.85337406769525     
+  Iteration  =          9740     temps  =    2.85924520775224     
+  Iteration  =          9760     temps  =    2.86511634780922     
+  Iteration  =          9780     temps  =    2.87098748786621     
+  Iteration  =          9800     temps  =    2.87685862792320     
+  Iteration  =          9820     temps  =    2.88272976798018     
+  Iteration  =          9840     temps  =    2.88860090803717     
+  Iteration  =          9860     temps  =    2.89447204809415     
+  Iteration  =          9880     temps  =    2.90034318815114     
+  Iteration  =          9900     temps  =    2.90621432820812     
+  Iteration  =          9920     temps  =    2.91208546826511     
+  Iteration  =          9940     temps  =    2.91795660832209     
+  Iteration  =          9960     temps  =    2.92382774837908     
+  Iteration  =          9980     temps  =    2.92969888843606     
+  Iteration  =         10000     temps  =    2.93557002849305     
+  Iteration  =         10020     temps  =    2.94144116855004     
+  Iteration  =         10040     temps  =    2.94731230860702     
+  Iteration  =         10060     temps  =    2.95318344866401     
+  Iteration  =         10080     temps  =    2.95905458872099     
+  Iteration  =         10100     temps  =    2.96492572877798     
+  Iteration  =         10120     temps  =    2.97079686883496     
+  Iteration  =         10140     temps  =    2.97666800889195     
+  Iteration  =         10160     temps  =    2.98253914894893     
+  Iteration  =         10180     temps  =    2.98841028900592     
+  Iteration  =         10200     temps  =    2.99428142906291     
+--> SEM : snapshot at iteration : 010218 ,time:     2.99957
+  Iteration  =         10220     temps  =    3.00015256911989     
+  Iteration  =         10240     temps  =    3.00602370917688     
+  Iteration  =         10260     temps  =    3.01189484923386     
+  Iteration  =         10280     temps  =    3.01776598929085     
+  Iteration  =         10300     temps  =    3.02363712934783     
+  Iteration  =         10320     temps  =    3.02950826940482     
+  Iteration  =         10340     temps  =    3.03537940946180     
+  Iteration  =         10360     temps  =    3.04125054951879     
+  Iteration  =         10380     temps  =    3.04712168957578     
+  Iteration  =         10400     temps  =    3.05299282963276     
+  Iteration  =         10420     temps  =    3.05886396968975     
+  Iteration  =         10440     temps  =    3.06473510974673     
+  Iteration  =         10460     temps  =    3.07060624980372     
+  Iteration  =         10480     temps  =    3.07647738986070     
+  Iteration  =         10500     temps  =    3.08234852991769     
+  Iteration  =         10520     temps  =    3.08821966997467     
+  Iteration  =         10540     temps  =    3.09409081003166     
+  Iteration  =         10560     temps  =    3.09996195008865     
+  Iteration  =         10580     temps  =    3.10583309014563     
+  Iteration  =         10600     temps  =    3.11170423020262     
+  Iteration  =         10620     temps  =    3.11757537025960     
+  Iteration  =         10640     temps  =    3.12344651031659     
+  Iteration  =         10660     temps  =    3.12931765037357     
+  Iteration  =         10680     temps  =    3.13518879043056     
+  Iteration  =         10700     temps  =    3.14105993048754     
+  Iteration  =         10720     temps  =    3.14693107054453     
+  Iteration  =         10740     temps  =    3.15280221060151     
+  Iteration  =         10760     temps  =    3.15867335065850     
+  Iteration  =         10780     temps  =    3.16454449071549     
+  Iteration  =         10800     temps  =    3.17041563077247     
+  Iteration  =         10820     temps  =    3.17628677082946     
+  Iteration  =         10840     temps  =    3.18215791088644     
+  Iteration  =         10860     temps  =    3.18802905094343     
+  Iteration  =         10880     temps  =    3.19390019100041     
+  Iteration  =         10900     temps  =    3.19977133105740     
+  Iteration  =         10920     temps  =    3.20564247111438     
+  Iteration  =         10940     temps  =    3.21151361117137     
+  Iteration  =         10960     temps  =    3.21738475122836     
+  Iteration  =         10980     temps  =    3.22325589128534     
+  Iteration  =         11000     temps  =    3.22912703134233     
+  Iteration  =         11020     temps  =    3.23499817139931     
+  Iteration  =         11040     temps  =    3.24086931145630     
+  Iteration  =         11060     temps  =    3.24674045151328     
+  Iteration  =         11080     temps  =    3.25261159157027     
+  Iteration  =         11100     temps  =    3.25848273162725     
+  Iteration  =         11120     temps  =    3.26435387168424     
+  Iteration  =         11140     temps  =    3.27022501174123     
+  Iteration  =         11160     temps  =    3.27609615179821     
+  Iteration  =         11180     temps  =    3.28196729185520     
+  Iteration  =         11200     temps  =    3.28783843191218     
+  Iteration  =         11220     temps  =    3.29370957196917     
+  Iteration  =         11240     temps  =    3.29958071202615     
+  Iteration  =         11260     temps  =    3.30545185208314     
+  Iteration  =         11280     temps  =    3.31132299214012     
+  Iteration  =         11300     temps  =    3.31719413219711     
+  Iteration  =         11320     temps  =    3.32306527225409     
+  Iteration  =         11340     temps  =    3.32893641231108     
+  Iteration  =         11360     temps  =    3.33480755236807     
+  Iteration  =         11380     temps  =    3.34067869242505     
+  Iteration  =         11400     temps  =    3.34654983248204     
+  Iteration  =         11420     temps  =    3.35242097253902     
+  Iteration  =         11440     temps  =    3.35829211259601     
+  Iteration  =         11460     temps  =    3.36416325265299     
+  Iteration  =         11480     temps  =    3.37003439270998     
+  Iteration  =         11500     temps  =    3.37590553276696     
+  Iteration  =         11520     temps  =    3.38177667282395     
+  Iteration  =         11540     temps  =    3.38764781288094     
+  Iteration  =         11560     temps  =    3.39351895293792     
+  Iteration  =         11580     temps  =    3.39939009299491     
+  Iteration  =         11600     temps  =    3.40526123305189     
+  Iteration  =         11620     temps  =    3.41113237310888     
+  Iteration  =         11640     temps  =    3.41700351316586     
+  Iteration  =         11660     temps  =    3.42287465322285     
+  Iteration  =         11680     temps  =    3.42874579327983     
+  Iteration  =         11700     temps  =    3.43461693333682     
+  Iteration  =         11720     temps  =    3.44048807339381     
+  Iteration  =         11740     temps  =    3.44635921345079     
+  Iteration  =         11760     temps  =    3.45223035350778     
+  Iteration  =         11780     temps  =    3.45810149356476     
+  Iteration  =         11800     temps  =    3.46397263362175     
+  Iteration  =         11820     temps  =    3.46984377367873     
+  Iteration  =         11840     temps  =    3.47571491373572     
+  Iteration  =         11860     temps  =    3.48158605379270     
+  Iteration  =         11880     temps  =    3.48745719384969     
+  Iteration  =         11900     temps  =    3.49332833390668     
+  Iteration  =         11920     temps  =    3.49919947396366     
+  Iteration  =         11940     temps  =    3.50507061402065     
+  Iteration  =         11960     temps  =    3.51094175407763     
+  Iteration  =         11980     temps  =    3.51681289413462     
+  Iteration  =         12000     temps  =    3.52268403419160     
+  Iteration  =         12020     temps  =    3.52855517424859     
+  Iteration  =         12040     temps  =    3.53442631430557     
+  Iteration  =         12060     temps  =    3.54029745436256     
+  Iteration  =         12080     temps  =    3.54616859441954     
+  Iteration  =         12100     temps  =    3.55203973447653     
+  Iteration  =         12120     temps  =    3.55791087453352     
+  Iteration  =         12140     temps  =    3.56378201459050     
+  Iteration  =         12160     temps  =    3.56965315464749     
+  Iteration  =         12180     temps  =    3.57552429470447     
+  Iteration  =         12200     temps  =    3.58139543476146     
+  Iteration  =         12220     temps  =    3.58726657481844     
+  Iteration  =         12240     temps  =    3.59313771487543     
+  Iteration  =         12260     temps  =    3.59900885493241     
+  Iteration  =         12280     temps  =    3.60487999498940     
+  Iteration  =         12300     temps  =    3.61075113504639     
+  Iteration  =         12320     temps  =    3.61662227510337     
+  Iteration  =         12340     temps  =    3.62249341516036     
+  Iteration  =         12360     temps  =    3.62836455521734     
+  Iteration  =         12380     temps  =    3.63423569527433     
+  Iteration  =         12400     temps  =    3.64010683533131     
+  Iteration  =         12420     temps  =    3.64597797538830     
+  Iteration  =         12440     temps  =    3.65184911544528     
+  Iteration  =         12460     temps  =    3.65772025550227     
+  Iteration  =         12480     temps  =    3.66359139555926     
+  Iteration  =         12500     temps  =    3.66946253561624     
+  Iteration  =         12520     temps  =    3.67533367567323     
+  Iteration  =         12540     temps  =    3.68120481573021     
+  Iteration  =         12560     temps  =    3.68707595578720     
+  Iteration  =         12580     temps  =    3.69294709584418     
+  Iteration  =         12600     temps  =    3.69881823590117     
+  Iteration  =         12620     temps  =    3.70468937595815     
+  Iteration  =         12640     temps  =    3.71056051601514     
+  Iteration  =         12660     temps  =    3.71643165607213     
+  Iteration  =         12680     temps  =    3.72230279612911     
+  Iteration  =         12700     temps  =    3.72817393618610     
+  Iteration  =         12720     temps  =    3.73404507624308     
+  Iteration  =         12740     temps  =    3.73991621630007     
+  Iteration  =         12760     temps  =    3.74578735635705     
+  Iteration  =         12780     temps  =    3.75165849641404     
+  Iteration  =         12800     temps  =    3.75752963647102     
+  Iteration  =         12820     temps  =    3.76340077652801     
+  Iteration  =         12840     temps  =    3.76927191658499     
+  Iteration  =         12860     temps  =    3.77514305664198     
+  Iteration  =         12880     temps  =    3.78101419669897     
+  Iteration  =         12900     temps  =    3.78688533675595     
+  Iteration  =         12920     temps  =    3.79275647681294     
+  Iteration  =         12940     temps  =    3.79862761686992     
+  Iteration  =         12960     temps  =    3.80449875692691     
+  Iteration  =         12980     temps  =    3.81036989698389     
+  Iteration  =         13000     temps  =    3.81624103704088     
+  Iteration  =         13020     temps  =    3.82211217709786     
+  Iteration  =         13040     temps  =    3.82798331715485     
+  Iteration  =         13060     temps  =    3.83385445721184     
+  Iteration  =         13080     temps  =    3.83972559726882     
+  Iteration  =         13100     temps  =    3.84559673732581     
+  Iteration  =         13120     temps  =    3.85146787738279     
+  Iteration  =         13140     temps  =    3.85733901743978     
+  Iteration  =         13160     temps  =    3.86321015749676     
+  Iteration  =         13180     temps  =    3.86908129755375     
+  Iteration  =         13200     temps  =    3.87495243761073     
+  Iteration  =         13220     temps  =    3.88082357766772     
+  Iteration  =         13240     temps  =    3.88669471772471     
+  Iteration  =         13260     temps  =    3.89256585778169     
+  Iteration  =         13280     temps  =    3.89843699783868     
+  Iteration  =         13300     temps  =    3.90430813789566     
+  Iteration  =         13320     temps  =    3.91017927795265     
+  Iteration  =         13340     temps  =    3.91605041800963     
+  Iteration  =         13360     temps  =    3.92192155806662     
+  Iteration  =         13380     temps  =    3.92779269812360     
+  Iteration  =         13400     temps  =    3.93366383818059     
+  Iteration  =         13420     temps  =    3.93953497823758     
+  Iteration  =         13440     temps  =    3.94540611829456     
+  Iteration  =         13460     temps  =    3.95127725835155     
+  Iteration  =         13480     temps  =    3.95714839840853     
+  Iteration  =         13500     temps  =    3.96301953846552     
+  Iteration  =         13520     temps  =    3.96889067852250     
+  Iteration  =         13540     temps  =    3.97476181857949     
+  Iteration  =         13560     temps  =    3.98063295863647     
+  Iteration  =         13580     temps  =    3.98650409869346     
+  Iteration  =         13600     temps  =    3.99237523875044     
+  Iteration  =         13620     temps  =    3.99824637880743     
+--> SEM : snapshot at iteration : 013624 ,time:     3.99942
+  Iteration  =         13640     temps  =    4.00411751886442     
+  Iteration  =         13660     temps  =    4.00998865892140     
+  Iteration  =         13680     temps  =    4.01585979897839     
+  Iteration  =         13700     temps  =    4.02173093903537     
+  Iteration  =         13720     temps  =    4.02760207909236     
+  Iteration  =         13740     temps  =    4.03347321914934     
+  Iteration  =         13760     temps  =    4.03934435920633     
+  Iteration  =         13780     temps  =    4.04521549926331     
+  Iteration  =         13800     temps  =    4.05108663932030     
+  Iteration  =         13820     temps  =    4.05695777937729     
+  Iteration  =         13840     temps  =    4.06282891943427     
+  Iteration  =         13860     temps  =    4.06870005949126     
+  Iteration  =         13880     temps  =    4.07457119954824     
+  Iteration  =         13900     temps  =    4.08044233960523     
+  Iteration  =         13920     temps  =    4.08631347966221     
+  Iteration  =         13940     temps  =    4.09218461971920     
+  Iteration  =         13960     temps  =    4.09805575977618     
+  Iteration  =         13980     temps  =    4.10392689983317     
+  Iteration  =         14000     temps  =    4.10979803989016     
+  Iteration  =         14020     temps  =    4.11566917994714     
+  Iteration  =         14040     temps  =    4.12154032000413     
+  Iteration  =         14060     temps  =    4.12741146006111     
+  Iteration  =         14080     temps  =    4.13328260011810     
+  Iteration  =         14100     temps  =    4.13915374017508     
+  Iteration  =         14120     temps  =    4.14502488023207     
+  Iteration  =         14140     temps  =    4.15089602028905     
+  Iteration  =         14160     temps  =    4.15676716034604     
+  Iteration  =         14180     temps  =    4.16263830040303     
+  Iteration  =         14200     temps  =    4.16850944046001     
+  Iteration  =         14220     temps  =    4.17438058051700     
+  Iteration  =         14240     temps  =    4.18025172057398     
+  Iteration  =         14260     temps  =    4.18612286063097     
+  Iteration  =         14280     temps  =    4.19199400068795     
+  Iteration  =         14300     temps  =    4.19786514074494     
+  Iteration  =         14320     temps  =    4.20373628080192     
+  Iteration  =         14340     temps  =    4.20960742085891     
+  Iteration  =         14360     temps  =    4.21547856091590     
+  Iteration  =         14380     temps  =    4.22134970097288     
+  Iteration  =         14400     temps  =    4.22722084102987     
+  Iteration  =         14420     temps  =    4.23309198108685     
+  Iteration  =         14440     temps  =    4.23896312114384     
+  Iteration  =         14460     temps  =    4.24483426120082     
+  Iteration  =         14480     temps  =    4.25070540125781     
+  Iteration  =         14500     temps  =    4.25657654131479     
+  Iteration  =         14520     temps  =    4.26244768137178     
+  Iteration  =         14540     temps  =    4.26831882142876     
+  Iteration  =         14560     temps  =    4.27418996148575     
+  Iteration  =         14580     temps  =    4.28006110154274     
+  Iteration  =         14600     temps  =    4.28593224159972     
+  Iteration  =         14620     temps  =    4.29180338165671     
+  Iteration  =         14640     temps  =    4.29767452171369     
+  Iteration  =         14660     temps  =    4.30354566177068     
+  Iteration  =         14680     temps  =    4.30941680182766     
+  Iteration  =         14700     temps  =    4.31528794188465     
+  Iteration  =         14720     temps  =    4.32115908194163     
+  Iteration  =         14740     temps  =    4.32703022199862     
+  Iteration  =         14760     temps  =    4.33290136205561     
+  Iteration  =         14780     temps  =    4.33877250211259     
+  Iteration  =         14800     temps  =    4.34464364216958     
+  Iteration  =         14820     temps  =    4.35051478222656     
+  Iteration  =         14840     temps  =    4.35638592228355     
+  Iteration  =         14860     temps  =    4.36225706234053     
+  Iteration  =         14880     temps  =    4.36812820239752     
+  Iteration  =         14900     temps  =    4.37399934245450     
+  Iteration  =         14920     temps  =    4.37987048251149     
+  Iteration  =         14940     temps  =    4.38574162256848     
+  Iteration  =         14960     temps  =    4.39161276262546     
+  Iteration  =         14980     temps  =    4.39748390268245     
+  Iteration  =         15000     temps  =    4.40335504273943     
+  Iteration  =         15020     temps  =    4.40922618279642     
+  Iteration  =         15040     temps  =    4.41509732285340     
+  Iteration  =         15060     temps  =    4.42096846291039     
+  Iteration  =         15080     temps  =    4.42683960296737     
+  Iteration  =         15100     temps  =    4.43271074302436     
+  Iteration  =         15120     temps  =    4.43858188308135     
+  Iteration  =         15140     temps  =    4.44445302313833     
+  Iteration  =         15160     temps  =    4.45032416319532     
+  Iteration  =         15180     temps  =    4.45619530325230     
+  Iteration  =         15200     temps  =    4.46206644330929     
+  Iteration  =         15220     temps  =    4.46793758336627     
+  Iteration  =         15240     temps  =    4.47380872342326     
+  Iteration  =         15260     temps  =    4.47967986348024     
+  Iteration  =         15280     temps  =    4.48555100353723     
+  Iteration  =         15300     temps  =    4.49142214359421     
+  Iteration  =         15320     temps  =    4.49729328365120     
+  Iteration  =         15340     temps  =    4.50316442370819     
+  Iteration  =         15360     temps  =    4.50903556376517     
+  Iteration  =         15380     temps  =    4.51490670382216     
+  Iteration  =         15400     temps  =    4.52077784387914     
+  Iteration  =         15420     temps  =    4.52664898393613     
+  Iteration  =         15440     temps  =    4.53252012399311     
+  Iteration  =         15460     temps  =    4.53839126405010     
+  Iteration  =         15480     temps  =    4.54426240410708     
+  Iteration  =         15500     temps  =    4.55013354416407     
+  Iteration  =         15520     temps  =    4.55600468422106     
+  Iteration  =         15540     temps  =    4.56187582427804     
+  Iteration  =         15560     temps  =    4.56774696433503     
+  Iteration  =         15580     temps  =    4.57361810439201     
+  Iteration  =         15600     temps  =    4.57948924444900     
+  Iteration  =         15620     temps  =    4.58536038450598     
+  Iteration  =         15640     temps  =    4.59123152456297     
+  Iteration  =         15660     temps  =    4.59710266461995     
+  Iteration  =         15680     temps  =    4.60297380467694     
+  Iteration  =         15700     temps  =    4.60884494473393     
+  Iteration  =         15720     temps  =    4.61471608479091     
+  Iteration  =         15740     temps  =    4.62058722484790     
+  Iteration  =         15760     temps  =    4.62645836490488     
+  Iteration  =         15780     temps  =    4.63232950496187     
+  Iteration  =         15800     temps  =    4.63820064501885     
+  Iteration  =         15820     temps  =    4.64407178507584     
+  Iteration  =         15840     temps  =    4.64994292513282     
+  Iteration  =         15860     temps  =    4.65581406518981     
+  Iteration  =         15880     temps  =    4.66168520524679     
+  Iteration  =         15900     temps  =    4.66755634530378     
+  Iteration  =         15920     temps  =    4.67342748536077     
+  Iteration  =         15940     temps  =    4.67929862541775     
+  Iteration  =         15960     temps  =    4.68516976547474     
+  Iteration  =         15980     temps  =    4.69104090553172     
+  Iteration  =         16000     temps  =    4.69691204558871     
+  Iteration  =         16020     temps  =    4.70278318564569     
+  Iteration  =         16040     temps  =    4.70865432570268     
+  Iteration  =         16060     temps  =    4.71452546575966     
+  Iteration  =         16080     temps  =    4.72039660581665     
+  Iteration  =         16100     temps  =    4.72626774587364     
+  Iteration  =         16120     temps  =    4.73213888593062     
+  Iteration  =         16140     temps  =    4.73801002598761     
+  Iteration  =         16160     temps  =    4.74388116604459     
+  Iteration  =         16180     temps  =    4.74975230610158     
+  Iteration  =         16200     temps  =    4.75562344615856     
+  Iteration  =         16220     temps  =    4.76149458621555     
+  Iteration  =         16240     temps  =    4.76736572627253     
+  Iteration  =         16260     temps  =    4.77323686632952     
+  Iteration  =         16280     temps  =    4.77910800638651     
+  Iteration  =         16300     temps  =    4.78497914644349     
+  Iteration  =         16320     temps  =    4.79085028650048     
+  Iteration  =         16340     temps  =    4.79672142655746     
+  Iteration  =         16360     temps  =    4.80259256661445     
+  Iteration  =         16380     temps  =    4.80846370667143     
+  Iteration  =         16400     temps  =    4.81433484672842     
+  Iteration  =         16420     temps  =    4.82020598678540     
+  Iteration  =         16440     temps  =    4.82607712684239     
+  Iteration  =         16460     temps  =    4.83194826689938     
+  Iteration  =         16480     temps  =    4.83781940695636     
+  Iteration  =         16500     temps  =    4.84369054701335     
+  Iteration  =         16520     temps  =    4.84956168707033     
+  Iteration  =         16540     temps  =    4.85543282712732     
+  Iteration  =         16560     temps  =    4.86130396718430     
+  Iteration  =         16580     temps  =    4.86717510724129     
+  Iteration  =         16600     temps  =    4.87304624729827     
+  Iteration  =         16620     temps  =    4.87891738735526     
+  Iteration  =         16640     temps  =    4.88478852741224     
+  Iteration  =         16660     temps  =    4.89065966746923     
+  Iteration  =         16680     temps  =    4.89653080752622     
+  Iteration  =         16700     temps  =    4.90240194758320     
+  Iteration  =         16720     temps  =    4.90827308764019     
+  Iteration  =         16740     temps  =    4.91414422769717     
+  Iteration  =         16760     temps  =    4.92001536775416     
+  Iteration  =         16780     temps  =    4.92588650781114     
+  Iteration  =         16800     temps  =    4.93175764786813     
+  Iteration  =         16820     temps  =    4.93762878792511     
+  Iteration  =         16840     temps  =    4.94349992798210     
+  Iteration  =         16860     temps  =    4.94937106803909     
+  Iteration  =         16880     temps  =    4.95524220809607     
+  Iteration  =         16900     temps  =    4.96111334815306     
+  Iteration  =         16920     temps  =    4.96698448821004     
+  Iteration  =         16940     temps  =    4.97285562826703     
+  Iteration  =         16960     temps  =    4.97872676832401     
+  Iteration  =         16980     temps  =    4.98459790838100     
+  Iteration  =         17000     temps  =    4.99046904843798     
+  Iteration  =         17020     temps  =    4.99634018849497     
+--> SEM : snapshot at iteration : 017030 ,time:     4.99928
+  SAVING PROT
+--> SEM : protection at iteration and time :   17031   4.999569
+ --> SEM INTERRUPTED, iteration=        17031
+ --> DEALLOCATING DOMAIN.
+ fin du calcul sur processeurs 

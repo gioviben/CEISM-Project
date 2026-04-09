@@ -27,7 +27,15 @@ from typing import Any
 from util_funct.compute_dir_parallel import compute_dir_parallel
 import numpy as np
 from mpi4py import MPI
-from pysem.src.pysem.parse_sem3d_snapshots import compute_gradients_main
+import sys
+
+path_to_src = str(Path("../pysem/src").resolve())
+print(f"Adding {path_to_src} to sys.path")
+if path_to_src not in sys.path:
+    sys.path.append(path_to_src)
+
+
+from pysem.parse_sem3d_snapshots import compute_gradients_main
 
 # ---------------------------------------------------------------------
 # Helpers for persistent rank-local optimizer state
@@ -172,10 +180,28 @@ def run_parallel_direction_step(
         # 1. Compute local gradients & Current local model chunk
         # -------------------------------------------------------------
         
-        g_lam_chunk, g_mu_chunk, m_lam_chunk, m_mu_chunk, x_gl, y_gl, z_gl = compute_gradients_main(comm=comm,
-                                                                                                    size=size,
-                                                                                                    rank=rank,
-                                                                                                    wrt=compute_xyz)
+        project_root = Path(__file__).resolve().parents[1]
+
+        forward_res = str((project_root / "sem3d_config_files" / "res").resolve())
+        adjoint_res = str((project_root / "sem3d_config_files_adj" / "res").resolve())
+
+        old_argv = sys.argv[:]
+        sys.argv = [
+            'parse_sem3d_snapshots.py',
+            '@@wkd', forward_res,
+            '@@begin_time', '0',
+            '@@end_time', '2'
+        ]
+
+        try:
+            g_lam_chunk, g_mu_chunk, m_lam_chunk, m_mu_chunk, x_gl, y_gl, z_gl = compute_gradients_main(
+                comm=comm,
+                size=size,
+                rank=rank,
+                wrt=compute_xyz
+            )
+        finally:
+            sys.argv = old_argv
 
         # -------------------------------------------------------------
         # 2. Reload previous rank-local L-BFGS state

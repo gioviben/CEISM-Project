@@ -22,3 +22,16 @@ build/
 # OS
 .DS_Store
 Thumbs.db
+
+/sem3d_config_files/sem/
+/sem3d_config_files/res/
+/sem3d_config_files/prot/
+/sem3d_config_files/traces/
+
+/sem3d_config_files_adj/sem/
+/sem3d_config_files_adj/res/
+/sem3d_config_files_adj/prot/
+/sem3d_config_files_adj/traces/
+
+/sem3d_config_files_adj/misfit_*.txt
+gradient_search_direction/.nfs*

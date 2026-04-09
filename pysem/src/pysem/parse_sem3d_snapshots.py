@@ -74,6 +74,13 @@ class SnapshotsSEM3D(object):
         self.snapfile['geo'] = glob.glob(osj(self.wkd,'geometry*.h5'))
         self.snapfile['res'] = glob.glob(osj(self.wkd,'Rsem*'))
         self.snapfile['nc']  = len(self.snapfile['geo'])
+
+        print(f"[Rank {self.rank}] wkd = {self.wkd}")
+        print(f"[Rank {self.rank}] geometry files found = {self.snapfile['nc']}")
+        print(f"[Rank {self.rank}] first geometry files = {self.snapfile['geo'][:3]}")
+        print(f"[Rank {self.rank}] number of Rsem folders = {len(self.snapfile['res'])}")
+
+
         if self.end_time == -1: 
             self.end_time = len(self.snapfile['res'])
         self.nt = self.end_time - self.begin_time + 1
@@ -190,6 +197,12 @@ class SnapshotsSEM3D(object):
                 self.ElementCount += OnFileElementConnectivity.shape[0]
 
         num_elements = LocalElementConnectivity.shape[0]
+        if LocalElementConnectivity is None:
+            raise RuntimeError(
+                f"Rank {self.rank}: no geometry file was read. "
+                f"wkd={self.wkd}, assigned files={self.snapfile['np']}, "
+                f"total geometry files found={self.snapfile['nc']}"
+            )
         cells = []
         for conn in LocalElementConnectivity:
             cells.append(8)
@@ -391,7 +404,7 @@ def ParseCL():
     opt = parser.parse_args().__dict__
     
     opt_adj = opt.copy()
-    opt_adj['wkd'] = './sem3d_config_files_adj/res/'
+    opt_adj['wkd'] = '/usr/users/cea_seism/benede_gio/CEISM-Project/sem3d_config_files_adj/res/'
     opt_adj['var'] = [
         'eps_vol','eps_dev_xx',
         'eps_dev_yy','eps_dev_zz',
@@ -686,11 +699,10 @@ def compute_gradients_main(comm, size, rank, x_bounds = [-1300, 1300], y_bounds 
 
         return(grad_lam_local, grad_mu_local, 
                 lam_val_local, mu_val_local,
-                mat_global_indices,
                 x_gl, y_gl, z_gl)    
     else:
         if rank == 0: print("--- Final Step: Computation and assembly complete. Returning local vectors only. ---")
-        return (grad_lam_local, grad_mu_local, lam_val_local, mu_val_local, mat_global_indices, None, None, None)
+        return (grad_lam_local, grad_mu_local, lam_val_local, mu_val_local, None, None, None)
 
 if __name__=="__main__":
     compute_gradients_main()
