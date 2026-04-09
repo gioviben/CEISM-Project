@@ -106,57 +106,58 @@ class SnapshotsSEM3D(object):
         return np.array([hashlib.md5(i.tobytes()).digest() for i in NodeCoords], dtype="S16")
     
     def ParseSEM3DSnapshots(self):
-        
+        # 1. Geometry and indexing (keeps your diagnostic print)
         self.GlobalReNumbering()
         
-        # if self.flag['static']:
+        print("\n" + "="*30)
+        print(f"RANK {self.rank} DIAGNOSTIC")
+        eg = self.dset['ElementsGlobal']
+        print(f"ElementsGlobal Shape: {eg.shape}") # (41236, 8)
+        print(f"First element nodes:  {eg[0]}")     
+        print(f"Max Node Index:       {eg.max()}")   
+        print("="*30 + "\n")
+        
+        # 2. Static data (remains the same)
         for g in self.snapfile['np']:
             with hf.File(osj(self.wkd,'geometry{:>04d}.h5'.format(g)),'r') as h5f:
                 for v in self.flag['static']:
                     if self.dset[v].size == 0:
-                        self.dset[v]=h5f[v][...]
+                        self.dset[v] = h5f[v][...]
                     else:
-                        self.dset[v]=np.append(self.dset[v],h5f[v][...],axis=0)
+                        self.dset[v] = np.append(self.dset[v], h5f[v][...], axis=0)
                     
         for v in self.flag['static']:
-            if sup[v]=="node":
+            if sup[v] == "node":
                 self.dset[v] = self.dset[v][self.LocalElementConnectivityOriginal]
                 self.dset[v] = self.dset[v][self.LocalNodeUniqueHashIndex]
                 self.dset[v] = self.dset[v][self.Local2UniqueLocalIndexOnRank]
         
-        
+        # 3. Dynamic data (Snapshots) - RESHAPE REMOVED
         for v in self.flag['dynamic']:
-            for g in self.snapfile['np']:
-                with hf.File(osj(self.wkd,'Rsem{:>04d}/sem_field.{:>04d}.h5'.format(self.begin_time+1,g)),'r') as h5f:
-                    if self.dset[v].size == 0:
-                        self.dset[v]=h5f[v][...]
-                    else:
-                        self.dset[v]=np.append(self.dset[v],h5f[v][...],axis=0)
-            
-            if len(self.dset[v].shape)==2:
-                self.dset[v]=self.dset[v].reshape((*self.dset[v].shape,1))
-            elif len(self.dset[v].shape)==1:
-                self.dset[v]=self.dset[v].reshape((*self.dset[v].shape,1,1))
-            if sup[v]=="node":
-                self.dset[v] = self.dset[v][self.LocalElementConnectivityOriginal]
-                self.dset[v] = self.dset[v][self.LocalNodeUniqueHashIndex]
-                self.dset[v] = self.dset[v][self.Local2UniqueLocalIndexOnRank]
-            shp = self.dset[v].shape
-            
-            for t in range(self.begin_time+1, self.end_time+1):
-                dtmp = np.array([])
+            time_series_data = []
+            for t in range(self.begin_time, self.end_time + 1):
+                rank_data = []
                 for g in self.snapfile['np']:
-                    with hf.File(osj(self.wkd,'Rsem{:>04d}/sem_field.{:>04d}.h5'.format(t,g)),'r') as h5f:
-                        if dtmp.size == 0:
-                            dtmp=h5f[v][...]
-                        else:
-                            dtmp=np.append(dtmp,h5f[v][...],axis=0)
-                if sup[v]=="node":
-                    dtmp = dtmp[self.LocalElementConnectivityOriginal]
-                    dtmp = dtmp[self.LocalNodeUniqueHashIndex]
-                    dtmp = dtmp[self.Local2UniqueLocalIndexOnRank]
-                self.dset[v]=np.append(self.dset[v], dtmp.reshape(*shp),axis=2)    
-    
+                    file_path = osj(self.wkd, f'Rsem{t:04d}/sem_field.{g:04d}.h5')
+                    try:
+                        with hf.File(file_path, 'r') as h5f:
+                            rank_data.append(h5f[v][...])
+                    except OSError:
+                        continue
+                
+                if rank_data:
+                    dtmp = np.concatenate(rank_data, axis=0)
+                    time_series_data.append(dtmp)
+
+            if time_series_data:
+                # Stack along the last axis to get (2639104, 1, nt)
+                processed_data = np.stack(time_series_data, axis=-1)
+                
+                # STORE FLAT: No reshape to (41236, 64, nt)
+                self.dset[v] = processed_data
+                
+                print(f"Rank {self.rank}: Variable {v} stored as FLAT array {self.dset[v].shape}")
+                
     def GlobalReNumbering(self):
         
         LocalNodeCoordinates = None
@@ -177,7 +178,7 @@ class SnapshotsSEM3D(object):
                                                      axis=0)
                 
                 # Element connectivity on geometry file
-                OnFileElementConnectivity = h5f["Elements"][...].astype(np.int64)+NodeCount
+                OnFileElementConnectivity = h5f["Elements"][...].astype(np.int64)-1+NodeCount
                 
                 if LocalElementConnectivity is None:
                     LocalElementConnectivity = OnFileElementConnectivity
@@ -236,199 +237,67 @@ class SnapshotsSEM3D(object):
         self.Global2UniqueLocalIndexOnRank = Global2UniqueLocalIndexOnRank[index]
         self.GlobalNodeCount = self.dset["NodesGlobal"].shape[0]
 
-    def compute_element_shapes(self):
-    #     """
-    #     Creates a mapping for each hexahedron that converts reference coordinates
-    #     (-1 to 1) into physical 3D coordinates (X, Y, Z).
-    #     """
-    #     # Get local data from the snapshot object
-    #     elements = self.dset['Elements'] 
-    #     coords = self.dset['Nodes'] 
-        
-    #     # Standard reference coordinates for the 8 corners of a cube
-    #     ref_corners = np.array([
-    #         [-1, -1, -1], [ 1, -1, -1], [ 1,  1, -1], [-1,  1, -1],
-    #         [-1, -1,  1], [ 1, -1,  1], [ 1,  1,  1], [-1,  1,  1]
-    #     ])
-
-    #     element_mappers = {}
-
-    #     for e_idx, node_indices in tqdm(enumerate(elements), total=len(elements), desc="Computing element shapes"):
-    #         # STEP 1: Get the 8 physical [X, Y, Z] corners for this specific hex
-    #         physical_corners = coords[node_indices] 
-            
-    #         # STEP 2: Create a function that "links" physical corners to the math
-    #         def make_mapper(current_corners):
-                
-    #             def interpolate(xi, eta, zeta):
-    #                 # Calculate the 8 weights (N_i) based on the reference space
-    #                 # Each weight corresponds to one of the 8 corners
-    #                 weights = 0.125 * (1 + ref_corners[:,0]*xi) * \
-    #                                   (1 + ref_corners[:,1]*eta) * \
-    #                                   (1 + ref_corners[:,2]*zeta)
-                    
-    #                 # STEP 3: USE THE CORNERS! 
-    #                 # Multiply each weight by its corresponding physical corner coordinate
-    #                 # physical_x = sum(N_i * corner_x_i), etc.
-    #                 world_pos = np.dot(weights, current_corners)
-                    
-    #                 return {
-    #                     'weights': weights,      # The influence of each GLL point
-    #                     'world_pos': world_pos   # The actual X, Y, Z in your model
-    #                 }
-                
-    #             return interpolate
-
-    #         # Store the mapper function for this element
-    #         element_mappers[e_idx] = make_mapper(physical_corners)
-            
-    #     return element_mappers
-        pass
-
-    def compute_mass_matrix(self):
-    #     """
-    #     Calcule la matrice de masse en utilisant directement le Jacobien (Jac) 
-    #     fourni dans le fichier de snapshots, en intégrant sur les points GLL.
-    #     """
-    #     elements = self.dset['Elements']
-    #     # Jac contient déjà le déterminant |J| pour chaque nœud GLL
-    #     global_jac = self.dset['Jac'] 
-        
-    #     # Dans SEM, pour ngll=2 (trilinéaire), les poids d'intégration 
-    #     # de Gauss-Lobatto sont simplement 1.0 à chaque sommet.
-    #     # Pour un cube de référence [-1, 1], le poids total est 1.0 * 1.0 * 1.0 = 1.0
-    #     gll_weight = 1.0 
-
-    #     self.element_mass_matrices = {}
-
-    #     for e_idx, node_indices in tqdm(enumerate(elements), total=len(elements), desc="Computing mass matrices (using Jac)"):
-    #         # Initialisation de la matrice 8x8 pour l'élément hexaédrique
-    #         Me = np.zeros((8, 8))
-            
-    #         # On boucle sur les 8 nœuds GLL de l'élément (cas ngll=2)
-    #         for local_i in range(8):
-    #             global_node_idx = node_indices[local_i]
-                
-    #             # Récupération directe du déterminant du Jacobien pré-calculé
-    #             # Cela remplace tout le calcul lourd de np.linalg.det(J)
-    #             detJ = global_jac[global_node_idx]
-                
-    #             # En intégration Gauss-Lobatto, la matrice de masse est diagonale
-    #             # Me_ii = Integral( N_i * N_i * |J| dV )
-    #             # Comme N_i = 1 au nœud i et 0 aux autres nœuds GLL :
-    #             Me[local_i, local_i] = detJ * gll_weight
-                
-    #         self.element_mass_matrices[e_idx] = Me
-        pass
-    
-    def compute_regularization_gradients(self):
-    #     """
-    #     Computes g_reg = Integral(N * N.T) * material_vector
-    #     Returns local dictionaries for lambda and mu regularization gradients.
-    #     """
-    #     # Ensure mass matrices are computed first
-    #     if not hasattr(self, 'element_mass_matrices'):
-    #         self.compute_mass_matrix()
-            
-    #     g_reg_lambda = {}
-    #     g_reg_mu = {}
-        
-    #     elements = self.dset['Elements']
-        
-    #     for e_idx, node_indices in enumerate(elements):
-    #         # Me is the 8x8 integral of N*N.T for this element
-    #         Me = self.element_mass_matrices[e_idx]
-            
-    #         # Extract local 8-node material property vectors
-    #         lambda_e = self.dset['Lamb'][node_indices]
-    #         mu_e = self.dset['Mu'][node_indices]
-            
-    #         # Matrix-vector product for regularization
-    #         g_reg_lambda[e_idx] = np.dot(Me, lambda_e)
-    #         g_reg_mu[e_idx] = np.dot(Me, mu_e)
-            
-    #     return g_reg_lambda, g_reg_mu
-        pass
     
     def compute_misfit_gradients(self, snp_adj, dt):
         """
-        Calcule les gradients de misfit de manière optimisée.
-        Utilise l'intégration de Gauss-Lobatto (points GLL) et le Jacobien (Jac) pré-calculé.
+        Computes the misfit gradients for Lambda and Mu.
+        Optimized for 1D flat arrays where strains are Element-wise 
+        and the Jacobian is Nodal.
         """
-        elements = self.dset['Elements']
-        nt = self.nt 
-        global_jac = self.dset['Jac'] #
+        # 1. Setup dimensions
+        nb_elements = self.dset['ElementsGlobal'].shape[0] # 2639104
         
-        # Initialisation des dictionnaires de gradients
-        # Pour ngll=2, chaque élément a 8 points
-        g_mis_lambda = {e: np.zeros(8) for e in range(len(elements))}
-        g_mis_mu = {e: np.zeros(8) for e in range(len(elements))}
+        # 2. Extract Element-wise strains (Shape: 2639104, nt)
+        ev = self.dset['eps_vol']
+        ev_adj = snp_adj.dset['eps_vol']
+        
+        # 3. Compute Element-averaged Jacobian
+        # Jac is Nodal (2701125,). We get the Jac for the 8 corner nodes of each element,
+        # shape becomes (2639104, 8), then we average along axis 1 -> (2639104,)
+        detJ_elem = np.mean(self.dset['Jac'][self.dset['ElementsGlobal']], axis=1)
+        
+        # 4. Volumetric Term (Element-wise multiplication)
+        vol_term = ev * ev_adj
+        
+        # 5. Deviatoric Term Summation
+        e_ij_names = ['xx', 'yy', 'zz', 'xy', 'yz', 'xz']
+        dev_term = np.zeros_like(vol_term)
+        
+        for c in e_ij_names:
+            factor = 2.0 if c in ['xy', 'yz', 'xz'] else 1.0
+            dev_term += factor * (self.dset[f'eps_dev_{c}'] * snp_adj.dset[f'eps_dev_{c}'])
 
-        # En Gauss-Lobatto (ngll=2), le poids est 1.0 par point
-        gll_weight = 1.0 
-
-        for e_idx, nodes in tqdm(enumerate(elements), total=len(elements), desc="Misfit gradients"):
-            
-            # On pré-extrait les données temporelles pour l'élément (vectorisation temporelle)
-            # ev shape: (8, nt)
-            ev = self.dset['eps_vol'][e_idx, :, :]
-            ev_adj = snp_adj.dset['eps_vol'][e_idx, :, :]
-            
-            # Composantes déviatoriques
-            e_ij_names = ['xx','yy','zz','xy','yz','xz']
-            e_ij = {c: self.dset[f'eps_dev_{c}'][e_idx, :, :] for c in e_ij_names}
-            e_ij_adj = {c: snp_adj.dset[f'eps_dev_{c}'][e_idx, :, :] for c in e_ij_names}
-
-            # Boucle sur les 8 points GLL de l'élément
-            for local_i in range(8):
-                global_node_idx = nodes[local_i]
-                detJ = global_jac[global_node_idx] #
-                
-                # Calcul du produit scalaire des déformations sur toute la durée T
-                # On multiplie point par point sur l'axe du temps (nt)
-                vol_term = ev[local_i, :] * ev_adj[local_i, :]
-                
-                dev_term = (e_ij['xx'][local_i, :] * e_ij_adj['xx'][local_i, :] +
-                            e_ij['yy'][local_i, :] * e_ij_adj['yy'][local_i, :] +
-                            e_ij['zz'][local_i, :] * e_ij_adj['zz'][local_i, :] +
-                            2 * (e_ij['xy'][local_i, :] * e_ij_adj['xy'][local_i, :] +
-                                e_ij['yz'][local_i, :] * e_ij_adj['yz'][local_i, :] +
-                                e_ij['xz'][local_i, :] * e_ij_adj['xz'][local_i, :]))
-
-                # Sommation temporelle (Sum_t ... * dt)
-                # On multiplie par detJ car c'est le volume local associé au point i
-                sum_time_lam = np.sum(vol_term) * dt
-                sum_time_mu  = np.sum(2 * vol_term + dev_term) * dt
-                
-                # Application du signe négatif de la formule g_mis = -Sum(...)
-                # Le poids gll_weight (1.0) est implicite ici.
-                g_mis_lambda[e_idx][local_i] = -sum_time_lam * detJ
-                g_mis_mu[e_idx][local_i]     = -sum_time_mu * detJ
-                
+        # 6. Time Integration (Sum over the time dimension, axis=1)
+        # Resulting shape is exactly (2639104,) -> One gradient value per element
+        sum_time_lam = np.sum(vol_term, axis=1) * dt
+        sum_time_mu  = np.sum(2.0 * vol_term + dev_term, axis=1) * dt
+        
+        # 7. Final Gradient assignment mapped with the element volume (detJ)
+        g_mis_lambda = -sum_time_lam * detJ_elem
+        g_mis_mu     = -sum_time_mu * detJ_elem
+        
         return g_mis_lambda, g_mis_mu
-
+    
     def compute_local_contribution_rhs(self, snp_adj, dt, R_lam=1.0, R_mu=1.0):
         """
-        Computes the nodal RHS by assembling element misfit gradients and 
-        adding nodal regularization using the pre-computed Mass variable.
+        Computes the nodal RHS by assembling element misfit gradients.
         """
-        # 1. Compute element-level misfit gradients (optimized with Jac/GLL)
+        # 1. Get the scalar gradient for each element (Arrays of size 2639104)
         g_mis_lam, g_mis_mu = self.compute_misfit_gradients(snp_adj, dt)
 
-        # 2. Initialize global nodal accumulators for this MPI rank
+        # 2. Initialize global nodal accumulators (Arrays of size 2701125)
         local_sum_lam = np.zeros(self.GlobalNumberofNodes)
-        local_sum_mu = np.zeros(self.GlobalNumberofNodes)
+        local_sum_mu  = np.zeros(self.GlobalNumberofNodes)
 
-        # 3. Misfit Assembly: Sum element misfit contributions into global nodes
+        # 3. FAST VECTORIZED ASSEMBLY
+        # This replaces the slow 2.6-million iteration for-loop.
+        # It adds the element gradient to all 8 of its corner nodes instantly.
         elements_global_map = self.dset["ElementsGlobal"]
-        for e_idx in range(len(self.dset['Elements'])):
-            global_indices = elements_global_map[e_idx]
-            local_sum_lam[global_indices] += g_mis_lam[e_idx]
-            local_sum_mu[global_indices]  += g_mis_mu[e_idx]
+        
+        np.add.at(local_sum_lam, elements_global_map.flatten(), np.repeat(g_mis_lam, 8))
+        np.add.at(local_sum_mu,  elements_global_map.flatten(), np.repeat(g_mis_mu, 8))
 
-        # 4. Regularization: Add nodal term (g_reg = R * M * m)
-        # Using the diagonal Global Mass (Mass) and Material properties (Lamb/Mu)
-        # This directly implements the formula: g_total = g_misfit + (R * Mass * property)
+        # 4. Regularization mapping
         rank_indices = self.Global2UniqueLocalIndexOnRank
         
         local_sum_lam[rank_indices] += R_lam * (self.dset['Mass'] * self.dset['Lamb'])
@@ -436,28 +305,6 @@ class SnapshotsSEM3D(object):
 
         return local_sum_lam, local_sum_mu
     
-    def compute_local_contribution_mass_matrix(self):
-    #     """
-    #     Computes the local contribution to the mass matrix from the element in the current MPI rank by 
-    #     assembling 8x8 element matrices.
-    #     Returns: A vector of size GlobalNumberofNodes.
-    #     """
-    #     # Initialize the 'Global Bucket' for the mass
-    #     local_mass_vector = np.zeros(self.GlobalNumberofNodes)
-        
-    #     # Loop over every hexahedron in this MPI rank
-    #     for e_idx in range(self.ElementCount):
-    #         # Get the 8 diagonal values of the mass matrix for element e_idx
-    #         Me_diag = np.diag(self.element_mass_matrices[e_idx])
-            
-    #         # Get the 'Addresses' (Global IDs) for these 8 nodes
-    #         global_indices = self.dset["ElementsGlobal"][e_idx]
-            
-    #         # Assembly (A): Add the local mass to the global nodal slots
-    #         local_mass_vector[global_indices] += Me_diag
-        
-    #     return local_mass_vector
-        pass
     def solve_gradients_parallel(self, snp_adj, dt, R_lam=1.0, R_mu=1.0):
         """
         Parallelized resolution: Sums boundary nodes and distributes the linear 
@@ -508,17 +355,22 @@ class SnapshotsSEM3D(object):
         print(f"Rank {self.rank} - local gradients computed. Gathering results...")
         # STEP 4: GATHER RESULTS (Optional - for saving/output)
         # If you need the full domain on Rank 0 for VTK saving:
-        if self.rank == 0:
-            g_lam_final = np.zeros(num_nodes)
-            g_mu_final = np.zeros(num_nodes)
-        else:
-            g_lam_final = None
-            g_mu_final = None
+        
+    # ========================================================================
+        # if self.rank == 0:
+        #     g_lam_final = np.zeros(num_nodes)
+        #     g_mu_final = np.zeros(num_nodes)
+        # else:
+        #     g_lam_final = None
+        #     g_mu_final = None
 
-        self.comm.Gatherv(g_lam_chunk, [g_lam_final, counts, sum(counts[:self.rank]), MPI.DOUBLE], root=0)
-        self.comm.Gatherv(g_mu_chunk, [g_mu_final, counts, sum(counts[:self.rank]), MPI.DOUBLE], root=0)
+        # self.comm.Gatherv(g_lam_chunk, [g_lam_final, counts, sum(counts[:self.rank]), MPI.DOUBLE], root=0)
+        # self.comm.Gatherv(g_mu_chunk, [g_mu_final, counts, sum(counts[:self.rank]), MPI.DOUBLE], root=0)
 
-        return g_lam_final, g_mu_final
+        # return g_lam_final, g_mu_final
+        return g_lam_chunk, g_mu_chunk, counts
+    # ========================================================================
+        
     
 def ParseCL():
     """
@@ -527,7 +379,7 @@ def ParseCL():
     parser = argparse.ArgumentParser(prefix_chars='@')
     parser.add_argument('@@wkd',type=str,default='./res',help="Path to res directory")
     parser.add_argument('@@var',type=str,nargs='+',default=['Mass','Jac','Mu','Lamb','Nodes',
-                                                            'Elements',
+                                                            'Elements', 'Dens',
                                                             'Dom','displ',
                                                             'eps_vol','eps_dev_xx',
                                                             'eps_dev_yy','eps_dev_zz',
@@ -539,13 +391,13 @@ def ParseCL():
     opt = parser.parse_args().__dict__
     
     opt_adj = opt.copy()
-    opt_adj['wkd'] = '../sem3d_config_files_adj/res/'
-    opt_adj['var'] = {
+    opt_adj['wkd'] = './sem3d_config_files_adj/res/'
+    opt_adj['var'] = [
         'eps_vol','eps_dev_xx',
         'eps_dev_yy','eps_dev_zz',
         'eps_dev_xy','eps_dev_yz',
         'eps_dev_xz'
-    }
+    ]
     return opt, opt_adj
 
 def GetSnapshots(comm,size,rank):
@@ -556,14 +408,19 @@ def GetSnapshots(comm,size,rank):
     opt["size"] = size
     opt["rank"] = rank
     
+    opt_adj["comm"] = comm
+    opt_adj["size"] = size
+    opt_adj["rank"] = rank
+    
     # Generate snapshot structure
     snp = SnapshotsSEM3D(**opt)
     snp_adj = SnapshotsSEM3D(**opt_adj)
     
     # Parse result snapshots 
     snp.ParseSEM3DSnapshots()
+    print(f"Elements shape: {snp.dset['eps_vol'].shape}")
     snp_adj.ParseSEM3DSnapshots()
-    
+
     print(f"Rank {rank} - snapshots parsed. Starting gradient computation...")
     return snp, snp_adj
 
@@ -691,38 +548,150 @@ def main():
     #         print(f"Coordinates:\n{positions}\n")
     MPI.Finalize()
     
-def compute_gradients_main():
-    """
-    Main execution block to compute gradients in a truly parallel way.
-    Optimized to skip redundant mass and shape calculations.
-    """
-    # 1. Initialize MPI environment
-    if not MPI.Is_initialized():
-        MPI.Init()
-    
-    comm = MPI.COMM_WORLD
-    size = comm.Get_size()
-    rank = comm.Get_rank()
-    
-    # 2. Load snapshots and geometry (Forward and Adjoint)
-    # snp contains properties like 'Mass', 'Jac', 'Lamb', 'Mu'
-    snp, snp_adj = GetSnapshots(comm, size, rank)
-    
-    # 3. Execute the Parallel Resolution
-    # We no longer call snp.compute_mass_matrix() or snp.compute_element_shapes()
-    # because solve_gradients_parallel now uses pre-computed file data directly.
-    g_lam_final, g_mu_final = snp.solve_gradients_parallel(snp_adj, dt=0.5) 
+import os
+import numpy as np
+from scipy.spatial import cKDTree
+from mpi4py import MPI
 
-    # 4. Handle the result on Rank 0
-    if rank == 0:
-        print(f"Parallel inversion complete. Global Node Count: {snp.GlobalNumberofNodes}")
-        # Results (g_lam_final, g_mu_final) are ready for storage or VTK export
-        return g_lam_final, g_mu_final
+import os
+import numpy as np
+from scipy.spatial import cKDTree
+from mpi4py import MPI
+
+def compute_gradients_main(comm, size, rank, x_bounds = [-1300, 1300], y_bounds = [-1300, 1300], z_bounds = [-1540, 0], steps = [200, 200, 20], cache_dir="./", wrt = True):
+    """
+    Computes gradients and maps them to a material mesh with step-by-step logging.
     
+    Returns:
+        - 4 Local compact vectors: grad_lam, grad_mu, lam, mu
+        - 3 Global sparse vectors: x_gl, y_gl, z_gl
+    """
+    
+    # 1. INITIALIZATION & PHYSICAL SOLVE
+    if rank == 0: print(f"--- Step 1: Initializing snapshots on {size} ranks ---")
+    
+    # GetSnapshots handles CLI parsing and snapshot loading.
+    snp, snp_adj = GetSnapshots(comm, size, rank) 
+    
+    if rank == 0: print("--- Step 2: Solving physical gradients on GLL mesh ---")
+    # solve_gradients_parallel computes the GLL-based misfit gradients.
+    g_lam_chunk, g_mu_chunk, counts = snp.solve_gradients_parallel(snp_adj, dt=0.5)
+    
+    phys_offsets = np.cumsum([0] + counts) 
+    
+    # Define Material Mesh Grid dimensions
+    x_range = np.arange(x_bounds[0], x_bounds[1] + steps[0], steps[0])
+    y_range = np.arange(y_bounds[0], y_bounds[1] + steps[1], steps[1])
+    z_range = np.arange(z_bounds[0], z_bounds[1] + steps[2], steps[2])
+    total_mat_nodes = len(x_range) * len(y_range) * len(z_range)
+    
+    cache_file = os.path.join(cache_dir, f'mesh_mapping_rank_{rank}.npz')
+
+    # =========================================================================
+    # 2. MAPPING LOGIC (CACHE OR COMPUTE)
+    # =========================================================================
+    if os.path.exists(cache_file):
+        if rank == 0: print(f"--- Step 3: Loading mapping from cache: {cache_dir} ---")
+        data = np.load(cache_file)
+        mat_nodes_local = data['coords']
+        mat_phys_idx_local = data['idx']
+        mat_global_indices = data['global_mask_idx']
     else:
-        return None, None
+        if rank == 0: print("--- Step 3: No cache found. Starting Global Mapping process ---")
+        
+        # Gather GLL physical coordinates for the KD-Tree.
+        local_nodes = snp.dset['NodesGlobal'] 
+        if rank == 0:
+            print(f"Rank 0: Gathering coordinates for {snp.GlobalNumberofNodes} physical nodes...")
+            all_nodes_phys = np.empty((snp.GlobalNumberofNodes, 3), dtype=np.float64)
+        else:
+            all_nodes_phys = None
+        
+        counts_3d = [c * 3 for c in counts]
+        displs_3d = [d * 3 for d in np.cumsum([0] + counts[:-1])]
+        comm.Gatherv(sendbuf=local_nodes, recvbuf=[all_nodes_phys, counts_3d, displs_3d, MPI.DOUBLE], root=0)
+
+        if rank == 0:
+            print("Rank 0: Building Global KD-Tree...")
+            tree = cKDTree(all_nodes_phys)
+            
+            grid_x, grid_y, grid_z = np.meshgrid(x_range, y_range, z_range, indexing='ij')
+            mat_coords_global = np.stack([grid_x.ravel(), grid_y.ravel(), grid_z.ravel()], axis=1)
+            original_indices = np.arange(total_mat_nodes)
+            
+            print(f"Rank 0: Querying tree for {total_mat_nodes} material points...")
+            _, nearest_phys_indices = tree.query(mat_coords_global, k=1)
+            
+            print("Rank 0: Determining point ownership and bundling data...")
+            target_ranks = np.searchsorted(phys_offsets, nearest_phys_indices, side='right') - 1
+            
+            send_mat_coords = [mat_coords_global[target_ranks == r] for r in range(size)]
+            send_phys_indices = [nearest_phys_indices[target_ranks == r] for r in range(size)]
+            send_global_mask = [original_indices[target_ranks == r] for r in range(size)]
+            mat_counts = [len(c) for c in send_mat_coords]
+            print("Rank 0: Bundling complete. Starting MPI distribution...")
+        else:
+            send_mat_coords = send_phys_indices = send_global_mask = mat_counts = None
+
+        # Scatter information and distribute data bundles
+        local_mat_count = comm.scatter(mat_counts, root=0)
+        mat_nodes_local = np.empty((local_mat_count, 3), dtype=np.float64)
+        mat_phys_idx_local = np.empty(local_mat_count, dtype=np.int64)
+        mat_global_indices = np.empty(local_mat_count, dtype=np.int64)
+
+        if rank == 0:
+            for r in range(1, size):
+                comm.Send(send_mat_coords[r], dest=r, tag=901)
+                comm.Send(send_phys_indices[r], dest=r, tag=902)
+                comm.Send(send_global_mask[r], dest=r, tag=903)
+            mat_nodes_local = send_mat_coords[0]
+            mat_phys_idx_local = send_phys_indices[0]
+            mat_global_indices = send_global_mask[0]
+        else:
+            comm.Recv(mat_nodes_local, source=0, tag=901)
+            comm.Recv(mat_phys_idx_local, source=0, tag=902)
+            comm.Recv(mat_global_indices, source=0, tag=903)
+
+        print(f"Rank {rank}: Mapping received and saved to local cache.")
+        np.savez(cache_file, coords=mat_nodes_local, idx=mat_phys_idx_local, global_mask_idx=mat_global_indices)
+
+    # =========================================================================
+    # 3. VECTOR EXTRACTION & ASSEMBLY
+    # =========================================================================
+    if rank == 0: print("--- Step 4: Extracting local data and assembling coordinate vectors ---")
     
+    # Mapping physical global IDs back to the local rank-specific chunk
+    local_idx_mapped = mat_phys_idx_local - phys_offsets[rank]
     
+    # COMPACT LOCAL VECTORS (Material values for local nodes)
+    grad_lam_local = g_lam_chunk[local_idx_mapped]
+    grad_mu_local  = g_mu_chunk[local_idx_mapped]
+    # Extract Lamb and Mu properties from the dataset.
+    lam_val_local  = snp.dset['Lamb'][local_idx_mapped] 
+    mu_val_local   = snp.dset['Mu'][local_idx_mapped]   
+
+    if wrt:
+        # GLOBAL SPARSE VECTORS (Coordinates)
+        x_gl = np.zeros(total_mat_nodes, dtype=np.float64)
+        y_gl = np.zeros(total_mat_nodes, dtype=np.float64)
+        z_gl = np.zeros(total_mat_nodes, dtype=np.float64)
+
+        # Placing local coordinates into their global spatial index slots
+        x_gl[mat_global_indices] = mat_nodes_local[:, 0]
+        y_gl[mat_global_indices] = mat_nodes_local[:, 1]
+        z_gl[mat_global_indices] = mat_nodes_local[:, 2]
+
+        if rank == 0: 
+            print("--- Final Step: Computation and assembly complete. Returning vectors. ---")
+
+        return(grad_lam_local, grad_mu_local, 
+                lam_val_local, mu_val_local,
+                mat_global_indices,
+                x_gl, y_gl, z_gl)    
+    else:
+        if rank == 0: print("--- Final Step: Computation and assembly complete. Returning local vectors only. ---")
+        return (grad_lam_local, grad_mu_local, lam_val_local, mu_val_local, mat_global_indices, None, None, None)
+
 if __name__=="__main__":
     compute_gradients_main()
     # main()

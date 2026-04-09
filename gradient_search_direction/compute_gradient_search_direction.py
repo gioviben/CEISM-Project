@@ -142,18 +142,18 @@ def save_rank_metadata_once(
 # ---------------------------------------------------------------------
 def run_parallel_direction_step(
     iteration: int,
-    dt_sim: float,
     lbfgs_mem: int,
     state_dir: Path,
     output_dir: Path,
 ) -> None:
     """
     Perform one MPI-distributed iteration step:
-    - load snapshots,
     - compute local gradients,
     - update L-BFGS queues,
     - compute local search directions,
     - save outputs and updated state.
+
+    At iteration 0 only, compute and save global xyz tuples.
     """
     initialized_here = False
     if not MPI.Is_initialized():
@@ -164,13 +164,15 @@ def run_parallel_direction_step(
     rank = comm.Get_rank()
     size = comm.Get_size()
 
+    compute_xyz = (iteration == 0)
+
     try:
         
         # -------------------------------------------------------------
         # 1. Compute local gradients & Current local model chunk
         # -------------------------------------------------------------
         
-        g_lam_chunk, g_mu_chunk, m_lam_chunk, m_mu_chunk, x_gl, y_gl, z_gl = compute_gradients_main()
+        g_lam_chunk, g_mu_chunk, m_lam_chunk, m_mu_chunk, x_gl, y_gl, z_gl = compute_gradients_main(compute_xyz)
 
         # -------------------------------------------------------------
         # 2. Reload previous rank-local L-BFGS state
@@ -243,15 +245,34 @@ def run_parallel_direction_step(
         )
 
         # -------------------------------------------------------------
-        5.
+        # 5. Compute and save global xyz only once (iteration 0)
         # -------------------------------------------------------------
+        if compute_xyz:
+            if x_gl is None or y_gl is None or z_gl is None:
+                raise RuntimeError(
+                    f"Rank {rank}: iteration == 0 but x_gl/y_gl/z_gl is None."
+                )
 
-        x_gl_tot = comm.reduce(x_gl, op=MPI.SUM, root=0)
-        y_gl_tot = comm.reduce(y_gl, op=MPI.SUM, root=0)
-        z_gl_tot = comm.reduce(z_gl, op=MPI.SUM, root=0)
+            # Elementwise sum of NumPy arrays across ranks.
+            # Only rank 0 receives the final reduced vectors.
+            if rank == 0:
+                x_gl_tot = np.empty_like(x_gl)
+                y_gl_tot = np.empty_like(y_gl)
+                z_gl_tot = np.empty_like(z_gl)
+            else:
+                x_gl_tot = None
+                y_gl_tot = None
+                z_gl_tot = None
+
+            comm.Reduce(x_gl, x_gl_tot, op=MPI.SUM, root=0)
+            comm.Reduce(y_gl, y_gl_tot, op=MPI.SUM, root=0)
+            comm.Reduce(z_gl, z_gl_tot, op=MPI.SUM, root=0)
+
+            if rank == 0:
+                save_global_xyz_tuples(output_dir, x_gl_tot, y_gl_tot, z_gl_tot)
 
         # -------------------------------------------------------------
-        # 5. Save local outputs
+        # 6. Save local outputs
         # -------------------------------------------------------------
         save_rank_outputs(
             output_dir=output_dir,
@@ -264,7 +285,7 @@ def run_parallel_direction_step(
         )
 
         # -------------------------------------------------------------
-        # 6. Save updated state for next outer iteration
+        # 7. Save updated state for next outer iteration
         # -------------------------------------------------------------
         new_state = {
             "m_lam_old_chunk": m_lam_chunk.copy(),
@@ -279,7 +300,6 @@ def run_parallel_direction_step(
         save_rank_state(state_dir, rank, new_state)
 
         # Optional metadata by rank 0
-        comm.Barrier()
 
         if rank == 0:
             save_rank_metadata_once(output_dir, iteration, size)
@@ -298,7 +318,7 @@ def run_parallel_direction_step(
 # ---------------------------------------------------------------------
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Compute L-BFGS search directions in parallel with MPI."
+        description="Compute gradients and L-BFGS search directions in parallel with MPI."
     )
     parser.add_argument(
         "--iter",
@@ -306,13 +326,6 @@ def build_parser() -> argparse.ArgumentParser:
         type=int,
         required=True,
         help="Outer inversion iteration index.",
-    )
-    parser.add_argument(
-        "--dt",
-        dest="dt_sim",
-        type=float,
-        required=True,
-        help="Simulation time step used in gradient integration.",
     )
     parser.add_argument(
         "--lbfgs-mem",
@@ -344,7 +357,6 @@ def main() -> None:
 
     run_parallel_direction_step(
         iteration=args.iteration,
-        dt_sim=args.dt_sim,
         lbfgs_mem=args.lbfgs_mem,
         state_dir=args.state_dir,
         output_dir=args.output_dir,

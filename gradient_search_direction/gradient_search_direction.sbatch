@@ -33,7 +33,6 @@ with open(config_file, "r", encoding="utf-8") as f:
     cfg = json.load(f)
 
 print(f"ITER={shlex.quote(str(cfg['iteration']))}")
-print(f"DT_SIM={shlex.quote(str(cfg['dt_sim']))}")
 print(f"LBFGS_MEM={shlex.quote(str(cfg['lbfgs_mem']))}")
 print(f"STATE_DIR={shlex.quote(str(cfg['state_dir']))}")
 print(f"OUTPUT_DIR={shlex.quote(str(cfg['output_dir']))}")
@@ -43,7 +42,6 @@ PY
 )"
 
 echo "ITER=$ITER"
-echo "DT_SIM=$DT_SIM"
 echo "LBFGS_MEM=$LBFGS_MEM"
 echo "STATE_DIR=$STATE_DIR"
 echo "OUTPUT_DIR=$OUTPUT_DIR"
@@ -53,7 +51,6 @@ echo "MPI_RANKS=$MPI_RANKS"
 
 mpirun -n "$MPI_RANKS" python "$PYTHON_SCRIPT" \
     --iter "$ITER" \
-    --dt "$DT_SIM" \
     --lbfgs-mem "$LBFGS_MEM" \
     --state-dir "$STATE_DIR" \
     --output-dir "$OUTPUT_DIR"
