@@ -22,20 +22,22 @@ from __future__ import annotations
 
 import argparse
 import pickle
+import sys
 from pathlib import Path
 from typing import Any
-from util_funct.compute_dir_parallel import compute_dir_parallel
+
 import numpy as np
 from mpi4py import MPI
-import sys
+
+from util_funct.compute_dir_parallel import compute_dir_parallel
 
 path_to_src = str(Path("../pysem/src").resolve())
 print(f"Adding {path_to_src} to sys.path")
 if path_to_src not in sys.path:
-    sys.path.append(path_to_src)
-
+    sys.path.insert(0, path_to_src)
 
 from pysem.parse_sem3d_snapshots import compute_gradients_main
+
 
 # ---------------------------------------------------------------------
 # Helpers for persistent rank-local optimizer state
@@ -108,6 +110,7 @@ def save_rank_outputs(
         dir_mu_chunk=dir_mu_chunk,
     )
 
+
 def save_global_xyz_tuples(
     output_dir: Path,
     x_tot: np.ndarray,
@@ -125,7 +128,6 @@ def save_global_xyz_tuples(
     out_path = output_dir / "global_xyz_tuples.pkl"
     with open(out_path, "wb") as f:
         pickle.dump(xyz_tuples, f, protocol=pickle.HIGHEST_PROTOCOL)
-
 
 
 def save_rank_metadata_once(
@@ -175,30 +177,35 @@ def run_parallel_direction_step(
     compute_xyz = (iteration == 0)
 
     try:
-        
         # -------------------------------------------------------------
-        # 1. Compute local gradients & Current local model chunk
+        # 1. Compute local gradients & current local model chunk
         # -------------------------------------------------------------
-        
         project_root = Path(__file__).resolve().parents[1]
-
         forward_res = str((project_root / "sem3d_config_files" / "res").resolve())
-        adjoint_res = str((project_root / "sem3d_config_files_adj" / "res").resolve())
 
         old_argv = sys.argv[:]
         sys.argv = [
-            'parse_sem3d_snapshots.py',
-            '@@wkd', forward_res,
-            '@@begin_time', '0',
-            '@@end_time', '2'
+            "parse_sem3d_snapshots.py",
+            "@@wkd", forward_res,
+            "@@begin_time", "0",
+            "@@end_time", "2",
         ]
 
         try:
-            g_lam_chunk, g_mu_chunk, m_lam_chunk, m_mu_chunk, x_gl, y_gl, z_gl = compute_gradients_main(
+            (
+                g_lam_chunk,
+                g_mu_chunk,
+                m_lam_chunk,
+                m_mu_chunk,
+                mat_global_indices,
+                x_gl,
+                y_gl,
+                z_gl,
+            ) = compute_gradients_main(
                 comm=comm,
                 size=size,
                 rank=rank,
-                wrt=compute_xyz
+                wrt=compute_xyz,
             )
         finally:
             sys.argv = old_argv
@@ -274,6 +281,55 @@ def run_parallel_direction_step(
         )
 
         # -------------------------------------------------------------
+        # RICOSTRUZIONE VETTORI GLOBALI ORDINATI (Zero-Padding + Reduce)
+        # -------------------------------------------------------------
+        # 1. Calcoliamo la dimensione totale del mesh (N_tot) trovando l'indice massimo
+        local_max_idx = np.max(mat_global_indices) if len(mat_global_indices) > 0 else 0
+        global_max_idx = comm.allreduce(local_max_idx, op=MPI.MAX)
+        N_tot = int(global_max_idx) + 1
+
+        # 2. Creiamo array di zeri grandi quanto l'intero dominio
+        local_dir_lam_full = np.zeros(N_tot, dtype=np.float64)
+        local_dir_mu_full  = np.zeros(N_tot, dtype=np.float64)
+        local_scalar_prod_lam = np.array([0])
+        local_scalar_prod_mu = np.array([0])
+        #local_g_lam_full   = np.zeros(N_tot, dtype=np.float64)
+        #local_g_mu_full    = np.zeros(N_tot, dtype=np.float64)
+
+        # 3. Incolliamo i chunk locali nei posti ESATTI usando la mappa degli indici
+        local_dir_lam_full[mat_global_indices] = dir_lam_chunk
+        local_dir_mu_full[mat_global_indices]  = dir_mu_chunk
+        local_scalar_prod_lam[0] = np.dot(dir_lam_chunk,g_lam_chunk)
+        local_scalar_prod_mu[0] = np.dot(dir_mu_chunk,g_mu_chunk)
+        #local_g_lam_full[mat_global_indices]   = g_lam_chunk
+        #local_g_mu_full[mat_global_indices]    = g_mu_chunk
+
+        # 4. Fai il Reduce: sovrapponendo le maschere di zeri, i pezzi si fondono in ordine perfetto
+        global_dir_lam = comm.reduce(local_dir_lam_full, op=MPI.SUM, root=0)
+        global_dir_mu  = comm.reduce(local_dir_mu_full,  op=MPI.SUM, root=0)
+        total_scalar_prod_lam = comm.reduce(local_scalar_prod_lam, op=MPI.SUM, root=0)
+        total_scalar_prod_mu = comm.reduce(local_scalar_prod_mu, op=MPI.SUM, root=0)
+        #global_g_lam   = comm.reduce(local_g_lam_full,   op=MPI.SUM, root=0)
+        #global_g_mu    = comm.reduce(local_g_mu_full,    op=MPI.SUM, root=0)
+
+        # 5. Il Rank 0 salva tutti e 4 i vettori in un unico file compresso
+        if rank == 0:
+            global_out_path = output_dir / f"iter_{iteration:04d}" / "global_vectors.npz"
+            global_out_path.parent.mkdir(parents=True, exist_ok=True)
+            np.savez_compressed(
+                global_out_path,
+                dir_lam=global_dir_lam,
+                dir_mu=global_dir_mu,
+                scalar_prod_lam = total_scalar_prod_lam,
+                scalar_prod_mu = total_scalar_prod_mu,
+                x_gl = x_gl,
+                y_gl = y_gl,
+                z_gl = z_gl #,
+                #g_lam=global_g_lam,
+                #g_mu=global_g_mu
+            )
+
+        # -------------------------------------------------------------
         # 5. Compute and save global xyz only once (iteration 0)
         # -------------------------------------------------------------
         if compute_xyz:
@@ -282,8 +338,6 @@ def run_parallel_direction_step(
                     f"Rank {rank}: iteration == 0 but x_gl/y_gl/z_gl is None."
                 )
 
-            # Elementwise sum of NumPy arrays across ranks.
-            # Only rank 0 receives the final reduced vectors.
             if rank == 0:
                 x_gl_tot = np.empty_like(x_gl)
                 y_gl_tot = np.empty_like(y_gl)
@@ -303,6 +357,7 @@ def run_parallel_direction_step(
         # -------------------------------------------------------------
         # 6. Save local outputs
         # -------------------------------------------------------------
+        
         save_rank_outputs(
             output_dir=output_dir,
             iteration=iteration,
@@ -327,8 +382,6 @@ def run_parallel_direction_step(
             "y_queue_mu": y_queue_mu,
         }
         save_rank_state(state_dir, rank, new_state)
-
-        # Optional metadata by rank 0
 
         if rank == 0:
             save_rank_metadata_once(output_dir, iteration, size)

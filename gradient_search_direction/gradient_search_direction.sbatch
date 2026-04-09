@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=gradient_search_direction 
-#SBATCH --nodes=8             
-#SBATCH --ntasks=64            
-#SBATCH --cpus-per-task=4      
+#SBATCH --nodes=4             
+#SBATCH --ntasks=4            
+#SBATCH --cpus-per-task=32      
 #SBATCH --time=12:00:00
 #SBATCH --output=output.%j
 #SBATCH --error=error.%j

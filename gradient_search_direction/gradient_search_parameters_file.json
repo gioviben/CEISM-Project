@@ -3,6 +3,6 @@
   "lbfgs_mem": 5,
   "state_dir": "state",
   "output_dir": "outputs",
-  "mpi_ranks": 64,
+  "mpi_ranks": 4,
   "python_script": "compute_gradient_search_direction.py"
 }
