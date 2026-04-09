@@ -548,12 +548,24 @@ def main():
     #         print(f"Coordinates:\n{positions}\n")
     MPI.Finalize()
     
-def compute_gradients_main():
+import os
+import numpy as np
+from scipy.spatial import cKDTree
+from mpi4py import MPI
+
+import os
+import numpy as np
+from scipy.spatial import cKDTree
+from mpi4py import MPI
+
+def compute_gradients_main(x_bounds = [-1300, 1300], y_bounds = [-1300, 1300], z_bounds = [-1540, 0], steps = [200, 200, 20], cache_dir="./", wrt = True):
     """
-    Main execution block to compute gradients in a truly parallel way.
-    Optimized to skip redundant mass and shape calculations.
+    Computes gradients and maps them to a material mesh with step-by-step logging.
+    
+    Returns:
+        - 4 Local compact vectors: grad_lam, grad_mu, lam, mu
+        - 3 Global sparse vectors: x_gl, y_gl, z_gl
     """
-    # 1. Initialize MPI environment
     if not MPI.Is_initialized():
         MPI.Init()
     
@@ -561,49 +573,130 @@ def compute_gradients_main():
     size = comm.Get_size()
     rank = comm.Get_rank()
     
-    print(f"Rank {rank} - MPI environment initialized. Size: {size}")
-    # 2. Load snapshots and geometry (Forward and Adjoint)
-    # snp contains properties like 'Mass', 'Jac', 'Lamb', 'Mu'
-    snp, snp_adj = GetSnapshots(comm, size, rank)
+    # 1. INITIALIZATION & PHYSICAL SOLVE
+    if rank == 0: print(f"--- Step 1: Initializing snapshots on {size} ranks ---")
     
-    # 3. Execute the Parallel Resolution
-    # We no longer call snp.compute_mass_matrix() or snp.compute_element_shapes()
-    # because solve_gradients_parallel now uses pre-computed file data directly.
-    # ==============================================================================
-    # g_lam_final, g_mu_final = snp.solve_gradients_parallel(snp_adj, dt=0.5) 
+    # GetSnapshots handles CLI parsing and snapshot loading.
+    snp, snp_adj = GetSnapshots(comm, size, rank) 
+    
+    if rank == 0: print("--- Step 2: Solving physical gradients on GLL mesh ---")
+    # solve_gradients_parallel computes the GLL-based misfit gradients.
     g_lam_chunk, g_mu_chunk, counts = snp.solve_gradients_parallel(snp_adj, dt=0.5)
-    # ==============================================================================
     
-        
-    num_nodes = snp.GlobalNumberofNodes
+    phys_offsets = np.cumsum([0] + counts) 
+    
+    # Define Material Mesh Grid dimensions
+    x_range = np.arange(x_bounds[0], x_bounds[1] + steps[0], steps[0])
+    y_range = np.arange(y_bounds[0], y_bounds[1] + steps[1], steps[1])
+    z_range = np.arange(z_bounds[0], z_bounds[1] + steps[2], steps[2])
+    total_mat_nodes = len(x_range) * len(y_range) * len(z_range)
+    
+    cache_file = os.path.join(cache_dir, f'mesh_mapping_rank_{rank}.npz')
 
-    # 2. Prepare global containers on Rank 0
-    if rank == 0:
-        g_lam_final = np.empty(num_nodes, dtype=np.float64)
-        g_mu_final = np.empty(num_nodes, dtype=np.float64)
+    # =========================================================================
+    # 2. MAPPING LOGIC (CACHE OR COMPUTE)
+    # =========================================================================
+    if os.path.exists(cache_file):
+        if rank == 0: print(f"--- Step 3: Loading mapping from cache: {cache_dir} ---")
+        data = np.load(cache_file)
+        mat_nodes_local = data['coords']
+        mat_phys_idx_local = data['idx']
+        mat_global_indices = data['global_mask_idx']
     else:
-        g_lam_final = None
-        g_mu_final = None
+        if rank == 0: print("--- Step 3: No cache found. Starting Global Mapping process ---")
+        
+        # Gather GLL physical coordinates for the KD-Tree.
+        local_nodes = snp.dset['NodesGlobal'] 
+        if rank == 0:
+            print(f"Rank 0: Gathering coordinates for {snp.GlobalNumberofNodes} physical nodes...")
+            all_nodes_phys = np.empty((snp.GlobalNumberofNodes, 3), dtype=np.float64)
+        else:
+            all_nodes_phys = None
+        
+        counts_3d = [c * 3 for c in counts]
+        displs_3d = [d * 3 for d in np.cumsum([0] + counts[:-1])]
+        comm.Gatherv(sendbuf=local_nodes, recvbuf=[all_nodes_phys, counts_3d, displs_3d, MPI.DOUBLE], root=0)
 
-    # 3. Perform the Gather
-    # Calculate displacements for Gatherv
-    displacements = [sum(counts[:i]) for i in range(len(counts))]
-    
-    comm.Gatherv(sendbuf=g_lam_chunk, 
-                 recvbuf=[g_lam_final, counts, displacements, MPI.DOUBLE], 
-                 root=0)
-    comm.Gatherv(sendbuf=g_mu_chunk, 
-                 recvbuf=[g_mu_final, counts, displacements, MPI.DOUBLE], 
-                 root=0)
+        if rank == 0:
+            print("Rank 0: Building Global KD-Tree...")
+            tree = cKDTree(all_nodes_phys)
+            
+            grid_x, grid_y, grid_z = np.meshgrid(x_range, y_range, z_range, indexing='ij')
+            mat_coords_global = np.stack([grid_x.ravel(), grid_y.ravel(), grid_z.ravel()], axis=1)
+            original_indices = np.arange(total_mat_nodes)
+            
+            print(f"Rank 0: Querying tree for {total_mat_nodes} material points...")
+            _, nearest_phys_indices = tree.query(mat_coords_global, k=1)
+            
+            print("Rank 0: Determining point ownership and bundling data...")
+            target_ranks = np.searchsorted(phys_offsets, nearest_phys_indices, side='right') - 1
+            
+            send_mat_coords = [mat_coords_global[target_ranks == r] for r in range(size)]
+            send_phys_indices = [nearest_phys_indices[target_ranks == r] for r in range(size)]
+            send_global_mask = [original_indices[target_ranks == r] for r in range(size)]
+            mat_counts = [len(c) for c in send_mat_coords]
+            print("Rank 0: Bundling complete. Starting MPI distribution...")
+        else:
+            send_mat_coords = send_phys_indices = send_global_mask = mat_counts = None
 
-    if rank == 0:
-        print("Gradients gathered successfully on Rank 0.")
-        # You can now save g_lam_final/g_mu_final to VTK or H5
-        return g_lam_final, g_mu_final
+        # Scatter information and distribute data bundles
+        local_mat_count = comm.scatter(mat_counts, root=0)
+        mat_nodes_local = np.empty((local_mat_count, 3), dtype=np.float64)
+        mat_phys_idx_local = np.empty(local_mat_count, dtype=np.int64)
+        mat_global_indices = np.empty(local_mat_count, dtype=np.int64)
+
+        if rank == 0:
+            for r in range(1, size):
+                comm.Send(send_mat_coords[r], dest=r, tag=901)
+                comm.Send(send_phys_indices[r], dest=r, tag=902)
+                comm.Send(send_global_mask[r], dest=r, tag=903)
+            mat_nodes_local = send_mat_coords[0]
+            mat_phys_idx_local = send_phys_indices[0]
+            mat_global_indices = send_global_mask[0]
+        else:
+            comm.Recv(mat_nodes_local, source=0, tag=901)
+            comm.Recv(mat_phys_idx_local, source=0, tag=902)
+            comm.Recv(mat_global_indices, source=0, tag=903)
+
+        print(f"Rank {rank}: Mapping received and saved to local cache.")
+        np.savez(cache_file, coords=mat_nodes_local, idx=mat_phys_idx_local, global_mask_idx=mat_global_indices)
+
+    # =========================================================================
+    # 3. VECTOR EXTRACTION & ASSEMBLY
+    # =========================================================================
+    if rank == 0: print("--- Step 4: Extracting local data and assembling coordinate vectors ---")
     
-    return None, None
+    # Mapping physical global IDs back to the local rank-specific chunk
+    local_idx_mapped = mat_phys_idx_local - phys_offsets[rank]
     
-    
+    # COMPACT LOCAL VECTORS (Material values for local nodes)
+    grad_lam_local = g_lam_chunk[local_idx_mapped]
+    grad_mu_local  = g_mu_chunk[local_idx_mapped]
+    # Extract Lamb and Mu properties from the dataset.
+    lam_val_local  = snp.dset['Lamb'][local_idx_mapped] 
+    mu_val_local   = snp.dset['Mu'][local_idx_mapped]   
+
+    if wrt:
+        # GLOBAL SPARSE VECTORS (Coordinates)
+        x_gl = np.zeros(total_mat_nodes, dtype=np.float64)
+        y_gl = np.zeros(total_mat_nodes, dtype=np.float64)
+        z_gl = np.zeros(total_mat_nodes, dtype=np.float64)
+
+        # Placing local coordinates into their global spatial index slots
+        x_gl[mat_global_indices] = mat_nodes_local[:, 0]
+        y_gl[mat_global_indices] = mat_nodes_local[:, 1]
+        z_gl[mat_global_indices] = mat_nodes_local[:, 2]
+
+        if rank == 0: 
+            print("--- Final Step: Computation and assembly complete. Returning vectors. ---")
+
+        return(grad_lam_local, grad_mu_local, 
+                lam_val_local, mu_val_local,
+                x_gl, y_gl, z_gl)    
+    else:
+        if rank == 0: print("--- Final Step: Computation and assembly complete. Returning local vectors only. ---")
+        return (grad_lam_local, grad_mu_local, lam_val_local, mu_val_local, None, None, None)
+
 if __name__=="__main__":
     compute_gradients_main()
     # main()
