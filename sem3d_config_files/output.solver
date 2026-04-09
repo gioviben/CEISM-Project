@@ -33,7 +33,7 @@ Sauv. Traces : 1
 Sauv. Snap   : 1
 Fichier stations: '(null)'
 Snap interval : 1.000000
-Snap selection : 0x1580c10
+Snap selection : 0x1bf7c10
 out variables : (0,0,1,1,1,1,0,1,0,0,0,0,1,1)
 Nonlinear analysis : 0
 Mirror : use 0
@@ -79,82 +79,82 @@ Mirror : use 0
  
  --> SNAPSHOTS RECORDED EVERY         3406  iterations
 Capteur:Uobs_0120 on proc    13 in elem      4 at  -0.8250, -0.8250,  1.0000 in domain 4
-Capteur:Uobs_0115 on proc    23 in elem     29 at  -0.8250,  1.0000,  1.0000 in domain 4
 Capteur:Uobs_0119 on proc    13 in elem      4 at  -0.8250, -0.8600,  1.0000 in domain 4
-Capteur:Uobs_0114 on proc    23 in elem     29 at  -0.8250,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0115 on proc    23 in elem     29 at  -0.8250,  1.0000,  1.0000 in domain 4
 Capteur:Uobs_0118 on proc    13 in elem      4 at  -0.8250, -0.8950,  1.0000 in domain 4
-Capteur:Uobs_0113 on proc    23 in elem     29 at  -0.8250,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0114 on proc    23 in elem     29 at  -0.8250,  0.9650,  1.0000 in domain 4
 Capteur:Uobs_0117 on proc    13 in elem      4 at  -0.8250, -0.9300,  1.0000 in domain 4
-Capteur:Uobs_0112 on proc    23 in elem     29 at  -0.8250,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0113 on proc    23 in elem     29 at  -0.8250,  0.9300,  1.0000 in domain 4
 Capteur:Uobs_0116 on proc    13 in elem      4 at  -0.8250, -0.9650,  1.0000 in domain 4
-Capteur:Uobs_0111 on proc    23 in elem     29 at  -0.8250,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0112 on proc    23 in elem     29 at  -0.8250,  0.8950,  1.0000 in domain 4
 Capteur:Uobs_0109 on proc    13 in elem      4 at  -0.8600, -0.8250,  1.0000 in domain 4
-Capteur:Uobs_0110 on proc    23 in elem     29 at  -0.8250,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0111 on proc    23 in elem     29 at  -0.8250,  0.8600,  1.0000 in domain 4
 Capteur:Uobs_0108 on proc    13 in elem      4 at  -0.8600, -0.8600,  1.0000 in domain 4
-Capteur:Uobs_0104 on proc    23 in elem     29 at  -0.8600,  1.0000,  1.0000 in domain 4
+Capteur:Uobs_0110 on proc    23 in elem     29 at  -0.8250,  0.8250,  1.0000 in domain 4
 Capteur:Uobs_0107 on proc    13 in elem      4 at  -0.8600, -0.8950,  1.0000 in domain 4
-Capteur:Uobs_0103 on proc    23 in elem     29 at  -0.8600,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0104 on proc    23 in elem     29 at  -0.8600,  1.0000,  1.0000 in domain 4
 Capteur:Uobs_0106 on proc    13 in elem      4 at  -0.8600, -0.9300,  1.0000 in domain 4
-Capteur:Uobs_0102 on proc    23 in elem     29 at  -0.8600,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0103 on proc    23 in elem     29 at  -0.8600,  0.9650,  1.0000 in domain 4
 Capteur:Uobs_0105 on proc    13 in elem      4 at  -0.8600, -0.9650,  1.0000 in domain 4
-Capteur:Uobs_0101 on proc    23 in elem     29 at  -0.8600,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0102 on proc    23 in elem     29 at  -0.8600,  0.9300,  1.0000 in domain 4
 Capteur:Uobs_0098 on proc    13 in elem      4 at  -0.8950, -0.8250,  1.0000 in domain 4
-Capteur:Uobs_0100 on proc    23 in elem     29 at  -0.8600,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0101 on proc    23 in elem     29 at  -0.8600,  0.8950,  1.0000 in domain 4
 Capteur:Uobs_0097 on proc    13 in elem      4 at  -0.8950, -0.8600,  1.0000 in domain 4
-Capteur:Uobs_0099 on proc    23 in elem     29 at  -0.8600,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0100 on proc    23 in elem     29 at  -0.8600,  0.8600,  1.0000 in domain 4
 Capteur:Uobs_0096 on proc    13 in elem      4 at  -0.8950, -0.8950,  1.0000 in domain 4
-Capteur:Uobs_0093 on proc    23 in elem     29 at  -0.8950,  1.0000,  1.0000 in domain 4
+Capteur:Uobs_0099 on proc    23 in elem     29 at  -0.8600,  0.8250,  1.0000 in domain 4
 Capteur:Uobs_0095 on proc    13 in elem      4 at  -0.8950, -0.9300,  1.0000 in domain 4
-Capteur:Uobs_0092 on proc    23 in elem     29 at  -0.8950,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0093 on proc    23 in elem     29 at  -0.8950,  1.0000,  1.0000 in domain 4
 Capteur:Uobs_0094 on proc    13 in elem      4 at  -0.8950, -0.9650,  1.0000 in domain 4
-Capteur:Uobs_0091 on proc    23 in elem     29 at  -0.8950,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0092 on proc    23 in elem     29 at  -0.8950,  0.9650,  1.0000 in domain 4
 Capteur:Uobs_0087 on proc    13 in elem      4 at  -0.9300, -0.8250,  1.0000 in domain 4
-Capteur:Uobs_0090 on proc    23 in elem     29 at  -0.8950,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0091 on proc    23 in elem     29 at  -0.8950,  0.9300,  1.0000 in domain 4
 Capteur:Uobs_0086 on proc    13 in elem      4 at  -0.9300, -0.8600,  1.0000 in domain 4
-Capteur:Uobs_0089 on proc    23 in elem     29 at  -0.8950,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0090 on proc    23 in elem     29 at  -0.8950,  0.8950,  1.0000 in domain 4
 Capteur:Uobs_0085 on proc    13 in elem      4 at  -0.9300, -0.8950,  1.0000 in domain 4
-Capteur:Uobs_0088 on proc    23 in elem     29 at  -0.8950,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0089 on proc    23 in elem     29 at  -0.8950,  0.8600,  1.0000 in domain 4
 Capteur:Uobs_0084 on proc    13 in elem      4 at  -0.9300, -0.9300,  1.0000 in domain 4
-Capteur:Uobs_0082 on proc    23 in elem     29 at  -0.9300,  1.0000,  1.0000 in domain 4
+Capteur:Uobs_0088 on proc    23 in elem     29 at  -0.8950,  0.8250,  1.0000 in domain 4
 Capteur:Uobs_0083 on proc    13 in elem      4 at  -0.9300, -0.9650,  1.0000 in domain 4
-Capteur:Uobs_0081 on proc    23 in elem     29 at  -0.9300,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0082 on proc    23 in elem     29 at  -0.9300,  1.0000,  1.0000 in domain 4
 Capteur:Uobs_0076 on proc    13 in elem      4 at  -0.9650, -0.8250,  1.0000 in domain 4
-Capteur:Uobs_0080 on proc    23 in elem     29 at  -0.9300,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0081 on proc    23 in elem     29 at  -0.9300,  0.9650,  1.0000 in domain 4
 Capteur:Uobs_0075 on proc    13 in elem      4 at  -0.9650, -0.8600,  1.0000 in domain 4
-Capteur:Uobs_0079 on proc    23 in elem     29 at  -0.9300,  0.8950,  1.0000 in domain 4
+Capteur:Uobs_0080 on proc    23 in elem     29 at  -0.9300,  0.9300,  1.0000 in domain 4
 Capteur:Uobs_0074 on proc    13 in elem      4 at  -0.9650, -0.8950,  1.0000 in domain 4
-Capteur:Uobs_0078 on proc    23 in elem     29 at  -0.9300,  0.8600,  1.0000 in domain 4
+Capteur:Uobs_0079 on proc    23 in elem     29 at  -0.9300,  0.8950,  1.0000 in domain 4
 Capteur:Uobs_0073 on proc    13 in elem      4 at  -0.9650, -0.9300,  1.0000 in domain 4
-Capteur:Uobs_0077 on proc    23 in elem     29 at  -0.9300,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0078 on proc    23 in elem     29 at  -0.9300,  0.8600,  1.0000 in domain 4
 Capteur:Uobs_0072 on proc    13 in elem      4 at  -0.9650, -0.9650,  1.0000 in domain 4
+Capteur:Uobs_0077 on proc    23 in elem     29 at  -0.9300,  0.8250,  1.0000 in domain 4
+ 
 Capteur:Uobs_0071 on proc    23 in elem     29 at  -0.9650,  1.0000,  1.0000 in domain 4
  
 Capteur:Uobs_0070 on proc    23 in elem     29 at  -0.9650,  0.9650,  1.0000 in domain 4
- 
+ ****************************************************************************
 Capteur:Uobs_0069 on proc    23 in elem     29 at  -0.9650,  0.9300,  1.0000 in domain 4
- ****************************************************************************
+ ************************                                 *******************
 Capteur:Uobs_0068 on proc    23 in elem     29 at  -0.9650,  0.8950,  1.0000 in domain 4
- ************************                                 *******************
-Capteur:Uobs_0067 on proc    23 in elem     29 at  -0.9650,  0.8600,  1.0000 in domain 4
  ************************        TIME STEPPING            *******************
-Capteur:Uobs_0066 on proc    23 in elem     29 at  -0.9650,  0.8250,  1.0000 in domain 4
+Capteur:Uobs_0067 on proc    23 in elem     29 at  -0.9650,  0.8600,  1.0000 in domain 4
  ************************                                 *******************
-Capteur:Uobs_0065 on proc    23 in elem     31 at   1.0000, -0.8250,  1.0000 in domain 4
+Capteur:Uobs_0066 on proc    23 in elem     29 at  -0.9650,  0.8250,  1.0000 in domain 4
  ****************************************************************************
+Capteur:Uobs_0065 on proc    23 in elem     31 at   1.0000, -0.8250,  1.0000 in domain 4
+ 
 Capteur:Uobs_0064 on proc    23 in elem     31 at   1.0000, -0.8600,  1.0000 in domain 4
- 
-Capteur:Uobs_0063 on proc    23 in elem     31 at   1.0000, -0.8950,  1.0000 in domain 4
  --> Duration of the run:    5.00000000000000     
-Capteur:Uobs_0062 on proc    23 in elem     31 at   1.0000, -0.9300,  1.0000 in domain 4
+Capteur:Uobs_0063 on proc    23 in elem     31 at   1.0000, -0.8950,  1.0000 in domain 4
  --> Time step size:   2.935570028493387E-004
-Capteur:Uobs_0061 on proc    23 in elem     31 at   1.0000, -0.9650,  1.0000 in domain 4
+Capteur:Uobs_0062 on proc    23 in elem     31 at   1.0000, -0.9300,  1.0000 in domain 4
  --> Number of time steps:        17032
-Capteur:Uobs_0060 on proc    23 in elem     28 at   1.0000, -1.0000,  1.0000 in domain 4
+Capteur:Uobs_0061 on proc    23 in elem     31 at   1.0000, -0.9650,  1.0000 in domain 4
  
-Capteur:Uobs_0059 on proc    23 in elem     28 at  -1.0000,  0.9650,  1.0000 in domain 4
+Capteur:Uobs_0060 on proc    23 in elem     28 at   1.0000, -1.0000,  1.0000 in domain 4
   Iteration  =             0     temps  =   0.000000000000000E+000
-Capteur:Uobs_0058 on proc    23 in elem     28 at  -1.0000,  0.9300,  1.0000 in domain 4
+Capteur:Uobs_0059 on proc    23 in elem     28 at  -1.0000,  0.9650,  1.0000 in domain 4
 --> SEM : snapshot at iteration : 000000 ,time:     0.00000
+Capteur:Uobs_0058 on proc    23 in elem     28 at  -1.0000,  0.9300,  1.0000 in domain 4
 Capteur:Uobs_0057 on proc    23 in elem     28 at  -1.0000,  0.8950,  1.0000 in domain 4
 Capteur:Uobs_0056 on proc    23 in elem     28 at  -1.0000,  0.8600,  1.0000 in domain 4
 Capteur:Uobs_0055 on proc    23 in elem     28 at  -1.0000,  0.8250,  1.0000 in domain 4

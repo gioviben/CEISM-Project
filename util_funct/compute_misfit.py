@@ -1,8 +1,9 @@
 import numpy as np
 from scipy.interpolate import interp1d
 from pysem.parse_sem3d_traces import ParseSEM3DH5Traces
+#import glob, os
 
-def compute_misfit(TRACES_SIMULATED_FOLDER_PATH, obs_monitor):
+def compute_misfit(TRACES_SIMULATED_FOLDER_PATH, TRACES_OSSERVATED_FOLDER_PATH):
     """
     Compute the L2 misfit between simulated and observed displacement traces.
 
@@ -23,10 +24,20 @@ def compute_misfit(TRACES_SIMULATED_FOLDER_PATH, obs_monitor):
         Misfit value:
             J = 0.5 * sum(residual^2) * dt_sim
     """
-
     # -----------------------------
     # Extract observed data ( + checks )
     # -----------------------------
+
+    obs_stream = ParseSEM3DH5Traces(
+        wkdir=TRACES_OSSERVATED_FOLDER_PATH,
+        format='h5',
+        names=['Uobs'],
+        variables=['Displ'],
+        components=['x', 'y', 'z']
+    )
+
+    obs_monitor = obs_stream['Uobs']
+
     if not hasattr(obs_monitor, "data") or "Displ" not in obs_monitor.data:
         raise ValueError("obs_monitor does not contain 'Displ' data")
 
@@ -83,6 +94,27 @@ def compute_misfit(TRACES_SIMULATED_FOLDER_PATH, obs_monitor):
         raise RuntimeError("No 'Uobs' monitor set found in simulated traces")
 
     sim_monitor = sim_stream["Uobs"]
+
+
+    '''DEBUG nan values
+    print("sim_monitor.components['Displ'] =", sim_monitor.components["Displ"])
+    print("sim_monitor.data['Displ'].shape =", sim_monitor.data["Displ"].shape)
+
+    label_to_id = {"x": 0, "y": 1, "z": 2}
+
+    for cname in ["x", "y", "z"]:
+        comp_id = label_to_id[cname]
+        local_idx = sim_monitor.components["Displ"].index(comp_id)
+
+        arr = np.asarray(sim_monitor.data["Displ"][:, local_idx, :])
+        print(
+            cname,
+            "shape =", arr.shape,
+            "nan =", np.isnan(arr).sum(),
+            "inf =", np.isinf(arr).sum(),
+            "all_finite =", np.isfinite(arr).all(),
+        )
+    '''
 
     if not hasattr(sim_monitor, "data") or "Displ" not in sim_monitor.data:
         raise RuntimeError("Simulated monitor does not contain 'Displ' data")

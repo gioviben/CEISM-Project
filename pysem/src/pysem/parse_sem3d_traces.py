@@ -522,8 +522,10 @@ def ParseSEM3DH5Traces(wkdir='./',
                 for H5Dataset in FileHandle.items():
                     dataset = H5Dataset[1]
 
-                    if dataset.shape[0] < 300: 
-                        continue
+
+                    #NOTA: WHY THIS IF ???? I WILL COMMENT
+                    #if dataset.shape[0] < 300: 
+                        #continue
 
                     if 'Variables' not in H5Dataset[0] and "_pos" not in H5Dataset[0]:
                         if any(set(H5Dataset[0].split('_')[:-1]) & set(names_ok)):
