@@ -2,7 +2,7 @@
 run_name = "Test_name";
 
 # duration of the run
-sim_time = 10.0;
+sim_time = 5.0;
 mesh_file = "mesh4spec"; # input mesh file
 mat_file = "material.input";
 dim=3;
@@ -25,7 +25,7 @@ traces_format = hdf5;
 
 capteurs "Uobs" {
     type   = points;
-    file   = "stations.txt";
+    file = "stations.txt";
     period = 68; # number of iterations
 };
 
