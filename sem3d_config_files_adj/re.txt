@@ -1,3 +1,0 @@
-        Warning: path '.' already exists
-        Warning: path './res' already exists
-cp: cannot stat './res/temps_sem.dat': No such file or directory

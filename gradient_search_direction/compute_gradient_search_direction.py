@@ -291,16 +291,16 @@ def run_parallel_direction_step(
         # 2. Creiamo array di zeri grandi quanto l'intero dominio
         local_dir_lam_full = np.zeros(N_tot, dtype=np.float64)
         local_dir_mu_full  = np.zeros(N_tot, dtype=np.float64)
-        local_scalar_prod_lam = np.array([0])
-        local_scalar_prod_mu = np.array([0])
+        #local_scalar_prod_lam = np.array([0])
+        #local_scalar_prod_mu = np.array([0])
         #local_g_lam_full   = np.zeros(N_tot, dtype=np.float64)
         #local_g_mu_full    = np.zeros(N_tot, dtype=np.float64)
 
         # 3. Incolliamo i chunk locali nei posti ESATTI usando la mappa degli indici
         local_dir_lam_full[mat_global_indices] = dir_lam_chunk
         local_dir_mu_full[mat_global_indices]  = dir_mu_chunk
-        local_scalar_prod_lam[0] = np.dot(dir_lam_chunk,g_lam_chunk)
-        local_scalar_prod_mu[0] = np.dot(dir_mu_chunk,g_mu_chunk)
+        local_scalar_prod_lam = np.dot(dir_lam_chunk,g_lam_chunk)
+        local_scalar_prod_mu = np.dot(dir_mu_chunk,g_mu_chunk)
         #local_g_lam_full[mat_global_indices]   = g_lam_chunk
         #local_g_mu_full[mat_global_indices]    = g_mu_chunk
 

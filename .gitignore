@@ -35,3 +35,30 @@ Thumbs.db
 
 /sem3d_config_files_adj/misfit_*.txt
 gradient_search_direction/.nfs*
+
+# Slurm logs
+gradient_search_direction/error.*
+gradient_search_direction/output.*
+
+# Generated mesh mapping files
+gradient_search_direction/mesh_mapping_rank_*.npz
+
+# Generated mesh files
+gradient_search_direction/multi_hexahedral_mesh_*.vtk
+
+# Generated folders
+gradient_search_direction/outputs/
+gradient_search_direction/state/
+
+
+# SEM3D config outputs
+sem3d_config_files/output.*
+sem3d_config_files/stat.log
+
+# Example material files (se NON vuoi versionarli)
+sem3d_config_files/example_*.h5
+
+# Adjoint config outputs
+sem3d_config_files_adj/output.*
+sem3d_config_files_adj/stat.log
+sem3d_config_files_adj/re.txt
