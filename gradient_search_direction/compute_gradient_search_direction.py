@@ -279,7 +279,9 @@ def run_parallel_direction_step(
             M_len_mu,
             comm,
         )
-
+        print("----------------------------------------------")
+        print(f"rank={rank}\ndir_lam_chunk = {dir_lam_chunk}\ndir_mu_chunk={dir_mu_chunk}")
+        print("----------------------------------------------")
         # -------------------------------------------------------------
         # RICOSTRUZIONE VETTORI GLOBALI ORDINATI (Zero-Padding + Reduce)
         # -------------------------------------------------------------

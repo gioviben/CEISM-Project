@@ -4,7 +4,7 @@ run_name = "Test_name";
 # duration of the run
 sim_time = 5.0;
 mesh_file = "mesh4spec"; # input mesh file
-mat_file = "material.input";
+mat_file = "material.spec";
 dim=3;
 fmax=0.1;
 ngll=5;

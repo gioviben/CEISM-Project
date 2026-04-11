@@ -1,14 +1,493 @@
-        Warning: path './traces' already exists
-        Warning: path './res' already exists
-        Warning: path './prot' already exists
         Warning: path '.' already exists
-        Warning: path './mat' already exists
-        Warning: path './mirror' already exists
-        Warning: path './res' already exists
-        Warning: path './res/Rsem0001' already exists
-        Warning: path './res/Rsem0002' already exists
-        Warning: path './res/Rsem0003' already exists
-        Warning: path './res/Rsem0004' already exists
-        Warning: path './res/Rsem0005' already exists
-        Warning: path './res/Rsem0006' already exists
-cp: cannot stat './res/temps_sem.dat': No such file or directory
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F2814E00D90  Unknown               Unknown  Unknown
+libc.so.6          00007F2814E00E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007FF230200D90  Unknown               Unknown  Unknown
+libc.so.6          00007FF230200E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F78A2400D90  Unknown               Unknown  Unknown
+libc.so.6          00007F78A2400E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F970B200D90  Unknown               Unknown  Unknown
+libc.so.6          00007F970B200E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007FAE4E000D90  Unknown               Unknown  Unknown
+libc.so.6          00007FAE4E000E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F46C3400D90  Unknown               Unknown  Unknown
+libc.so.6          00007F46C3400E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F71BAA00D90  Unknown               Unknown  Unknown
+libc.so.6          00007F71BAA00E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F7E8E200D90  Unknown               Unknown  Unknown
+libc.so.6          00007F7E8E200E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F33AE400D90  Unknown               Unknown  Unknown
+libc.so.6          00007F33AE400E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007FBCC0400D90  Unknown               Unknown  Unknown
+libc.so.6          00007FBCC0400E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007FF850000D90  Unknown               Unknown  Unknown
+libc.so.6          00007FF850000E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007FDE6AC00D90  Unknown               Unknown  Unknown
+libc.so.6          00007FDE6AC00E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F4144C00D90  Unknown               Unknown  Unknown
+libc.so.6          00007F4144C00E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F3197A00D90  Unknown               Unknown  Unknown
+libc.so.6          00007F3197A00E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F7159000D90  Unknown               Unknown  Unknown
+libc.so.6          00007F7159000E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F92F8000D90  Unknown               Unknown  Unknown
+libc.so.6          00007F92F8000E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F0509200D90  Unknown               Unknown  Unknown
+libc.so.6          00007F0509200E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F4796A00D90  Unknown               Unknown  Unknown
+libc.so.6          00007F4796A00E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F9B46600D90  Unknown               Unknown  Unknown
+libc.so.6          00007F9B46600E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007FB8DC000D90  Unknown               Unknown  Unknown
+libc.so.6          00007FB8DC000E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F2649400D90  Unknown               Unknown  Unknown
+libc.so.6          00007F2649400E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F172A000D90  Unknown               Unknown  Unknown
+libc.so.6          00007F172A000E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F350F200D90  Unknown               Unknown  Unknown
+libc.so.6          00007F350F200E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F9F60400D90  Unknown               Unknown  Unknown
+libc.so.6          00007F9F60400E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F0368E00D90  Unknown               Unknown  Unknown
+libc.so.6          00007F0368E00E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007FD875800D90  Unknown               Unknown  Unknown
+libc.so.6          00007FD875800E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007FDF13200D90  Unknown               Unknown  Unknown
+libc.so.6          00007FDF13200E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007FA21CE00D90  Unknown               Unknown  Unknown
+libc.so.6          00007FA21CE00E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F2B50200D90  Unknown               Unknown  Unknown
+libc.so.6          00007F2B50200E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F6022C00D90  Unknown               Unknown  Unknown
+libc.so.6          00007F6022C00E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F13C1600D90  Unknown               Unknown  Unknown
+libc.so.6          00007F13C1600E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F9198200D90  Unknown               Unknown  Unknown
+libc.so.6          00007F9198200E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F29E4800D90  Unknown               Unknown  Unknown
+libc.so.6          00007F29E4800E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F38DA600D90  Unknown               Unknown  Unknown
+libc.so.6          00007F38DA600E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F238B600D90  Unknown               Unknown  Unknown
+libc.so.6          00007F238B600E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007FB07F000D90  Unknown               Unknown  Unknown
+libc.so.6          00007FB07F000E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F40EB600D90  Unknown               Unknown  Unknown
+libc.so.6          00007F40EB600E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007FF6E6E00D90  Unknown               Unknown  Unknown
+libc.so.6          00007FF6E6E00E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007F48DB800D90  Unknown               Unknown  Unknown
+libc.so.6          00007F48DB800E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007FEEF5200D90  Unknown               Unknown  Unknown
+libc.so.6          00007FEEF5200E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown
+forrtl: severe (24): end-of-file during read, unit -5, file Internal List-Directed Read
+Image              PC                Routine            Line        Source             
+sem3d.exe          0000000000A9642B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000A95A5B  Unknown               Unknown  Unknown
+sem3d.exe          0000000000587333  Unknown               Unknown  Unknown
+sem3d.exe          000000000058A61C  Unknown               Unknown  Unknown
+sem3d.exe          000000000067BA30  Unknown               Unknown  Unknown
+sem3d.exe          000000000067EF32  Unknown               Unknown  Unknown
+sem3d.exe          000000000040A9FD  Unknown               Unknown  Unknown
+libc.so.6          00007EFF75A00D90  Unknown               Unknown  Unknown
+libc.so.6          00007EFF75A00E40  __libc_start_main     Unknown  Unknown
+sem3d.exe          000000000040A915  Unknown               Unknown  Unknown

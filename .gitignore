@@ -62,3 +62,7 @@ sem3d_config_files/example_*.h5
 sem3d_config_files_adj/output.*
 sem3d_config_files_adj/stat.log
 sem3d_config_files_adj/re.txt
+
+
+/util_to_be_deleted/
+sem3d_config_files/base*
