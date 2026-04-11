@@ -319,7 +319,7 @@ class SnapshotsSEM3D(object):
 
         return local_sum_lam, local_sum_mu
 
-    def solve_gradients_parallel(self, snp_adj, dt, R_lam=1.0, R_mu=1.0):
+    def solve_gradients_parallel(self, snp_adj, dt, R_lam=1, R_mu=1):
         loc_rhs_lam, loc_rhs_mu = self.compute_local_contribution_rhs(snp_adj, dt, R_lam, R_mu)
 
         loc_M = np.zeros(self.GlobalNumberofNodes)

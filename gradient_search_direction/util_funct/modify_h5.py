@@ -1,3 +1,4 @@
+'''
 import h5py
 import numpy as np
 
@@ -129,7 +130,7 @@ def modify_h5_g(h5_path, vec_to_add, mapping_list):
         
         xMinGlob = fmesh.attrs["xMinGlob"]
         xMaxGlob = fmesh.attrs["xMaxGlob"]
-        n__elems = fmesh.attrs["xStep"]  # attention au nom, voir remarque plus bas
+        n__elems = fmesh.attrs["n"]  # attention au nom, voir remarque plus bas
         xStep = np.array([
             (xMaxGlob[k] - xMinGlob[k]) / n__elems[k]
             for k in range(3)
@@ -144,4 +145,3 @@ def modify_h5_g(h5_path, vec_to_add, mapping_list):
         del fmesh["samples"]
         fmesh.create_dataset('samples', data=mat)
     return None
-'''

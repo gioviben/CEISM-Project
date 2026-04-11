@@ -39,6 +39,8 @@ def linear_gradient(d,grd,nu=0.3):
     mu = mu.transpose(*trnsp)
     vp = np.sqrt((la+2.*mu)/ds)
     vs = np.sqrt(mu/ds)
+    #print(f"la={la}")
+    #print(f"mu={mu}")
     return {'la':la,'mu':mu,'ds':ds,'vp':vp,'vs':vs}
 
 func = {'linear_gradient':linear_gradient}
